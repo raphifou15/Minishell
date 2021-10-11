@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 19:40:05 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/10/11 04:59:31 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/10/11 05:47:37 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int	minishell(void)
 		line = readline(prompt);
 		if (parsing_1_part_0(&m, -1) != 0)
 			return (ft_free(line) + 1);
+		display_elem((&m)->p1);
 		if (ft_strcmp(rl_line_buffer, "bonjour") == 0)
 			temp = 1;
 		printf("%s\n", line);

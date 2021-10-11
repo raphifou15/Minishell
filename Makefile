@@ -6,7 +6,7 @@
 #    By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/10 18:33:31 by rkhelif           #+#    #+#              #
-#    Updated: 2021/10/11 02:56:52 by rkhelif          ###   ########.fr        #
+#    Updated: 2021/10/11 05:36:07 by rkhelif          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,8 @@ SRCS = 	main.c \
 		utilities1.c \
 		ft_free.c \
 		parsing_1.c \
-		error1.c
+		error1.c \
+		display.c
 
 OBJS = ${addprefix ${DIR_OBJ}/,${SRCS:.c=.o}}
 

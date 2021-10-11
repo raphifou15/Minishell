@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 21:30:18 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/10/11 05:31:38 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/10/11 06:22:19 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,26 @@ int	ft_list_push_back(t_first_parse **begin, char c, int b)
 
 int	find_the_good_value(char c)
 {
-	(void)c;
+	if (c == 32)
+		return (_SPACE);
+	if (c == 34)
+		return (_DOUBLE_QUOTE);
+	if (c == 39)
+		return (_QUOTE);
+	if (c == 92)
+		return (_BACKSLASH);
+	if (c == 59)
+		return (_SEMICOLON);
+	if (c == 36)
+		return (_DOLLAR);
+	if (c == 60)
+		return (_R_INPUT);
+	if (c == 62)
+		return (_R_OUTPUT);
+	if (c == 124)
+		return (_PIPE);
+	if (c == 63)
+		return (_QUESTION);
 	return (EXP);
 }
 

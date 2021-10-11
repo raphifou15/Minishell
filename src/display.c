@@ -1,46 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utilities1.c                                       :+:      :+:    :+:   */
+/*   display.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/10 21:02:01 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/10/11 05:42:24 by rkhelif          ###   ########.fr       */
+/*   Created: 2021/10/11 05:36:19 by rkhelif           #+#    #+#             */
+/*   Updated: 2021/10/11 05:45:55 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	ft_strcmp(char *s1, char *s2)
+void	display_elem(t_first_parse *begin)
 {
-	int	i;
+	t_first_parse	*temp;
 
-	i = 0;
-	while (s1[i] != '\0' && s2[i] != '\0' && s1[i] == s2[i])
-		i++;
-	if (s1[i] == '\0' && s2[i] == '\0')
-		return (0);
-	return (1);
-}
-
-void	ft_putstr_err(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i] != '\0')
-		i++;
-	write(2, str, i);
-}
-
-
-void	ft_putstr(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i] != '\0')
-		i++;
-	write(1, str, i);
+	temp = begin;
+	while (temp != NULL)
+	{
+		printf("%d = value    %c = c\n", temp->value, temp->c);
+		temp = temp->next;
+	}
 }
