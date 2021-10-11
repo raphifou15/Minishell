@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 19:40:05 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/10/11 05:47:37 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/10/11 19:29:14 by alebross         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,8 @@ int	minishell(void)
 	while (temp == 0)
 	{
 		line = readline(prompt);
-		if (parsing_1_part_0(&m, -1) != 0)
+		if (parsing_1(&m) != 0)
 			return (ft_free(line) + 1);
-		display_elem((&m)->p1);
-		printf("\n");
-		transform_value_inside_quote(&m.p1);
-		display_elem((&m)->p1);
 		if (ft_strcmp(rl_line_buffer, "bonjour") == 0)
 			temp = 1;
 		printf("%s\n", line);

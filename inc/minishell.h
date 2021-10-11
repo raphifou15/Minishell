@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 19:29:07 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/10/11 06:21:36 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/10/11 19:56:27 by alebross         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ typedef struct s_minishell
 # define EXP			0
 # define _SPACE			1
 # define _QUOTE			2
-# define _DOUBLE_QUOTE		3
+# define _DOUBLE_QUOTE	3
 # define _BACKSLASH		4
 # define _SEMICOLON		5
 # define _DOLLAR		6
@@ -54,12 +54,14 @@ int				ft_free(char *str);
 void			ft_free2(void *data);
 int				ft_free_all_the_list(t_first_parse *begin);
 
+int				parsing_1(t_minishell *m);
 int				parsing_1_part_0(t_minishell *m, int i);
 t_first_parse	*ft_create_elem(char c, int b);
 int				find_the_good_value(char c);
 int				ft_list_push_back(t_first_parse **begin, char c, int b);
 
-void    transform_value_inside_quote(t_first_parse **begin);
+void			transform_value_inside_quote(t_first_parse **begin);
+int     		check_quote_number(t_first_parse **begin);
 
 int				error1(int err);
 

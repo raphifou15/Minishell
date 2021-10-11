@@ -6,7 +6,7 @@
 #    By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/10 18:33:31 by rkhelif           #+#    #+#              #
-#    Updated: 2021/10/11 05:36:07 by rkhelif          ###   ########.fr        #
+#    Updated: 2021/10/11 18:56:15 by alebross         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,9 +22,9 @@ SRCS = 	main.c \
 		utilities1.c \
 		ft_free.c \
 		parsing_1.c \
+		checking_after_parsing_1.c \
 		error1.c \
-		display.c \
-		transform_value_inside_quote.c
+		display.c
 
 OBJS = ${addprefix ${DIR_OBJ}/,${SRCS:.c=.o}}
 

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   transform_value_inside_quote.c                     :+:      :+:    :+:   */
+/*   checking_after_parsing_1.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alebross <alebross@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/11 18:07:53 by alebross          #+#    #+#             */
-/*   Updated: 2021/10/11 18:12:46 by alebross         ###   ########.fr       */
+/*   Created: 2021/10/11 18:56:01 by alebross          #+#    #+#             */
+/*   Updated: 2021/10/11 19:58:51 by alebross         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,4 +33,26 @@ void	transform_value_inside_quote(t_first_parse **begin)
 			doublequote++;
 		temp = temp->next;
 	}
+}
+
+int		check_quote_number(t_first_parse **begin)
+{
+	t_first_parse	*temp;
+	int				doublequote;
+	int				quote;
+
+	doublequote = 0;
+	quote = 0;
+	temp = *begin;
+	while (temp != NULL)
+	{
+		if (temp->value == _DOUBLE_QUOTE)
+			doublequote++;
+		if (temp->value == _QUOTE)
+			quote++;
+		temp = temp->next;
+	}
+	if ((doublequote % 2) == 1 || (quote % 2) == 1)
+		return (error1(1) + 1);
+	return (0);
 }

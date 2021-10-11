@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 21:30:18 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/10/11 06:22:19 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/10/11 19:56:16 by alebross         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,10 @@ int	find_the_good_value(char c)
 		return (_DOUBLE_QUOTE);
 	if (c == 39)
 		return (_QUOTE);
-	if (c == 92)
-		return (_BACKSLASH);
-	if (c == 59)
-		return (_SEMICOLON);
+//	if (c == 92)
+//		return (_BACKSLASH);
+//	if (c == 59)
+//		return (_SEMICOLON);
 	if (c == 36)
 		return (_DOLLAR);
 	if (c == 60)
@@ -83,5 +83,18 @@ int	parsing_1_part_0(t_minishell *m, int i)
 		if (ft_list_push_back(&m->p1, rl_line_buffer[i], value) == 1)
 			return (ft_free_all_the_list(m->p1) + 1);
 	}
+	return (0);
+}
+
+int	parsing_1(t_minishell *m)
+{
+	if (parsing_1_part_0(m, -1) != 0)
+		return (1);
+	display_elem(m->p1);
+	printf("\n");
+	transform_value_inside_quote(&m->p1);
+	display_elem(m->p1);
+	if (check_quote_number(&m->p1) != 0)
+		return (ft_free_all_the_list(m->p1) + 1);
 	return (0);
 }
