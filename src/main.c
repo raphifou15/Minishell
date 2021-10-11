@@ -29,6 +29,9 @@ int	minishell(void)
 		if (parsing_1_part_0(&m, -1) != 0)
 			return (ft_free(line) + 1);
 		display_elem((&m)->p1);
+		printf("\n");
+		transform_value_inside_quote(&m.p1);
+		display_elem((&m)->p1);
 		if (ft_strcmp(rl_line_buffer, "bonjour") == 0)
 			temp = 1;
 		printf("%s\n", line);

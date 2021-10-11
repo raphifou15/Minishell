@@ -23,7 +23,8 @@ SRCS = 	main.c \
 		ft_free.c \
 		parsing_1.c \
 		error1.c \
-		display.c
+		display.c \
+		transform_value_inside_quote.c
 
 OBJS = ${addprefix ${DIR_OBJ}/,${SRCS:.c=.o}}
 
