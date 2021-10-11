@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 21:30:18 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/10/11 19:56:16 by alebross         ###   ########.fr       */
+/*   Updated: 2021/10/11 23:09:13 by alebross         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@ int	ft_list_push_back(t_first_parse **begin, char c, int b)
 
 int	find_the_good_value(char c)
 {
-	if (c == 32)
+	if (c == 32 || c == '\n' || c == '\t'
+		|| c == '\v' || c == '\f' || c == '\r')
 		return (_SPACE);
 	if (c == 34)
 		return (_DOUBLE_QUOTE);
@@ -94,6 +95,8 @@ int	parsing_1(t_minishell *m)
 	printf("\n");
 	transform_value_inside_quote(&m->p1);
 	display_elem(m->p1);
+	if (check_multi_special_char(&m->p1) != 0)
+		return (ft_free_all_the_list(m->p1) + 1);
 	if (check_quote_number(&m->p1) != 0)
 		return (ft_free_all_the_list(m->p1) + 1);
 	return (0);

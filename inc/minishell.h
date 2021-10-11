@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 19:29:07 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/10/11 19:56:27 by alebross         ###   ########.fr       */
+/*   Updated: 2021/10/12 01:41:11 by alebross         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,13 @@
 # include <readline/readline.h>
 # include <readline/history.h>
 
+typedef	struct s_second_parse
+{
+	int						value;
+	char					*str;
+	struct s_second_parse	*next;
+}				t_second_parse;
+
 typedef struct s_first_parse
 {
 	int						value;
@@ -29,6 +36,7 @@ typedef struct s_first_parse
 typedef struct s_minishell
 {
 	t_first_parse	*p1;
+	t_second_parse	*p2;
 }				t_minishell;
 
 # define EXP			0
@@ -53,6 +61,7 @@ void			ft_putstr(char *str);
 int				ft_free(char *str);
 void			ft_free2(void *data);
 int				ft_free_all_the_list(t_first_parse *begin);
+int				ft_free_all_the_list_2(t_second_parse *begin);
 
 int				parsing_1(t_minishell *m);
 int				parsing_1_part_0(t_minishell *m, int i);
@@ -60,10 +69,18 @@ t_first_parse	*ft_create_elem(char c, int b);
 int				find_the_good_value(char c);
 int				ft_list_push_back(t_first_parse **begin, char c, int b);
 
+int     		check_multi_special_char(t_first_parse **begin);
 void			transform_value_inside_quote(t_first_parse **begin);
 int     		check_quote_number(t_first_parse **begin);
+
+int				parsing_2(t_minishell *m);
+int				parsing_2_part_0(t_minishell *m);
+t_second_parse  *ft_create_elem_2(t_first_parse *p1, int len);
+int				ft_list_push_back_2(t_second_parse **begin, t_first_parse *p1, int len);
+int				next_parse_len(t_first_parse *begin);
 
 int				error1(int err);
 
 void			display_elem(t_first_parse *begin);
+void			display_elem_2(t_second_parse *begin);
 #endif
