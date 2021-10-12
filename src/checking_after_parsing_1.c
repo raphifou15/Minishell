@@ -6,11 +6,61 @@
 /*   By: alebross <alebross@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 18:56:01 by alebross          #+#    #+#             */
-/*   Updated: 2021/10/12 01:56:06 by alebross         ###   ########.fr       */
+/*   Updated: 2021/10/12 22:00:54 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+void	transform_value_for_dollar_inside_double_quote(t_first_parse **begin,
+			int pivot)
+{
+	t_first_parse	*temp;
+	int				pivot2;
+
+	temp = NULL;
+	temp = *begin;
+	pivot2 = 0;
+	while (temp != NULL)
+	{
+		if (temp->value == _DOUBLE_QUOTE)
+		{
+			if (pivot == 0)
+				pivot = 1;
+			else
+			{
+				pivot = 0;
+				pivot2 = 0;
+			}
+		}
+		if (pivot == 1 && temp->c == 36)
+			pivot2 = 1;
+		if (pivot2 == 1)
+			temp->value = _DOLLAR;
+		temp = temp->next;
+	}
+}
+
+void	transform_value_for_dollar(t_first_parse **begin)
+{
+	t_first_parse	*temp;
+	int				pivot;
+
+	temp = NULL;
+	temp = *begin;
+	pivot = 0;
+	while (temp != NULL)
+	{
+		if (temp->value == _DOLLAR)
+			pivot = 1;
+		if (pivot == 1 && temp->value != EXP && temp->value != _DOLLAR)
+			pivot = 0;
+		if (pivot == 1)
+			temp->value = _DOLLAR;
+		temp = temp->next;
+	}
+	transform_value_for_dollar_inside_double_quote(begin, 0);
+}
 
 void	transform_value_inside_quote(t_first_parse **begin)
 {
@@ -24,7 +74,9 @@ void	transform_value_inside_quote(t_first_parse **begin)
 	while (temp != NULL)
 	{
 		if ((doublequote % 2) == 1 && temp->value != _DOUBLE_QUOTE)
+		{
 			temp->value = EXP;
+		}
 		if ((quote % 2) == 1 && temp->value != _QUOTE)
 			temp->value = EXP;
 		if (temp->value == _QUOTE && doublequote % 2 == 0)

@@ -6,7 +6,7 @@
 /*   By: alebross <alebross@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 23:42:09 by alebross          #+#    #+#             */
-/*   Updated: 2021/10/12 03:07:19 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/10/12 19:01:39 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,8 +88,7 @@ int	parsing_2_part_0(t_minishell *m)
 	temp = m->p1;
 	while (temp != NULL)
 	{
-		if (temp->value != _QUOTE && temp->value != _DOUBLE_QUOTE
-			&& temp->value != _SPACE)
+		if (temp->value != _QUOTE && temp->value != _DOUBLE_QUOTE)
 		{
 			len = next_parse_len(temp);
 			if (ft_list_push_back_2(&m->p2, temp, len) != 0)
