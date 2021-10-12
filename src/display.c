@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 05:36:19 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/10/12 01:52:34 by alebross         ###   ########.fr       */
+/*   Updated: 2021/10/12 03:06:05 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ void	display_elem(t_first_parse *begin)
 		temp = temp->next;
 	}
 }
-
 
 void	display_elem_2(t_second_parse *begin)
 {

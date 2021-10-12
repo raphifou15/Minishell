@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 19:29:07 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/10/12 01:41:11 by alebross         ###   ########.fr       */
+/*   Updated: 2021/10/12 05:45:24 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include <readline/readline.h>
 # include <readline/history.h>
 
-typedef	struct s_second_parse
+typedef struct s_second_parse
 {
 	int						value;
 	char					*str;
@@ -35,8 +35,9 @@ typedef struct s_first_parse
 
 typedef struct s_minishell
 {
-	t_first_parse	*p1;
-	t_second_parse	*p2;
+	t_first_parse			*p1;
+	t_second_parse			*p2;
+	int						use;
 }				t_minishell;
 
 # define EXP			0
@@ -53,6 +54,8 @@ typedef struct s_minishell
 
 int				main(int argc, char **argv, char **env);
 int				minishell(void);
+void			destroy_all(t_minishell *m, char *line, int use);
+t_minishell		init_minishell(void);
 
 int				ft_strcmp(char *s1, char *s2);
 void			ft_putstr_err(char *str);
@@ -69,14 +72,15 @@ t_first_parse	*ft_create_elem(char c, int b);
 int				find_the_good_value(char c);
 int				ft_list_push_back(t_first_parse **begin, char c, int b);
 
-int     		check_multi_special_char(t_first_parse **begin);
+int				check_multi_special_char(t_first_parse **begin);
 void			transform_value_inside_quote(t_first_parse **begin);
-int     		check_quote_number(t_first_parse **begin);
+int				check_quote_number(t_first_parse **begin);
 
 int				parsing_2(t_minishell *m);
 int				parsing_2_part_0(t_minishell *m);
-t_second_parse  *ft_create_elem_2(t_first_parse *p1, int len);
-int				ft_list_push_back_2(t_second_parse **begin, t_first_parse *p1, int len);
+t_second_parse	*ft_create_elem_2(t_first_parse *p1, int len);
+int				ft_list_push_back_2(t_second_parse **begin, t_first_parse *p1,
+					int len);
 int				next_parse_len(t_first_parse *begin);
 
 int				error1(int err);

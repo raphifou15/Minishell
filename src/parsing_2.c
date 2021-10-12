@@ -6,7 +6,7 @@
 /*   By: alebross <alebross@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 23:42:09 by alebross          #+#    #+#             */
-/*   Updated: 2021/10/12 01:51:42 by alebross         ###   ########.fr       */
+/*   Updated: 2021/10/12 03:07:19 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ t_second_parse	*ft_create_elem_2(t_first_parse *p1, int len)
 	return (elem);
 }
 
-int		next_parse_len(t_first_parse *begin)
+int	next_parse_len(t_first_parse *begin)
 {
 	int				i;
 	int				valueb;
@@ -79,7 +79,7 @@ int		next_parse_len(t_first_parse *begin)
 	return (i);
 }
 
-int		parsing_2_part_0(t_minishell *m)
+int	parsing_2_part_0(t_minishell *m)
 {
 	t_first_parse	*temp;
 	int				len;
@@ -106,7 +106,7 @@ int		parsing_2_part_0(t_minishell *m)
 	return (0);
 }
 
-int		parsing_2(t_minishell *m)
+int	parsing_2(t_minishell *m)
 {
 	if (parsing_2_part_0(m) != 0)
 		return (1);
