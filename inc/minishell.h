@@ -75,6 +75,7 @@ int				ft_strlen(char *str);
 char			*ft_strjoin(char *s1, char *s2);
 
 int				ft_free(char *str);
+char			*ft_free_null(char *str);
 void			ft_free2(void *data);
 int				ft_free_all_the_list(t_first_parse *begin);
 int				ft_free_all_the_list_2(t_second_parse *begin);
