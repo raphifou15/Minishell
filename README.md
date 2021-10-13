@@ -1,3 +1,3 @@
 # Minishell
 
-Probleme au niveau des doubles quotes refaire la fonction qui prend en compte bojour"salut"demain
+Voir dans le fichier checking_after_parsing_2.c
