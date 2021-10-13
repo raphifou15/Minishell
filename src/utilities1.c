@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 21:02:01 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/10/11 19:31:17 by alebross         ###   ########.fr       */
+/*   Updated: 2021/10/13 20:51:31 by alebross         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,4 +42,25 @@ void	ft_putstr(char *str)
 	while (str[i] != '\0')
 		i++;
 	write(1, str, i);
+}
+
+int	ft_strlen(char *str)
+{
+	int		i;
+
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
+}
+
+char	*ft_strdup(char *src)
+{
+	char	*dest;
+
+	dest = malloc(sizeof(char) * (ft_strlen(src) + 1));
+	if (dest == NULL)
+		return (NULL);
+	dest = ft_strcpy(dest, src);
+	return (dest);
 }

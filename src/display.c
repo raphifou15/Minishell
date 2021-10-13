@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 05:36:19 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/10/12 03:06:05 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/10/13 20:15:27 by alebross         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void	display_elem(t_first_parse *begin)
 	t_first_parse	*temp;
 
 	temp = begin;
+	printf("DISPLAY PARSING1:\n");
 	while (temp != NULL)
 	{
 		printf("%d = value    %c = c\n", temp->value, temp->c);
@@ -29,6 +30,7 @@ void	display_elem_2(t_second_parse *begin)
 	t_second_parse	*temp;
 
 	temp = begin;
+	printf("DISPLAY PARSING2:\n");
 	while (temp != NULL)
 	{
 		printf("%d = value    %s = string\n", temp->value, temp->str);

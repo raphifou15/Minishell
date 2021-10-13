@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 19:29:07 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/10/13 17:05:34 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/10/13 21:00:29 by alebross         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,17 @@ typedef struct s_first_parse
 	struct s_first_parse	*next;
 }				t_first_parse;
 
+typedef struct s_env
+{
+	char	*name;
+	char	*ctn;
+}				t_env;
+
 typedef struct s_minishell
 {
 	t_first_parse			*p1;
 	t_second_parse			*p2;
+	t_env					*e;	
 	int						use;
 }				t_minishell;
 
@@ -53,13 +60,19 @@ typedef struct s_minishell
 # define _QUESTION		10
 
 int				main(int argc, char **argv, char **env);
-int				minishell(void);
+int				minishell(char **env, char *prompt);
 void			destroy_all(t_minishell *m, char *line, int use);
-t_minishell		init_minishell(void);
+int				init_minishell(t_minishell *m, char **env);
 
 int				ft_strcmp(char *s1, char *s2);
 void			ft_putstr_err(char *str);
 void			ft_putstr(char *str);
+char			*ft_strcpy(char *dest, char *src);
+char			*ft_strncpy(char *dest, char *src, unsigned int n);
+char			*ft_strdup(char *str);
+char			*ft_strcat(char *dest, char *src);
+int				ft_strlen(char *str);
+char			*ft_strjoin(char *s1, char *s2);
 
 int				ft_free(char *str);
 void			ft_free2(void *data);
@@ -72,7 +85,8 @@ t_first_parse	*ft_create_elem(char c, int b);
 int				find_the_good_value(char c);
 int				ft_list_push_back(t_first_parse **begin, char c, int b);
 
-int				check_multi_special_char(t_first_parse **begin);
+int				check_multi_special_char(t_first_parse **begin,
+					t_first_parse *temp);
 void			transform_value_inside_quote(t_first_parse **begin);
 int				check_quote_number(t_first_parse **begin);
 void			transform_value_for_dollar(t_first_parse **begin);

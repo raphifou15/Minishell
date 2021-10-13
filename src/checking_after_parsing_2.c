@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 05:57:03 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/10/13 18:04:04 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/10/13 21:03:32 by alebross         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,17 +24,8 @@ int	len_elem_until_dollar_or_end(char *str)
 
 int	change_elem_dollar_part2(t_second_parse *temp)
 {
-	int		i;
-	int		len;
-
-	i = 0;
-	while (temp->str[i] != '\0')
-	{
-		len = len_elem_until_dollar_or_end(temp->str + i);
-		printf("len = %d\n", len);
-		i += len;
-	}
-	return (1);
+	(void)temp;
+	return (0);
 }
 
 int	change_elem_dollar(t_second_parse *begin)
@@ -71,3 +62,26 @@ int	change_elem_dollar(t_second_parse *begin)
 //etape 6: Mettre dans str2 les valeur de str(longeur);
 //etape 7: dans une fonction genten(*str2);
 //etape 8: join temp->str str que renvoie get_env;
+
+//	int		i;
+//	int		len;
+//	char	*str;
+//	char	*str2;
+//	char	*str3;
+//
+//	str = ft_strdup(temp->str);
+//	free(temp->str);
+//	temp->str = NULL;
+//	i = 0;
+//	while (str[i] != '\0')
+//	{
+//		len = len_elem_until_dollar_or_end(str + i);
+//		str2 = malloc(sizeof(char) * len);
+//		str2 = ft_strncpy(str2, str + i + 1, len -1);
+//		str3 = getenv(str2);
+//		printf("len = %d\nstr2 = %s\n", len, str2);
+//		printf("str3 %s\n", str3);
+//		i += len;
+//		free(str2);
+//		str2 = NULL;
+//	}

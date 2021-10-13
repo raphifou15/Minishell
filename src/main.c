@@ -6,20 +6,19 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 19:40:05 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/10/12 05:46:19 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/10/13 20:56:19 by alebross         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-t_minishell	init_minishell(void)
+int	init_minishell(t_minishell *m, char **env)
 {
-	t_minishell	m;
-
-	m.p1 = NULL;
-	m.p2 = NULL;
-	m.use = 0;
-	return (m);
+	(void)env;
+	m->p1 = NULL;
+	m->p2 = NULL;
+	m->use = 0;
+	return (0);
 }
 
 void	destroy_all(t_minishell *m, char *line, int use)
@@ -34,20 +33,20 @@ void	destroy_all(t_minishell *m, char *line, int use)
 	m->p2 = NULL;
 }
 
-int	minishell(void)
+int	minishell(char **env, char *prompt)
 {
 	t_minishell	m;
-	char		*prompt;
 	char		*line;
 	int			temp;
 
 	temp = 0;
-	prompt = NULL;
 	line = NULL;
-	m = init_minishell();
+	if (init_minishell(&m, env) != 0)
+		return (1);
 	while (temp == 0)
 	{
 		line = readline(prompt);
+		printf("%s\n", line);
 		if (parsing_1(&m) != 0)
 			m.use = (ft_free(line) + 1);
 		if (m.use == 0 && parsing_2(&m) != 0)
@@ -66,8 +65,7 @@ int	main(int argc, char **argv, char **env)
 {
 	(void)argc;
 	(void)argv;
-	(void)env;
-	if (minishell() != 0)
+	if (minishell(env, "$>") != 0)
 		return (1);
 	return (0);
 }

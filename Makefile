@@ -6,7 +6,7 @@
 #    By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/10 18:33:31 by rkhelif           #+#    #+#              #
-#    Updated: 2021/10/13 06:11:31 by rkhelif          ###   ########.fr        #
+#    Updated: 2021/10/13 18:51:54 by alebross         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ DIR_INC = inc
 
 SRCS = 	main.c \
 		utilities1.c \
+		utilities2.c \
 		ft_free.c \
 		parsing_1.c \
 		parsing_2.c \

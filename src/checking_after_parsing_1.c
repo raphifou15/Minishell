@@ -6,7 +6,7 @@
 /*   By: alebross <alebross@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 18:56:01 by alebross          #+#    #+#             */
-/*   Updated: 2021/10/13 03:37:29 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/10/13 20:20:51 by alebross         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,16 +110,18 @@ int	check_quote_number(t_first_parse **begin)
 	return (0);
 }
 
-int	check_multi_special_char(t_first_parse **begin)
+int	check_multi_special_char(t_first_parse **begin, t_first_parse *temp)
 {
-	t_first_parse	*temp;
 	char			lastchar;
 	int				a;
 
-	a = 0;
-	temp = *begin;
-	lastchar = temp->c;
-	temp = temp->next;
+	if (*begin != NULL)
+	{
+		a = 0;
+		temp = *begin;
+		lastchar = temp->c;
+		temp = temp->next;
+	}
 	while (temp != NULL)
 	{
 		if (lastchar == temp->c)
