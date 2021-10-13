@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 19:29:07 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/10/13 21:00:29 by alebross         ###   ########.fr       */
+/*   Updated: 2021/10/14 01:07:30 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,9 @@ int				ft_free(char *str);
 void			ft_free2(void *data);
 int				ft_free_all_the_list(t_first_parse *begin);
 int				ft_free_all_the_list_2(t_second_parse *begin);
+
+int				add_env_variable_to_list(t_minishell *m, char **env);
+int				ft_list_push_back_env(t_env **begin, char *str);
 
 int				parsing_1(t_minishell *m);
 int				parsing_1_part_0(t_minishell *m, int i);
