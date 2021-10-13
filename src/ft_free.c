@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 21:22:14 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/10/13 17:56:45 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/10/14 00:56:33 by alebross         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,15 @@ int	ft_free(char *str)
 	free(str);
 	str = NULL;
 	return (0);
+}
+
+char	*ft_free_null(char *str)
+{
+	if (str == NULL)
+		return (0);
+	free(str);
+	str = NULL;
+	return (str);
 }
 
 void	ft_free2(void *data)
