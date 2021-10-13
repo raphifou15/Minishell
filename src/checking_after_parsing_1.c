@@ -6,7 +6,7 @@
 /*   By: alebross <alebross@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 18:56:01 by alebross          #+#    #+#             */
-/*   Updated: 2021/10/12 22:00:54 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/10/13 03:37:29 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ void	transform_value_for_dollar_inside_double_quote(t_first_parse **begin,
 			temp->value = _DOLLAR;
 		temp = temp->next;
 	}
+	transform_value_for_dollar_exeption(begin);
 }
 
 void	transform_value_for_dollar(t_first_parse **begin)

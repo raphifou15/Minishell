@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 19:29:07 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/10/12 22:01:10 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/10/13 06:35:51 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,12 +79,17 @@ void			transform_value_for_dollar(t_first_parse **begin);
 void			transform_value_for_dollar_inside_double_quote(
 					t_first_parse **begin, int pivot);
 
+void			transform_value_for_dollar_exeption(t_first_parse **begin);
+
 int				parsing_2(t_minishell *m);
 int				parsing_2_part_0(t_minishell *m);
 t_second_parse	*ft_create_elem_2(t_first_parse *p1, int len);
 int				ft_list_push_back_2(t_second_parse **begin, t_first_parse *p1,
 					int len);
 int				next_parse_len(t_first_parse *begin);
+
+int				change_elem_dollar(t_second_parse *begin);
+int				change_elem_dollar_part2(t_second_parse *temp);
 
 int				error1(int err);
 

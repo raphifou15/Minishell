@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 21:30:18 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/10/12 19:23:27 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/10/13 01:24:32 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,6 @@ int	find_the_good_value(char c)
 		return (_R_OUTPUT);
 	if (c == 124)
 		return (_PIPE);
-	if (c == 63)
-		return (_QUESTION);
 	return (EXP);
 }
 
@@ -102,3 +100,5 @@ int	parsing_1(t_minishell *m)
 //		return (_BACKSLASH);
 //	if (c == 59)
 //		return (_SEMICOLON);
+//if (c == 63)
+//		return (_QUESTION);
