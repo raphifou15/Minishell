@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 19:40:05 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/10/13 20:56:19 by alebross         ###   ########.fr       */
+/*   Updated: 2021/10/14 00:36:19 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,12 @@
 
 int	init_minishell(t_minishell *m, char **env)
 {
-	(void)env;
+	m->e = NULL;
 	m->p1 = NULL;
 	m->p2 = NULL;
 	m->use = 0;
+	if (add_env_variable_to_list(m, env) != 0)
+		return (1);
 	return (0);
 }
 
@@ -65,7 +67,7 @@ int	main(int argc, char **argv, char **env)
 {
 	(void)argc;
 	(void)argv;
-	if (minishell(env, "$>") != 0)
+	if (minishell(env, "\e[11;34mMinishell$>\e[0m") != 0)
 		return (1);
 	return (0);
 }
