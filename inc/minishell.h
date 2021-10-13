@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 19:29:07 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/10/13 06:35:51 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/10/13 17:05:34 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,7 @@ int				next_parse_len(t_first_parse *begin);
 
 int				change_elem_dollar(t_second_parse *begin);
 int				change_elem_dollar_part2(t_second_parse *temp);
+int				len_elem_until_dollar_or_end(char *str);
 
 int				error1(int err);
 

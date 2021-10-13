@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 21:22:14 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/10/12 01:11:34 by alebross         ###   ########.fr       */
+/*   Updated: 2021/10/13 17:56:45 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,8 @@ int	ft_free_all_the_list_2(t_second_parse *begin)
 	{
 		temp2 = temp;
 		temp = temp->next;
-		ft_free(temp2->str);
+		if (temp2->str != NULL)
+			ft_free(temp2->str);
 		ft_free2(temp2);
 	}
 	return (0);
