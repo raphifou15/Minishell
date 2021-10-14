@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 05:36:19 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/10/13 20:15:27 by alebross         ###   ########.fr       */
+/*   Updated: 2021/10/14 03:44:59 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,19 @@ void	display_elem_2(t_second_parse *begin)
 	while (temp != NULL)
 	{
 		printf("%d = value    %s = string\n", temp->value, temp->str);
+		temp = temp->next;
+	}
+}
+
+void	ft_display_env_list(t_env *begin)
+{
+	t_env	*temp;
+
+	temp = begin;
+	while (temp != NULL)
+	{
+		printf("%s=", temp->name);
+		printf("%s\n", temp->ctn);
 		temp = temp->next;
 	}
 }
