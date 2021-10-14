@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 19:40:05 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/10/14 00:36:19 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/10/14 03:52:24 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ int	minishell(char **env, char *prompt)
 	while (temp == 0)
 	{
 		line = readline(prompt);
-		printf("%s\n", line);
 		if (parsing_1(&m) != 0)
 			m.use = (ft_free(line) + 1);
 		if (m.use == 0 && parsing_2(&m) != 0)
@@ -60,6 +59,8 @@ int	minishell(char **env, char *prompt)
 		destroy_all(&m, line, m.use);
 		m.use = 0;
 	}
+	ft_display_env_list(m.e);
+	ft_free_all_elem_env(m.e);
 	return (0);
 }
 

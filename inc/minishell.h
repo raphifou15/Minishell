@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 19:29:07 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/10/14 01:07:30 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/10/14 03:55:15 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,9 @@ typedef struct s_first_parse
 
 typedef struct s_env
 {
-	char	*name;
-	char	*ctn;
+	char					*name;
+	char					*ctn;
+	struct s_env			*next;
 }				t_env;
 
 typedef struct s_minishell
@@ -80,8 +81,13 @@ void			ft_free2(void *data);
 int				ft_free_all_the_list(t_first_parse *begin);
 int				ft_free_all_the_list_2(t_second_parse *begin);
 
+int				ft_free_all_elem_env(t_env *begin);
+
 int				add_env_variable_to_list(t_minishell *m, char **env);
 int				ft_list_push_back_env(t_env **begin, char *str);
+t_env			*ft_create_elem_env(char *str);
+char			*put_inside_ctn(char *src);
+char			*put_inside_name(char *src);
 
 int				parsing_1(t_minishell *m);
 int				parsing_1_part_0(t_minishell *m, int i);
@@ -114,4 +120,5 @@ int				error1(int err);
 
 void			display_elem(t_first_parse *begin);
 void			display_elem_2(t_second_parse *begin);
+void			ft_display_env_list(t_env *begin);
 #endif
