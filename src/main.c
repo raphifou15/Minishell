@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 19:40:05 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/10/14 03:52:24 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/10/16 05:40:49 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ int	minishell(char **env, char *prompt)
 		destroy_all(&m, line, m.use);
 		m.use = 0;
 	}
-	ft_display_env_list(m.e);
 	ft_free_all_elem_env(m.e);
 	return (0);
 }
@@ -72,3 +71,5 @@ int	main(int argc, char **argv, char **env)
 		return (1);
 	return (0);
 }
+
+// ft_display_env_list(m.e);

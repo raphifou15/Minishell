@@ -6,7 +6,7 @@
 /*   By: alebross <alebross@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 18:43:59 by alebross          #+#    #+#             */
-/*   Updated: 2021/10/14 01:03:50 by alebross         ###   ########.fr       */
+/*   Updated: 2021/10/16 05:40:18 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ char	*ft_strcat(char *dest, char *src)
 	int	j;
 
 	i = 0;
-	while (dest[i] != '\0')
-		i++;
 	j = 0;
+	while (dest != NULL && dest[i] != '\0')
+		i++;
 	while (src[j] != '\0')
 	{
 		dest[i + j] = src[j];
@@ -35,6 +35,8 @@ char	*ft_strcpy(char *dest, char *src)
 	int	i;
 
 	i = 0;
+	if (src == NULL)
+		return (dest);
 	while (src[i] != '\0')
 	{
 		dest[i] = src[i];
@@ -44,34 +46,48 @@ char	*ft_strcpy(char *dest, char *src)
 	return (dest);
 }
 
-char	*ft_strncpy(char *dest, char *src, unsigned int n)
+void	*ft_calloc(size_t nmemb, size_t size)
 {
-	unsigned int	i;
+	unsigned char	*str;
 
-	i = 0;
-	while (src[i] != '\0' && i < n)
+	str = malloc(nmemb * size);
+	if (str == NULL)
+		return (NULL);
+	nmemb = size * nmemb;
+	while (nmemb > 0)
 	{
-		dest[i] = src[i];
-		++i;
+		str[nmemb - 1] = 0;
+		nmemb--;
 	}
-	dest[i] = '\0';
-	return (dest);
+	return (str);
 }
 
 char	*ft_strjoin(char *s1, char *s2)
 {
 	char	*s3;
+	int		a;
+	int		b;
 
-	s3 = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	s3 = NULL;
+	a = 0;
+	b = 0;
+	if (s1 == NULL)
+		a = 0;
+	else
+		a = ft_strlen(s1);
+	if (s2 == NULL)
+		return (s1);
+	b = ft_strlen(s2);
+	s3 = ft_calloc(sizeof(char), a + b + 1);
 	if (s3 == NULL)
-	{
-		free(s1);
-		s1 = NULL;
+		ft_free(s1);
+	if (s3 == NULL)
 		return (NULL);
-	}
 	s3 = ft_strcpy(s3, s1);
 	s3 = ft_strcat(s3, s2);
-	free(s1);
-	s1 = NULL;
+	ft_free(s1);
 	return (s3);
 }
+
+//ft_strjoin modif pour ne pas avoir de leak ni segfault
+//il free a l'interieur de lui meme.

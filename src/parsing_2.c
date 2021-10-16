@@ -6,7 +6,7 @@
 /*   By: alebross <alebross@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 23:42:09 by alebross          #+#    #+#             */
-/*   Updated: 2021/10/13 06:13:58 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/10/16 02:58:43 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ int	parsing_2(t_minishell *m)
 	if (parsing_2_part_0(m) != 0)
 		return (1);
 	display_elem_2(m->p2);
-	if (change_elem_dollar(m->p2) != 0)
+	if (change_elem_dollar(m->p2, m) != 0)
 		return (ft_free_all_the_list_2(m->p2) + 1);
 	return (0);
 }
