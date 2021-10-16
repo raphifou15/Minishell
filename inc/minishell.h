@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 19:29:07 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/10/14 03:55:15 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/10/16 05:40:39 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,12 +68,14 @@ int				init_minishell(t_minishell *m, char **env);
 int				ft_strcmp(char *s1, char *s2);
 void			ft_putstr_err(char *str);
 void			ft_putstr(char *str);
-char			*ft_strcpy(char *dest, char *src);
-char			*ft_strncpy(char *dest, char *src, unsigned int n);
-char			*ft_strdup(char *str);
-char			*ft_strcat(char *dest, char *src);
 int				ft_strlen(char *str);
+char			*ft_strdup(char *str);
+
+//char			*ft_strncpy(char *dest, char *src, unsigned int n);
+char			*ft_strcpy(char *dest, char *src);
+char			*ft_strcat(char *dest, char *src);
 char			*ft_strjoin(char *s1, char *s2);
+void			*ft_calloc(size_t nmemb, size_t size);
 
 int				ft_free(char *str);
 char			*ft_free_null(char *str);
@@ -112,9 +114,15 @@ int				ft_list_push_back_2(t_second_parse **begin, t_first_parse *p1,
 					int len);
 int				next_parse_len(t_first_parse *begin);
 
-int				change_elem_dollar(t_second_parse *begin);
-int				change_elem_dollar_part2(t_second_parse *temp);
+int				change_elem_dollar(t_second_parse *begin, t_minishell *m);
+int				change_elem_dollar_part2(t_second_parse *temp, t_minishell *m);
 int				len_elem_until_dollar_or_end(char *str);
+int				find_new_value_to_temp(t_second_parse *temp, char *str,
+					t_minishell *m);
+char			*find_name_value_to_transform(char *str, int len);
+
+char			*find_value_from_env_or_interogation(char *str2, t_minishell *m,
+					char *str3);
 
 int				error1(int err);
 
