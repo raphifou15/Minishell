@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 21:02:01 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/10/16 05:40:44 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/10/16 22:28:38 by alebross         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,9 @@ char	*ft_strdup(char *src)
 	char	*dest;
 
 	if (src == NULL)
-		NULL;
+		return (NULL);
+	if (src[0] == '\0')
+		dest = malloc(sizeof(char));
 	dest = malloc(sizeof(char) * (ft_strlen(src) + 1));
 	if (dest == NULL)
 		return (NULL);

@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 19:29:07 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/10/16 05:40:39 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/10/16 23:16:50 by alebross         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ typedef struct s_minishell
 {
 	t_first_parse			*p1;
 	t_second_parse			*p2;
+	t_second_parse			*p3;
 	t_env					*e;	
 	int						use;
 }				t_minishell;
@@ -59,6 +60,8 @@ typedef struct s_minishell
 # define _R_OUTPUT		8
 # define _PIPE			9
 # define _QUESTION		10
+# define _R_INPUT_2		11
+# define _R_OUTPUT_2	12
 
 int				main(int argc, char **argv, char **env);
 int				minishell(char **env, char *prompt);
@@ -116,6 +119,7 @@ int				next_parse_len(t_first_parse *begin);
 
 int				change_elem_dollar(t_second_parse *begin, t_minishell *m);
 int				change_elem_dollar_part2(t_second_parse *temp, t_minishell *m);
+void			corrige_value(t_second_parse *begin);
 int				len_elem_until_dollar_or_end(char *str);
 int				find_new_value_to_temp(t_second_parse *temp, char *str,
 					t_minishell *m);
@@ -123,6 +127,12 @@ char			*find_name_value_to_transform(char *str, int len);
 
 char			*find_value_from_env_or_interogation(char *str2, t_minishell *m,
 					char *str3);
+
+int				parsing_3(t_minishell *m);
+int				parsing_3_part_0(t_minishell *m);
+t_second_parse	*ft_create_elem_3(t_second_parse *temp);
+int				ft_list_push_back_3(t_second_parse **begin,
+					t_second_parse *temp);
 
 int				error1(int err);
 
