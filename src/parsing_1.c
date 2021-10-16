@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 21:30:18 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/10/13 20:21:09 by alebross         ###   ########.fr       */
+/*   Updated: 2021/10/16 19:53:38 by alebross         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,9 +85,7 @@ int	parsing_1(t_minishell *m)
 {
 	if (parsing_1_part_0(m, -1) != 0)
 		return (1);
-	display_elem(m->p1);
 	transform_value_inside_quote(&m->p1);
-	display_elem(m->p1);
 	if (check_multi_special_char(&m->p1, NULL) != 0)
 		return (ft_free_all_the_list(m->p1) + 1);
 	if (check_quote_number(&m->p1) != 0)

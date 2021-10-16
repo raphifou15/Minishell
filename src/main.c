@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 19:40:05 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/10/16 05:40:49 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/10/16 23:14:49 by alebross         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int	init_minishell(t_minishell *m, char **env)
 	m->e = NULL;
 	m->p1 = NULL;
 	m->p2 = NULL;
+	m->p3 = NULL;
 	m->use = 0;
 	if (add_env_variable_to_list(m, env) != 0)
 		return (1);
@@ -29,10 +30,12 @@ void	destroy_all(t_minishell *m, char *line, int use)
 	{
 		ft_free_all_the_list(m->p1);
 		ft_free_all_the_list_2(m->p2);
+		ft_free_all_the_list_2(m->p3);
 		ft_free(line);
 	}
 	m->p1 = NULL;
 	m->p2 = NULL;
+	m->p3 = NULL;
 }
 
 int	minishell(char **env, char *prompt)
@@ -52,6 +55,8 @@ int	minishell(char **env, char *prompt)
 			m.use = (ft_free(line) + 1);
 		if (m.use == 0 && parsing_2(&m) != 0)
 			m.use = (ft_free_all_the_list(m.p1) + ft_free(line) + 1);
+		if (m.use == 0 && parsing_3(&m) != 0)
+			m.use = (ft_free_all_the_list(m.p1) + ft_free_all_the_list_2(m.p2) + ft_free(line) + 1);
 		if (ft_strcmp(rl_line_buffer, "bonjour") == 0)
 			temp = 1;
 		if (m.use == 0)
