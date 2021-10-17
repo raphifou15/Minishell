@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 19:29:07 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/10/16 23:16:50 by alebross         ###   ########.fr       */
+/*   Updated: 2021/10/17 04:05:27 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ int				main(int argc, char **argv, char **env);
 int				minishell(char **env, char *prompt);
 void			destroy_all(t_minishell *m, char *line, int use);
 int				init_minishell(t_minishell *m, char **env);
+void			parsing(t_minishell *m, char *line);
 
 int				ft_strcmp(char *s1, char *s2);
 void			ft_putstr_err(char *str);
