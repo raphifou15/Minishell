@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 19:40:05 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/10/17 04:08:18 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/10/18 04:56:41 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ void	parsing(t_minishell *m, char *line)
 	if (m->use == 0 && parsing_3(m) != 0)
 		m->use = (ft_free_all_the_list(m->p1) + ft_free_all_the_list_2(m->p2)
 				+ ft_free(line) + 1);
+	display_elem_2(m->p3);
 }
 
 int	minishell(char **env, char *prompt)
@@ -63,6 +64,8 @@ int	minishell(char **env, char *prompt)
 	{
 		line = readline(prompt);
 		parsing(&m, line);
+		if (ft_strcmp(rl_line_buffer, "") == 1)
+			add_history(rl_line_buffer);
 		if (ft_strcmp(rl_line_buffer, "bonjour") == 0)
 			temp = 1;
 		if (m.use == 0)
