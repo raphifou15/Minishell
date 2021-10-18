@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 19:29:07 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/10/17 04:05:27 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/10/18 06:04:51 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,4 +140,6 @@ int				error1(int err);
 void			display_elem(t_first_parse *begin);
 void			display_elem_2(t_second_parse *begin);
 void			ft_display_env_list(t_env *begin);
+
+void			executing(t_minishell *m);
 #endif
