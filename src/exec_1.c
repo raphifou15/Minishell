@@ -6,13 +6,66 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/18 05:55:52 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/10/18 06:04:55 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/10/19 20:31:41 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
+int	ft_find_number_elem_p3(t_second_parse *begin)
+{
+	int				i;
+	t_second_parse	*temp;
+
+	i = 0;
+	temp = begin;
+	while (temp != NULL)
+	{
+		i++;
+		temp = temp->next;
+	}
+	return (i);
+}
+
+void	execution_without_pipe(t_minishell *m)
+{
+	int	nb_elem;
+
+	nb_elem = ft_find_number_elem_p3(m->p3);
+	printf("%d\n", nb_elem);
+}
+
+int	check_numb_of_pipe(t_second_parse	*begin)
+{
+	t_second_parse	*temp;
+	int				i;
+
+	i = 0;
+	temp = begin;
+	while (temp != NULL)
+	{
+		if (temp->value == _PIPE)
+			i++;
+		temp = temp->next;
+	}
+	return (i);
+}
+
 void	executing(t_minishell *m)
 {
-	(void)m;
+	int				nb_pipe;
+	t_second_parse	*temp;
+
+	temp = m->p3;
+	nb_pipe = check_numb_of_pipe(m->p3);
+	if (nb_pipe == 0)
+		return (execution_without_pipe(m));
+	while (nb_pipe != 0)
+	{
+		printf("lala\n");
+		while (temp->value != _PIPE)
+			temp = temp->next;
+		temp = temp->next;
+		nb_pipe = check_numb_of_pipe(temp);
+	}
 }

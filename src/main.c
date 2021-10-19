@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 19:40:05 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/10/18 06:04:45 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/10/19 20:32:24 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,8 @@ int	minishell(char **env, char *prompt)
 	{
 		line = readline(prompt);
 		parsing(&m, line);
-		executing(&m);
+		if (m.use == 0)
+			executing(&m);
 		if (ft_strcmp(rl_line_buffer, "") == 1)
 			add_history(rl_line_buffer);
 		if (ft_strcmp(rl_line_buffer, "bonjour") == 0)
