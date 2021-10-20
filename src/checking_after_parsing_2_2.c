@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/15 19:19:37 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/10/18 00:50:18 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/10/20 23:38:36 by alebross         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +50,30 @@ void	corrige_value(t_second_parse *begin)
 	temp = begin;
 	while (temp != NULL)
 	{
-		if (temp->value == _DOLLAR)
-			temp->value = EXP;
 		if (strcmp(temp->str, "<<") == 0)
 			temp->value = _R_INPUT_2;
 		if (strcmp(temp->str, ">>") == 0)
 			temp->value = _R_OUTPUT_2;
 		temp = temp->next;
+	}
+}
+
+void	corrige_value2(t_second_parse *begin)
+{
+	t_second_parse	*temp;
+
+	temp = begin;
+	while (temp != NULL)
+	{
+		if (temp->value == _R_INPUT_2)
+		{
+			temp = temp->next;
+			while (temp != NULL && temp->value == _SPACE)
+				temp = temp->next;
+			if (temp->value == _DOLLAR)
+				temp->value = _DELIMITEUR;
+		}
+		if (temp != NULL)
+			temp = temp->next;
 	}
 }

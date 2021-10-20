@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 19:29:07 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/10/20 06:04:13 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/10/20 23:38:09 by alebross         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ typedef struct s_minishell
 # define _QUESTION		10
 # define _R_INPUT_2		11
 # define _R_OUTPUT_2	12
+# define _DELIMITEUR	13
 
 int				main(int argc, char **argv, char **env);
 int				minishell(char **env, char *prompt);
@@ -121,6 +122,7 @@ int				next_parse_len(t_first_parse *begin);
 int				change_elem_dollar(t_second_parse *begin, t_minishell *m);
 int				change_elem_dollar_part2(t_second_parse *temp, t_minishell *m);
 void			corrige_value(t_second_parse *begin);
+void			corrige_value2(t_second_parse *begin);
 int				len_elem_until_dollar_or_end(char *str);
 int				find_new_value_to_temp(t_second_parse *temp, char *str,
 					t_minishell *m);
