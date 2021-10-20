@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/18 05:55:52 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/10/19 20:31:41 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/10/20 06:04:07 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,31 @@ int	ft_find_number_elem_p3(t_second_parse *begin)
 	return (i);
 }
 
+int	ft_check_if_redirection(t_second_parse *begin)
+{
+	int				i;
+	t_second_parse	*temp;
+
+	i = 0;
+	temp = begin;
+	while (temp != NULL)
+	{
+		if (temp->value != EXP && temp->value != _SPACE)
+			i++;
+		temp = temp->next;
+	}
+	return (i);
+}
+
 void	execution_without_pipe(t_minishell *m)
 {
 	int	nb_elem;
+	int	redirection;
 
 	nb_elem = ft_find_number_elem_p3(m->p3);
-	printf("%d\n", nb_elem);
+	redirection = ft_check_if_redirection(m->p3);
+	(void)nb_elem;
+	printf("%d = redirection\n", redirection);
 }
 
 int	check_numb_of_pipe(t_second_parse	*begin)
