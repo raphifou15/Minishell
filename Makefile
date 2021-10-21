@@ -6,7 +6,7 @@
 #    By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/10 18:33:31 by rkhelif           #+#    #+#              #
-#    Updated: 2021/10/18 06:05:04 by rkhelif          ###   ########.fr        #
+#    Updated: 2021/10/21 19:44:10 by rkhelif          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,6 +31,7 @@ SRCS = 	main.c \
 		checking_after_parsing_1_2.c \
 		checking_after_parsing_2.c \
 		checking_after_parsing_2_2.c \
+		checking_after_parsing_3.c \
 		exec_1.c\
 		error1.c \
 		display.c

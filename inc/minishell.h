@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 19:29:07 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/10/20 23:38:09 by alebross         ###   ########.fr       */
+/*   Updated: 2021/10/21 21:16:03 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,6 +136,8 @@ int				parsing_3_part_0(t_minishell *m);
 t_second_parse	*ft_create_elem_3(t_second_parse *temp);
 int				ft_list_push_back_3(t_second_parse **begin,
 					t_second_parse *temp);
+
+int				check_error_syntax(t_second_parse *begin);
 
 int				error1(int err);
 

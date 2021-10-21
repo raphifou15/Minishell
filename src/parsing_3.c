@@ -6,7 +6,7 @@
 /*   By: alebross <alebross@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 23:42:09 by alebross          #+#    #+#             */
-/*   Updated: 2021/10/19 22:24:14 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/10/21 21:15:46 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,21 @@ int	parsing_3(t_minishell *m)
 {
 	if (parsing_3_part_0(m) != 0)
 		return (1);
+	if (check_error_syntax(m->p3) != 0)
+		return (ft_free_all_the_list_2(m->p3) + 1);
 	display_elem_2(m->p3);
 	return (0);
 }
+
+//checker toutes les erreurs de parsing;
+//
+//enlever tous les espaces; (free tous les elements de type espace de la liste)
+//
+//effacer a chaque fois renconter les elements de type '>' '>>' '<' '<<' et
+// changer le type de l'element  suivant en le metant au meme type que
+// l'element precedement effacer. ps (effacer == free);
+//
+//NE PAS CHANGER DE PLACE LELEMENT PIPE
+//Mettre dans l'ordre les elements avant l'execution redirection first puis
+//commande a executer suivis des argument de cette commande.
+//puis on sera pret pour passer a l'execution.
