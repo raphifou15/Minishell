@@ -6,7 +6,7 @@
 /*   By: alebross <alebross@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 23:42:09 by alebross          #+#    #+#             */
-/*   Updated: 2021/10/21 21:15:46 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/10/22 04:56:58 by alebross         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,14 +68,19 @@ int	parsing_3_part_0(t_minishell *m)
 	temp = m->p2;
 	while (temp != NULL)
 	{
-		if (ft_list_push_back_3(&m->p3, temp) != 0)
-			return (ft_free_all_the_list_2(m->p3) + 1);
-		if (temp->value != EXP)
+		if (temp->value == _SPACE)
 			temp = temp->next;
 		else
 		{
-			while (temp != NULL && temp->value == EXP)
+			if (ft_list_push_back_3(&m->p3, temp) != 0)
+				return (ft_free_all_the_list_2(m->p3) + 1);
+			if (temp->value != EXP)
 				temp = temp->next;
+			else
+			{
+				while (temp != NULL && temp->value == EXP)
+					temp = temp->next;
+			}
 		}
 	}
 	return (0);
@@ -85,8 +90,10 @@ int	parsing_3(t_minishell *m)
 {
 	if (parsing_3_part_0(m) != 0)
 		return (1);
+	display_elem_2(m->p3);
 	if (check_error_syntax(m->p3) != 0)
 		return (ft_free_all_the_list_2(m->p3) + 1);
+	corrige_redirection(m->p3, m);
 	display_elem_2(m->p3);
 	return (0);
 }

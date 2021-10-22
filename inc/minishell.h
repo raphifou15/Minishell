@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 19:29:07 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/10/21 21:16:03 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/10/22 04:55:00 by alebross         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,6 +138,8 @@ int				ft_list_push_back_3(t_second_parse **begin,
 					t_second_parse *temp);
 
 int				check_error_syntax(t_second_parse *begin);
+void			corrige_redirection(t_second_parse *begin, t_minishell *m);
+int				redirection(int value);
 
 int				error1(int err);
 

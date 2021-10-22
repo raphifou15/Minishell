@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 02:58:39 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/10/16 02:59:50 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/10/22 01:22:12 by alebross         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,7 @@ int	error1(int err)
 		ft_putstr_err("\e[15;31mError syntax error (multi pipe)\e[0m\n");
 	if (err == 3)
 		ft_putstr_err("\e[15;31mError syntax error (multi redirection)\e[0m\n");
+	if (err == 4)
+		ft_putstr_err("\e[15;31mError syntax error (invalid redirection)\e[0m\n");
 	return (0);
 }
