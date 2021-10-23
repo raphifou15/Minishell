@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 19:29:07 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/10/22 04:55:00 by alebross         ###   ########.fr       */
+/*   Updated: 2021/10/23 04:30:23 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,6 +140,13 @@ int				ft_list_push_back_3(t_second_parse **begin,
 int				check_error_syntax(t_second_parse *begin);
 void			corrige_redirection(t_second_parse *begin, t_minishell *m);
 int				redirection(int value);
+void			delete_elem_inside_list(t_second_parse *begin, int be);
+void			change_next_value(t_second_parse *begin, int v);
+
+void			order_list(t_second_parse *begin, t_minishell *m);
+int				check_if_list_is_ordered(t_second_parse *begin);
+t_second_parse	*change_place_elem(t_second_parse *begin, t_minishell *m,
+					int elem, int i);
 
 int				error1(int err);
 
