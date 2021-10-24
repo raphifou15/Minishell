@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 03:34:59 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/10/24 02:35:08 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/10/24 03:29:07 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ void	transform_value_for_dollar_exeption2(t_first_parse **begin)
 	i = 0;
 	while (temp != NULL)
 	{
+		if (temp->value == _DOUBLE_QUOTE)
+			i = 0;
 		if (temp->value == _DOLLAR && (temp->c == '$' || temp->c == 39))
 			i = 0;
 		if (i == 0 && temp->value == _DOLLAR)

@@ -6,7 +6,7 @@
 #    By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/10 18:33:31 by rkhelif           #+#    #+#              #
-#    Updated: 2021/10/24 02:36:31 by rkhelif          ###   ########.fr        #
+#    Updated: 2021/10/24 06:09:05 by rkhelif          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,8 @@ SRCS = 	main.c \
 		checking_after_parsing_3_2.c \
 		exec_1.c\
 		error1.c \
-		display.c
+		display.c \
+		env_list_to_tab.c
 
 OBJS = ${addprefix ${DIR_OBJ}/,${SRCS:.c=.o}}
 

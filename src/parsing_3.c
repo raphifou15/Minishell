@@ -6,7 +6,7 @@
 /*   By: alebross <alebross@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 23:42:09 by alebross          #+#    #+#             */
-/*   Updated: 2021/10/24 01:18:57 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/10/24 04:57:57 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,6 @@ int	parsing_3(t_minishell *m)
 {
 	if (parsing_3_part_0(m) != 0)
 		return (1);
-	display_elem_2(m->p3);
 	if (check_error_syntax(m->p3) != 0)
 		return (ft_free_all_the_list_2(m->p3) + 1);
 	corrige_redirection(m->p3, m);

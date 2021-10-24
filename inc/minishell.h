@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 19:29:07 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/10/24 02:35:15 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/10/24 06:09:01 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,10 @@
 # define MINISHELL_H
 
 # include <stdio.h>
+# include <errno.h>
 # include <unistd.h>
 # include <stdlib.h>
+# include <string.h>
 # include <readline/readline.h>
 # include <readline/history.h>
 
@@ -151,12 +153,19 @@ t_second_parse	*change_place_elem(t_second_parse *begin, t_minishell *m,
 int				check_syntax_error_pipe(t_second_parse *begin);
 
 int				error1(int err);
+void			error2(int err);
 
 void			display_elem(t_first_parse *begin);
 void			display_elem_2(t_second_parse *begin);
 void			ft_display_env_list(t_env *begin);
 
-void			executing(t_second_parse *begin, t_minishell *m);
+void			executing(t_second_parse *begin, t_minishell *m, char *line);
 int				find_nbr_pipe(t_second_parse *begin);
+void			executing_without_pipe(t_second_parse *begin, t_minishell *m,
+					char *line);
+void			child_process_whithout_pipe(t_second_parse *begin,
+					t_minishell *m, char *line);
+
+char			**env_list_to_tab(t_env *e);
 
 #endif
