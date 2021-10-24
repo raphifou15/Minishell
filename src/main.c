@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 19:40:05 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/10/21 21:16:06 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/10/24 02:34:53 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,6 @@ void	destroy_all(t_minishell *m, char *line, int use)
 {
 	if (use == 0)
 	{
-		ft_free_all_the_list(m->p1);
-		ft_free_all_the_list_2(m->p2);
 		ft_free_all_the_list_2(m->p3);
 		ft_free(line);
 	}
@@ -47,6 +45,8 @@ void	parsing(t_minishell *m, char *line)
 	if (m->use == 0 && parsing_3(m) != 0)
 		m->use = (ft_free_all_the_list(m->p1) + ft_free_all_the_list_2(m->p2)
 				+ ft_free(line) + 1);
+	if (m->use == 0)
+		m->use = ft_free_all_the_list(m->p1) + ft_free_all_the_list_2(m->p2);
 }
 
 int	minishell(char **env, char *prompt)
@@ -64,7 +64,7 @@ int	minishell(char **env, char *prompt)
 		line = readline(prompt);
 		parsing(&m, line);
 		if (m.use == 0)
-			executing(&m);
+			executing(m.p3, &m);
 		if (ft_strcmp(rl_line_buffer, "") == 1)
 			add_history(rl_line_buffer);
 		if (ft_strcmp(rl_line_buffer, "bonjour") == 0)

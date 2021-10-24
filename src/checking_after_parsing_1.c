@@ -6,7 +6,7 @@
 /*   By: alebross <alebross@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 18:56:01 by alebross          #+#    #+#             */
-/*   Updated: 2021/10/13 20:20:51 by alebross         ###   ########.fr       */
+/*   Updated: 2021/10/24 02:35:04 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void	transform_value_for_dollar_inside_double_quote(t_first_parse **begin,
 	t_first_parse	*temp;
 	int				pivot2;
 
-	temp = NULL;
 	temp = *begin;
 	pivot2 = 0;
 	while (temp != NULL)
@@ -40,6 +39,7 @@ void	transform_value_for_dollar_inside_double_quote(t_first_parse **begin,
 		temp = temp->next;
 	}
 	transform_value_for_dollar_exeption(begin);
+	transform_value_for_dollar_exeption2(begin);
 }
 
 void	transform_value_for_dollar(t_first_parse **begin)

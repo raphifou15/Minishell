@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 23:04:01 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/10/23 04:30:09 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/10/24 01:20:19 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,3 +76,25 @@ void	order_list(t_second_parse *begin, t_minishell *m)
 		elem = check_if_list_is_ordered(begin);
 	}
 }
+
+int	check_syntax_error_pipe(t_second_parse *begin)
+{
+	t_second_parse	*temp;
+	int				i;
+
+	i = 0;
+	temp = begin;
+	while (temp != NULL)
+	{
+		if (i == 0 && temp->value == _PIPE)
+			return (error1(2) + 1);
+		if (temp->value == _PIPE && temp->next == NULL)
+			return (error1(2) + 1);
+		i++;
+		temp = temp->next;
+	}
+	return (0);
+}
+
+//retourner une erreur si un pipe est en premiere position
+//retourner une erreur si il n'y a rien apres un pipe;

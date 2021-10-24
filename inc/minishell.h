@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 19:29:07 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/10/23 04:30:23 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/10/24 02:35:15 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,7 @@ void			transform_value_for_dollar_inside_double_quote(
 					t_first_parse **begin, int pivot);
 
 void			transform_value_for_dollar_exeption(t_first_parse **begin);
+void			transform_value_for_dollar_exeption2(t_first_parse **begin);
 
 int				parsing_2(t_minishell *m);
 int				parsing_2_part_0(t_minishell *m);
@@ -147,6 +148,7 @@ void			order_list(t_second_parse *begin, t_minishell *m);
 int				check_if_list_is_ordered(t_second_parse *begin);
 t_second_parse	*change_place_elem(t_second_parse *begin, t_minishell *m,
 					int elem, int i);
+int				check_syntax_error_pipe(t_second_parse *begin);
 
 int				error1(int err);
 
@@ -154,5 +156,7 @@ void			display_elem(t_first_parse *begin);
 void			display_elem_2(t_second_parse *begin);
 void			ft_display_env_list(t_env *begin);
 
-void			executing(t_minishell *m);
+void			executing(t_second_parse *begin, t_minishell *m);
+int				find_nbr_pipe(t_second_parse *begin);
+
 #endif
