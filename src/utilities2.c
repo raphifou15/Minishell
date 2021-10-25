@@ -6,7 +6,7 @@
 /*   By: alebross <alebross@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 18:43:59 by alebross          #+#    #+#             */
-/*   Updated: 2021/10/18 03:54:40 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/10/25 05:18:44 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,31 @@ char	*ft_strjoin(char *s1, char *s2)
 	s3 = ft_strcat(s3, s2);
 	ft_free(s1);
 	return (s3);
+}
+
+char	*ft_join3(char *str1, char *str2, char *str3)
+{
+	int		i;
+	char	*str;
+
+	i = 0;
+	str = NULL;
+	if (str1 != NULL)
+		i += ft_strlen(str1);
+	if (str2 != NULL)
+		i += ft_strlen(str2);
+	if (str3 != NULL)
+		i += ft_strlen(str3);
+	str = ft_calloc(sizeof(char), i + 1);
+	if (str == NULL)
+		return (NULL);
+	if (str1 != NULL)
+		str = ft_strcpy(str, str1);
+	if (str2 != NULL)
+		str = ft_strcat(str, str2);
+	if (str3 != NULL)
+		str = ft_strcat(str, str3);
+	return (str);
 }
 
 //ft_strjoin modif pour ne pas avoir de leak ni segfault

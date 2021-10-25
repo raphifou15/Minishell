@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 02:58:39 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/10/24 06:08:48 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/10/25 05:18:30 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ int	error1(int err)
 		ft_putstr_err("\e[15;31mError syntax error (multi redirection)\e[0m\n");
 	if (err == 4)
 		ft_putstr_err("\e[15;31mError syntax error (invalid redirection)\e[0m\n");
+	if (err == 5)
+		ft_putstr_err("\e[15;31mCommand not found\e[0m\n");
 	return (0);
 }
 

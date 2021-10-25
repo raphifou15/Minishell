@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/14 03:20:40 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/10/14 03:39:08 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/10/25 05:18:20 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,4 +31,22 @@ int	ft_free_all_elem_env(t_env *begin)
 		ft_free2(temp2);
 	}
 	return (0);
+}
+
+char	**ft_free_double_tab(char **tab)
+{
+	int	i;
+
+	i = -1;
+	while (tab != NULL && tab[++i] != NULL)
+	{
+		free(tab[i]);
+		tab[i] = NULL;
+	}
+	if (tab != NULL)
+	{
+		free(tab);
+		tab = NULL;
+	}
+	return (NULL);
 }

@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 19:29:07 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/10/24 06:09:01 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/10/25 05:19:00 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 # include <string.h>
 # include <readline/readline.h>
 # include <readline/history.h>
+# include <sys/types.h>
+# include <sys/wait.h>
 
 typedef struct s_second_parse
 {
@@ -83,6 +85,7 @@ char			*ft_strcpy(char *dest, char *src);
 char			*ft_strcat(char *dest, char *src);
 char			*ft_strjoin(char *s1, char *s2);
 void			*ft_calloc(size_t nmemb, size_t size);
+char			*ft_join3(char *str1, char *str2, char *str3);
 
 int				ft_free(char *str);
 char			*ft_free_null(char *str);
@@ -91,6 +94,7 @@ int				ft_free_all_the_list(t_first_parse *begin);
 int				ft_free_all_the_list_2(t_second_parse *begin);
 
 int				ft_free_all_elem_env(t_env *begin);
+char			**ft_free_double_tab(char **tab);
 
 int				add_env_variable_to_list(t_minishell *m, char **env);
 int				ft_list_push_back_env(t_env **begin, char *str);
@@ -167,5 +171,16 @@ void			child_process_whithout_pipe(t_second_parse *begin,
 					t_minishell *m, char *line);
 
 char			**env_list_to_tab(t_env *e);
+int				nbr_line_inside_env(t_env *e);
+
+char			**argv_list_to_tab(t_second_parse *begin);
+int				find_nbr_argv(t_second_parse *begin);
+
+void			free_inside_process_without_pipe_1(char **env, t_minishell *m,
+					char *line);
+void			free_inside_process_without_pipe_2(char **argv, char **env,
+					t_minishell *m, char *line);
+void			free_inside_process_without_pipe_3(char **argv, char **env,
+					t_minishell *m, char *line);
 
 #endif

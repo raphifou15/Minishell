@@ -1,0 +1,49 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   free_inside_process_wihout_pipe.c                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/10/25 04:37:21 by rkhelif           #+#    #+#             */
+/*   Updated: 2021/10/25 05:32:17 by rkhelif          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "minishell.h"
+
+void	free_inside_process_without_pipe_1(char **env, t_minishell *m,
+			char *line)
+{
+	error1(0);
+	ft_free_double_tab(env);
+	ft_free_all_the_list_2(m->p3);
+	ft_free_all_elem_env(m->e);
+	ft_free(line);
+	exit(EXIT_FAILURE);
+}
+
+void	free_inside_process_without_pipe_2(char **argv, char **env,
+			t_minishell *m, char *line)
+{
+	error1(0);
+	ft_free_double_tab(argv);
+	ft_free_double_tab(env);
+	ft_free_all_the_list_2(m->p3);
+	ft_free_all_elem_env(m->e);
+	ft_free(line);
+	exit(EXIT_FAILURE);
+}
+
+void	free_inside_process_without_pipe_3(char **argv, char **env,
+			t_minishell *m, char *line)
+{
+	if (argv[0] != NULL)
+		error1(5);
+	ft_free_double_tab(argv);
+	ft_free_double_tab(env);
+	ft_free_all_the_list_2(m->p3);
+	ft_free_all_elem_env(m->e);
+	ft_free(line);
+	exit(EXIT_FAILURE);
+}

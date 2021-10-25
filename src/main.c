@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 19:40:05 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/10/24 06:08:57 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/10/25 05:32:13 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,6 @@ int	minishell(char **env, char *prompt)
 			add_history(rl_line_buffer);
 		if (ft_strcmp(rl_line_buffer, "bonjour") == 0)
 			temp = 1;
-		if (m.use == 0)
-			printf("%s\n", line);
 		destroy_all(&m, line, m.use);
 		m.use = 0;
 	}
@@ -88,3 +86,5 @@ int	main(int argc, char **argv, char **env)
 }
 
 // ft_display_env_list(m.e);
+//		if (m.use == 0)
+//			printf("%s\n", line);

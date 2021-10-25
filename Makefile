@@ -6,7 +6,7 @@
 #    By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/10 18:33:31 by rkhelif           #+#    #+#              #
-#    Updated: 2021/10/24 06:09:05 by rkhelif          ###   ########.fr        #
+#    Updated: 2021/10/25 05:19:03 by rkhelif          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,7 @@ SRCS = 	main.c \
 		utilities2.c \
 		ft_free.c \
 		ft_free2.c \
+		free_inside_process_wihout_pipe.c \
 		env.c \
 		parsing_1.c \
 		parsing_2.c \
@@ -36,7 +37,8 @@ SRCS = 	main.c \
 		exec_1.c\
 		error1.c \
 		display.c \
-		env_list_to_tab.c
+		env_list_to_tab.c \
+		argv_list_to_tab.c
 
 OBJS = ${addprefix ${DIR_OBJ}/,${SRCS:.c=.o}}
 

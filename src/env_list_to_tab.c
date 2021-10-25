@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 04:53:15 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/10/24 06:08:52 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/10/25 05:18:48 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,25 @@ int	nbr_line_inside_env(t_env *e)
 
 char	**env_list_to_tab(t_env *e)
 {
+	t_env	*temp;
 	int		nb_lines;
-	char	**tab;
+	char	**env;
+	int		i;
 
+	temp = e;
+	i = 0;
 	nb_lines = nbr_line_inside_env(e);
-	tab = malloc(sizeof(char *) * (nb_lines + 1));
-	if (tab == NULL)
+	env = malloc(sizeof(char *) * (nb_lines + 1));
+	if (env == NULL)
 		return (NULL);
-	free(tab);
-	return (NULL);
+	while (temp != NULL)
+	{
+		env[i] = ft_join3(temp->name, "=", temp->ctn);
+		if (env[i] == NULL)
+			return (ft_free_double_tab(env));
+		temp = temp->next;
+		i++;
+	}
+	env[i] = NULL;
+	return (env);
 }
