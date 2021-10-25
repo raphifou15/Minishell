@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/25 02:03:28 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/10/25 05:18:25 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/10/26 01:50:23 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,4 +50,13 @@ char	**argv_list_to_tab(t_second_parse *begin)
 	}
 	argv[i] = NULL;
 	return (argv);
+}
+
+int	absolute_way(t_second_parse *begin)
+{
+	if (begin->str[0] == '/')
+		return (1);
+	if (begin->str[0] == '.')
+		return (1);
+	return (0);
 }

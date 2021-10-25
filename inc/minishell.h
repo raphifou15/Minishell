@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 19:29:07 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/10/25 05:19:00 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/10/26 01:49:51 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -175,6 +175,7 @@ int				nbr_line_inside_env(t_env *e);
 
 char			**argv_list_to_tab(t_second_parse *begin);
 int				find_nbr_argv(t_second_parse *begin);
+int				absolute_way(t_second_parse *begin);
 
 void			free_inside_process_without_pipe_1(char **env, t_minishell *m,
 					char *line);
@@ -182,5 +183,11 @@ void			free_inside_process_without_pipe_2(char **argv, char **env,
 					t_minishell *m, char *line);
 void			free_inside_process_without_pipe_3(char **argv, char **env,
 					t_minishell *m, char *line);
+
+char			**list_env_argv_to_tab(t_second_parse *begin, t_env *env);
+char			*way_of_path(t_env *env);
+char			*find_elem_access(t_second_parse *begin, char **tab);
+
+char			**ft_split(const char *str, char c);
 
 #endif

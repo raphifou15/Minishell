@@ -6,7 +6,7 @@
 #    By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/10 18:33:31 by rkhelif           #+#    #+#              #
-#    Updated: 2021/10/25 05:19:03 by rkhelif          ###   ########.fr        #
+#    Updated: 2021/10/26 01:49:47 by rkhelif          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,7 @@ DIR_SRC = src
 DIR_INC = inc
 
 SRCS = 	main.c \
+		ft_split.c \
 		utilities1.c \
 		utilities2.c \
 		ft_free.c \
@@ -38,7 +39,8 @@ SRCS = 	main.c \
 		error1.c \
 		display.c \
 		env_list_to_tab.c \
-		argv_list_to_tab.c
+		argv_list_to_tab.c \
+		list_env_argv_to_tab.c
 
 OBJS = ${addprefix ${DIR_OBJ}/,${SRCS:.c=.o}}
 
