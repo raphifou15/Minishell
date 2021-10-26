@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 04:55:58 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/10/26 05:28:23 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/10/26 18:58:57 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ void	built_in_echo(t_second_parse *begin)
 	temp = begin->next;
 	j = check_first_elem_echo(temp->str);
 	if (j == 1)
+		temp = temp->next;
+	while (temp != NULL && check_first_elem_echo(temp->str) == 1)
 		temp = temp->next;
 	while (temp != NULL && ++i != -1)
 	{
