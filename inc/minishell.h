@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 19:29:07 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/10/26 01:49:51 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/10/26 05:28:31 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -189,5 +189,9 @@ char			*way_of_path(t_env *env);
 char			*find_elem_access(t_second_parse *begin, char **tab);
 
 char			**ft_split(const char *str, char c);
+
+int				is_it_a_built_in(char *str);
+void			make_a_built_in(t_second_parse *begin, t_minishell *m,
+					char *line);
 
 #endif

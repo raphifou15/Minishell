@@ -6,7 +6,7 @@
 #    By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/10 18:33:31 by rkhelif           #+#    #+#              #
-#    Updated: 2021/10/26 01:49:47 by rkhelif          ###   ########.fr        #
+#    Updated: 2021/10/26 05:28:34 by rkhelif          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,8 @@ SRCS = 	main.c \
 		display.c \
 		env_list_to_tab.c \
 		argv_list_to_tab.c \
-		list_env_argv_to_tab.c
+		list_env_argv_to_tab.c \
+		built_in.c
 
 OBJS = ${addprefix ${DIR_OBJ}/,${SRCS:.c=.o}}
 
@@ -62,3 +63,18 @@ clean:
 fclean : clean
 	${RM} ${NAME}
 re: fclean all
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.PHONY: all clean fclean re

@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/18 05:55:52 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/10/26 01:50:26 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/10/26 05:28:19 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@ void	executing_without_pipe(t_second_parse *begin, t_minishell *m,
 		temp = temp->next;
 	if (temp == NULL)
 		return ;
+	if (is_it_a_built_in(temp->str) == 1)
+		return (make_a_built_in(temp, m, line));
 	pid = fork();
 	if (pid < 0)
 		return (error2(errno));
