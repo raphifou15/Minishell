@@ -6,7 +6,7 @@
 #    By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/10 18:33:31 by rkhelif           #+#    #+#              #
-#    Updated: 2021/10/26 18:58:54 by rkhelif          ###   ########.fr        #
+#    Updated: 2021/10/26 20:14:15 by alebross         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,7 +41,8 @@ SRCS = 	main.c \
 		env_list_to_tab.c \
 		argv_list_to_tab.c \
 		list_env_argv_to_tab.c \
-		built_in.c
+		built_in.c \
+		built_in_2.c
 
 OBJS = ${addprefix ${DIR_OBJ}/,${SRCS:.c=.o}}
 

@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 19:29:07 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/10/26 18:58:51 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/10/26 20:11:14 by alebross         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -194,6 +194,8 @@ int				is_it_a_built_in(char *str);
 void			make_a_built_in(t_second_parse *begin, t_minishell *m,
 					char *line);
 void			built_in_echo(t_second_parse *begin);
+void			built_in_env(t_env *env);
+void			built_in_pwd(t_env *env);
 int				check_first_elem_echo(char *str);
 
 #endif

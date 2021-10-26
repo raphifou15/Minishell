@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 04:55:58 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/10/26 18:58:57 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/10/26 20:14:41 by alebross         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,26 @@ void	built_in_echo(t_second_parse *begin)
 		ft_putstr("\n");
 }
 
+void	built_in_env(t_env *env)
+{
+	t_env	*temp;
+
+	temp = env;
+	while (temp != NULL)
+	{
+		ft_putstr(temp->name);
+		ft_putstr("=");
+		ft_putstr(temp->ctn);
+		ft_putstr("\n");
+		temp = temp->next;
+	}
+}
+
 int	is_it_a_built_in(char *str)
 {
 	if (ft_strcmp(str, "echo") == 0)
+		return (1);
+	if (ft_strcmp(str, "env") == 0)
 		return (1);
 	return (0);
 }
@@ -64,6 +81,10 @@ void	make_a_built_in(t_second_parse *begin, t_minishell *m, char *line)
 {
 	if (ft_strcmp(begin->str, "echo") == 0)
 		return (built_in_echo(begin));
+	if (ft_strcmp(begin->str, "env") == 0)
+		return (built_in_env(m->e));
+	if (ft_strcmp(begin->str, "env") == 0)
+		return (built_in_pwd(m->e));
 	(void)m;
 	(void)line;
 }
