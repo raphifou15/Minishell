@@ -6,7 +6,7 @@
 #    By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/10 18:33:31 by rkhelif           #+#    #+#              #
-#    Updated: 2021/10/26 20:14:15 by alebross         ###   ########.fr        #
+#    Updated: 2021/10/28 05:10:14 by rkhelif          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,8 +41,11 @@ SRCS = 	main.c \
 		env_list_to_tab.c \
 		argv_list_to_tab.c \
 		list_env_argv_to_tab.c \
+		redirections_1.c \
+		redirections_2.c \
 		built_in.c \
-		built_in_2.c
+		built_in_2.c \
+		close_and_reboot.c
 
 OBJS = ${addprefix ${DIR_OBJ}/,${SRCS:.c=.o}}
 

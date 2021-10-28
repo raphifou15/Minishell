@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 19:40:05 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/10/26 18:59:00 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/10/28 06:19:12 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,10 @@
 
 int	init_minishell(t_minishell *m, char **env)
 {
+	m->r.fd_out_save = -5;
+	m->r.fd_out = -5;
+	m->r.error = 0;
+	m->r.i = 0;
 	m->e = NULL;
 	m->p1 = NULL;
 	m->p2 = NULL;
@@ -65,14 +69,16 @@ int	minishell(char **env, char *prompt)
 		parsing(&m, line);
 		if (m.use == 0)
 			executing(m.p3, &m, line);
-		if (ft_strcmp(rl_line_buffer, "") == 1)
-			add_history(rl_line_buffer);
-		if (ft_strcmp(rl_line_buffer, "bonjour") == 0)
+		if (ft_strcmp(line, "") == 1)
+			add_history(line);
+		if (ft_strcmp(line, "bonjour") == 0)
 			temp = 1;
-		destroy_all(&m, line, m.use);
-		m.use = 0;
+		reboot(&m, line);
 	}
 	ft_free_all_elem_env(m.e);
+	close(0);
+	close(1);
+	close(2);
 	return (0);
 }
 

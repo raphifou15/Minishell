@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 04:55:58 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/10/26 20:14:41 by alebross         ###   ########.fr       */
+/*   Updated: 2021/10/27 23:54:14 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ void	built_in_echo(t_second_parse *begin)
 
 	i = -1;
 	temp = begin->next;
+	if (temp == NULL)
+		return (ft_putstr("\n"));
 	j = check_first_elem_echo(temp->str);
 	if (j == 1)
 		temp = temp->next;

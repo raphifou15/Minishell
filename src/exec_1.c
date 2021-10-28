@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/18 05:55:52 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/10/26 18:59:04 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/10/28 06:19:08 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ void	child_process_whithout_pipe(t_second_parse *begin, t_minishell *m,
 		argv = list_env_argv_to_tab(begin, m->e);
 	if (argv == NULL)
 		free_inside_process_without_pipe_2(argv, env, m, line);
+	close(m->r.fd_out_save);
 	if (argv[0] != NULL)
 		execve(argv[0], argv, env);
 	free_inside_process_without_pipe_3(argv, env, m, line);
@@ -53,15 +54,11 @@ void	executing_without_pipe(t_second_parse *begin, t_minishell *m,
 			char *line)
 {
 	t_second_parse	*temp;
-	int				fd;
 	pid_t			pid;
 
-	fd = 1;
-	(void)fd;
 	temp = begin;
-	while (temp != NULL && temp->value != EXP)
-		temp = temp->next;
-	if (temp == NULL)
+	temp = redirections(begin, m, line);
+	if (temp == NULL || m->r.error == 1)
 		return ;
 	if (is_it_a_built_in(temp->str) == 1)
 		return (make_a_built_in(temp, m, line));
