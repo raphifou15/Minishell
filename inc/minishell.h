@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 19:29:07 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/10/29 05:09:45 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/10/29 20:40:17 by alebross         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -212,6 +212,8 @@ void			make_a_built_in(t_second_parse *begin, t_minishell *m,
 void			built_in_echo(t_second_parse *begin);
 void			built_in_env(t_env *env);
 void			built_in_pwd(t_env *env);
+void			delete_elem_env(t_env *begin, int be);
+void			built_in_unset(t_env *env, t_minishell *m, t_second_parse *begin, int i);
 int				check_first_elem_echo(char *str);
 
 t_second_parse	*redirections(t_second_parse *begin, t_minishell *m,
