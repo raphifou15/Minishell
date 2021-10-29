@@ -6,23 +6,20 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 04:55:58 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/10/29 20:48:45 by alebross         ###   ########.fr       */
+/*   Updated: 2021/10/29 22:46:12 by alebross         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	built_in_pwd(t_env *env)
+void	built_in_pwd(void)
 {
-	t_env	*temp;
+	char	pwd[PATH_MAX];
 
-	temp = env;
-	while (temp != NULL && ft_strcmp(temp->name, "PWD") != 0)
-		temp = temp->next;
-	if (temp == NULL)
-		ft_putstr(getenv("PWD"));
+	if (getcwd(pwd, PATH_MAX) != 0)
+		ft_putstr(pwd);
 	else
-		ft_putstr(temp->ctn);
+		ft_putstr("Error");
 	ft_putstr("\n");
 }
 
