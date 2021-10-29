@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/14 03:20:40 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/10/26 01:49:58 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/10/29 05:56:46 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,3 +50,6 @@ char	**ft_free_double_tab(char **tab)
 	}
 	return (NULL);
 }
+
+// ft_free se trouve dans ft_free.c
+// ft_free2 se trouve dans ft_free.c

@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 19:40:05 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/10/29 03:47:00 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/10/29 05:57:52 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,16 +69,13 @@ int	minishell(char **env, char *prompt)
 		parsing(&m, line);
 		if (m.use == 0)
 			executing(m.p3, &m, line);
-		if (ft_strcmp(line, "") == 1)
+		if (m.use == 0 && ft_strcmp(line, "") == 1)
 			add_history(line);
-		if (ft_strcmp(line, "bonjour") == 0)
+		if (m.use == 0 && ft_strcmp(line, "bonjour") == 0)
 			temp = 1;
 		reboot(&m, line);
 	}
 	ft_free_all_elem_env(m.e);
-	close(0);
-	close(1);
-	close(2);
 	return (0);
 }
 
@@ -87,10 +84,24 @@ int	main(int argc, char **argv, char **env)
 	(void)argc;
 	(void)argv;
 	if (minishell(env, "\e[11;34mMinishell$>\e[0m") != 0)
+	{
+		close(0);
+		close(1);
+		close(2);
 		return (1);
+	}
+	close(0);
+	close(1);
+	close(2);
 	return (0);
 }
+
+// init_minishell entierement verifier normalement renvoie juste checker les
+// messages d'erreurs;
 
 // ft_display_env_list(m.e);
 //		if (m.use == 0)
 //			printf("%s\n", line);
+
+//	add_env_variable_to_list dans le fichier env.c
+//	parsing1 verifier

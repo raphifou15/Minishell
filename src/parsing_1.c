@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 21:30:18 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/10/24 03:20:05 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/10/29 05:55:21 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,7 @@ int	parsing_1(t_minishell *m)
 	transform_value_for_dollar(&m->p1);
 	return (0);
 }
+
 //	if (c == 92)
 //		return (_BACKSLASH);
 //	if (c == 59)
