@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 04:55:58 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/10/29 20:48:53 by alebross         ###   ########.fr       */
+/*   Updated: 2021/10/29 22:45:39 by alebross         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ void	make_a_built_in(t_second_parse *begin, t_minishell *m, char *line)
 	if (ft_strcmp(begin->str, "env") == 0)
 		return (built_in_env(m->e));
 	if (ft_strcmp(begin->str, "pwd") == 0)
-		return (built_in_pwd(m->e));
+		return (built_in_pwd());
 	if (ft_strcmp(begin->str, "unset") == 0)
 		return (built_in_unset(m->e, m, begin, 0));
 	(void)m;
