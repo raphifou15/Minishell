@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 19:29:07 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/10/28 05:10:17 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/10/29 03:46:25 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ typedef struct s_redirection
 	int						fd_in;
 	int						error;
 	int						i;
+	int						nbr_out;
+	int						nbr_in;
 }				t_redirection;
 
 typedef struct s_minishell
@@ -215,8 +217,14 @@ int				check_first_elem_echo(char *str);
 t_second_parse	*redirections(t_second_parse *begin, t_minishell *m,
 					char *line);
 
-void			init_redirection(t_minishell *m, char *line);
+void			init_redirection(t_minishell *m, char *line,
+					t_second_parse *begin);
 
 void			reboot(t_minishell *m, char *line);
+
+int				get_next_line_modif(int fd, char **line);
+
+char			*ft_strchr(const char *s, int c);
+void			ft_putstr_fd(char *str, int fd);
 
 #endif

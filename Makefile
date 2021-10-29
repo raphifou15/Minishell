@@ -6,7 +6,7 @@
 #    By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/10 18:33:31 by rkhelif           #+#    #+#              #
-#    Updated: 2021/10/28 05:10:14 by rkhelif          ###   ########.fr        #
+#    Updated: 2021/10/29 03:46:21 by rkhelif          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ SRCS = 	main.c \
 		ft_split.c \
 		utilities1.c \
 		utilities2.c \
+		utilities3.c \
 		ft_free.c \
 		ft_free2.c \
 		free_inside_process_wihout_pipe.c \
@@ -45,7 +46,8 @@ SRCS = 	main.c \
 		redirections_2.c \
 		built_in.c \
 		built_in_2.c \
-		close_and_reboot.c
+		close_and_reboot.c \
+		get_next_line_modif.c
 
 OBJS = ${addprefix ${DIR_OBJ}/,${SRCS:.c=.o}}
 
