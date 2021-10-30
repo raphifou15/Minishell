@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 05:57:03 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/10/23 23:21:18 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/10/30 18:54:54 by alebross         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,6 @@ int	find_new_value_to_temp(t_second_parse *temp, char *str, t_minishell *m)
 		temp->str = find_value_from_env_or_interogation(str2, m, temp->str);
 		if (temp->str == NULL)
 			return (ft_free(str2) + error1(0) + 1);
-		printf("temp->str = %s\n", temp->str);
 		ft_free(str2);
 		i += len;
 	}

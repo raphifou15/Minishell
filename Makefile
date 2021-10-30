@@ -6,7 +6,7 @@
 #    By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/10 18:33:31 by rkhelif           #+#    #+#              #
-#    Updated: 2021/10/30 02:58:05 by alebross         ###   ########.fr        #
+#    Updated: 2021/10/30 20:34:19 by alebross         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,7 @@ SRCS = 	main.c \
 		ft_free2.c \
 		free_inside_process_wihout_pipe.c \
 		env.c \
+		env2.c \
 		parsing_1.c \
 		parsing_2.c \
 		parsing_3.c \
