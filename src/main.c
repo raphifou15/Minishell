@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 19:40:05 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/10/29 05:57:52 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/10/30 20:37:06 by alebross         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,10 @@ int	init_minishell(t_minishell *m, char **env)
 	m->p3 = NULL;
 	m->use = 0;
 	if (add_env_variable_to_list(m, env) != 0)
+		return (1);
+	if (m->e == NULL)
+		m->e = init_env(NULL, NULL);
+	if (m->e == NULL)
 		return (1);
 	return (0);
 }
