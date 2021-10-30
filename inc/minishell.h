@@ -120,6 +120,10 @@ t_env			*ft_create_elem_env(char *str);
 char			*put_inside_ctn(char *src);
 char			*put_inside_name(char *src);
 
+t_env			*init_env(char *name, char *ctn);
+t_env			*create_elem_env(char *name, char *ctn);
+int				ft_list_push_back_env_2(t_env **begin, char *name, char *ctn);
+
 int				parsing_1(t_minishell *m);
 int				parsing_1_part_0(t_minishell *m, int i);
 t_first_parse	*ft_create_elem(char c, int b);

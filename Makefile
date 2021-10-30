@@ -27,6 +27,7 @@ SRCS = 	main.c \
 		ft_free2.c \
 		free_inside_process_wihout_pipe.c \
 		env.c \
+		env2.c \
 		parsing_1.c \
 		parsing_2.c \
 		parsing_3.c \

@@ -25,6 +25,10 @@ int	init_minishell(t_minishell *m, char **env)
 	m->use = 0;
 	if (add_env_variable_to_list(m, env) != 0)
 		return (1);
+	if (m->e == NULL)
+		m->e = init_env(NULL, NULL);
+	if (m->e == NULL)
+		return (1);
 	return (0);
 }
 
