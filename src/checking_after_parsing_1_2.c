@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 03:34:59 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/10/24 03:29:07 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/10/30 23:30:50 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,5 +59,52 @@ void	transform_value_for_dollar_exeption2(t_first_parse **begin)
 		if (i == 2 && temp->value != _DOUBLE_QUOTE)
 			temp->value = EXP;
 		temp = temp->next;
+	}
+}
+
+int	ft_check_if_null(t_first_parse *temp, int q, int qq)
+{
+	while (temp != NULL && (temp->value == q || temp->value == qq))
+		temp = temp->next;
+	if (temp == NULL)
+		return (0);
+	if (temp->value == _SPACE)
+		return (0);
+	return (1);
+}
+
+void	transform_to_empty_quote_value(t_first_parse *temp, int q, int qq)
+{
+	while (temp != NULL && (temp->value == q || temp->value == qq))
+	{
+		temp->value = _QUOTE_EMPTY;
+		temp = temp->next;
+	}
+}
+
+void	transform_value_quote(t_first_parse **begin)
+{
+	t_first_parse	*temp;
+	int				i;
+
+	i = 0;
+	temp = *begin;
+	while (temp != NULL)
+	{
+		if (i == 0 && (temp->value == _QUOTE || temp->value == _DOUBLE_QUOTE))
+		{
+			if (ft_check_if_null(temp, _QUOTE, _DOUBLE_QUOTE) == 0)
+				transform_to_empty_quote_value(temp, _QUOTE, _DOUBLE_QUOTE);
+		}
+		if (i != 0 && (temp->value == _SPACE && temp->next != NULL
+				&& (temp->next->value == _QUOTE
+					|| temp->next->value == _DOUBLE_QUOTE)))
+		{
+			if (ft_check_if_null(temp->next, _QUOTE, _DOUBLE_QUOTE) == 0)
+				transform_to_empty_quote_value(temp->next, _QUOTE,
+					_DOUBLE_QUOTE);
+		}
+		temp = temp->next;
+		i++;
 	}
 }

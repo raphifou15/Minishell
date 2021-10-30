@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 19:29:07 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/10/30 20:33:47 by alebross         ###   ########.fr       */
+/*   Updated: 2021/10/30 23:28:03 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ typedef struct s_minishell
 # define _R_INPUT_2		11
 # define _R_OUTPUT_2	12
 # define _DELIMITEUR	13
+# define _QUOTE_EMPTY	14
 
 int				main(int argc, char **argv, char **env);
 int				minishell(char **env, char *prompt);
@@ -139,6 +140,7 @@ void			transform_value_for_dollar_inside_double_quote(
 
 void			transform_value_for_dollar_exeption(t_first_parse **begin);
 void			transform_value_for_dollar_exeption2(t_first_parse **begin);
+void			transform_value_quote(t_first_parse **begin);
 
 int				parsing_2(t_minishell *m);
 int				parsing_2_part_0(t_minishell *m);
@@ -176,6 +178,7 @@ int				check_if_list_is_ordered(t_second_parse *begin);
 t_second_parse	*change_place_elem(t_second_parse *begin, t_minishell *m,
 					int elem, int i);
 int				check_syntax_error_pipe(t_second_parse *begin);
+void			corrige_empty_quote(t_second_parse *temp);
 
 int				error1(int err);
 void			error2(int err);

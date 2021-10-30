@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 04:55:58 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/10/30 19:02:08 by alebross         ###   ########.fr       */
+/*   Updated: 2021/10/30 23:27:40 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ int	check_first_elem_echo(char *str)
 
 	i = -1;
 	if (str == NULL)
+		return (0);
+	if (str[i + 1] == '\0')
 		return (0);
 	while (str[++i] != '\0')
 	{

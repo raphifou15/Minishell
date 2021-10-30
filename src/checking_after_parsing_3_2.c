@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 23:04:01 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/10/25 05:21:39 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/10/30 23:27:43 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,23 @@ int	check_syntax_error_pipe(t_second_parse *begin)
 		temp = temp->next;
 	}
 	return (0);
+}
+
+void	corrige_empty_quote(t_second_parse *temp)
+{
+	int	i;
+
+	while (temp != NULL)
+	{
+		i = -1;
+		if (temp->value == _QUOTE_EMPTY)
+		{
+			temp->value = EXP;
+			while (temp->str[++i] != '\0')
+				temp->str[i] = '\0';
+		}
+		temp = temp->next;
+	}
 }
 
 //retourner une erreur si un pipe est en premiere position
