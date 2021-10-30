@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 00:52:00 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/10/29 03:46:48 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/10/30 03:01:12 by alebross         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	redirection_input2(t_minishell *m, t_second_parse *temp)
 	m->r.fd_in = open("/tmp/lala", O_RDWR);
 	while (ft_strcmp(str, temp->str) == 1)
 	{
-		write(1, "Heredoc> ", 9);
+		write(2, "Heredoc> ", 9);
 		str = ft_free_null(str);
 		get_next_line_modif(STDIN_FILENO, &str);
 		if (m->r.nbr_in == 0 && ft_strcmp(str, temp->str) == 1)

@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 04:55:58 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/10/29 22:45:39 by alebross         ###   ########.fr       */
+/*   Updated: 2021/10/30 00:21:45 by alebross         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,8 @@ int	is_it_a_built_in(char *str)
 		return (1);
 	if (ft_strcmp(str, "unset") == 0)
 		return (1);
+	if (ft_strcmp(str, "cd") == 0)
+		return (1);
 	return (0);
 }
 
@@ -93,6 +95,8 @@ void	make_a_built_in(t_second_parse *begin, t_minishell *m, char *line)
 		return (built_in_pwd());
 	if (ft_strcmp(begin->str, "unset") == 0)
 		return (built_in_unset(m->e, m, begin, 0));
+	if (ft_strcmp(begin->str, "cd") == 0)
+		return (built_in_cd(m, begin));
 	(void)m;
 	(void)line;
 }
