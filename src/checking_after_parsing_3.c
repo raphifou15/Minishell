@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/21 19:42:47 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/10/29 20:48:56 by alebross         ###   ########.fr       */
+/*   Updated: 2021/10/31 18:32:39 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,8 @@ void	delete_elem_inside_list(t_second_parse *begin, int be)
 int	redirection(int value)
 {
 	if (value == _R_INPUT || value == _R_OUTPUT
-		|| value == _R_INPUT_2 || value == _R_OUTPUT_2)
+		|| value == _R_INPUT_2 || value == _R_OUTPUT_2
+		|| value == _DELIMITEUR_2)
 		return (1);
 	return (0);
 }

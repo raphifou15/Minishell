@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/31 02:57:34 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/10/31 03:10:03 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/10/31 18:32:31 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,12 +63,14 @@ int	next_dollar_value(char *str)
 	return (i);
 }
 
-void	write_in_herdoc(char *str, int fd2, t_minishell *m)
+void	write_in_herdoc(char *str, int fd2, t_minishell *m, int v)
 {
 	int	i;
 
 	i = 0;
-	while (str != NULL && str[i] != '\0')
+	if (v == _DELIMITEUR_2)
+		ft_putstr_fd(str, fd2);
+	while (v != _DELIMITEUR_2 && str != NULL && str[i] != '\0')
 	{
 		if (str[i] == '$' && str[i + 1] != '\0' && str[i + 1] != '$'
 			&& str[i + 1] != 32 && (str[i + 1] < 9 || str[i + 1] > 13))

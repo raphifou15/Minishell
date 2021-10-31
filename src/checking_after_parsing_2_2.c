@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/15 19:19:37 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/10/21 23:24:06 by alebross         ###   ########.fr       */
+/*   Updated: 2021/10/31 18:06:00 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,10 @@ void	corrige_value(t_second_parse *begin)
 	while (temp != NULL)
 	{
 		if (strcmp(temp->str, "<<") == 0)
-			temp->value = _R_INPUT_2;
+		{
+			if (temp->value != _DELIMITEUR_2)
+				temp->value = _R_INPUT_2;
+		}
 		if (strcmp(temp->str, ">>") == 0)
 			temp->value = _R_OUTPUT_2;
 		temp = temp->next;
