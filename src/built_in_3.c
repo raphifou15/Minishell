@@ -6,7 +6,7 @@
 /*   By: alebross <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 00:26:05 by alebross          #+#    #+#             */
-/*   Updated: 2021/10/30 03:03:42 by alebross         ###   ########.fr       */
+/*   Updated: 2021/10/31 19:14:02 by alebross         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,29 @@
 void	actualise_pwd(t_env *env, char *name)
 {
 	t_env	*temp;
-	char	pwd[PATH_MAX];
+	char	*pwd;
 
 	temp = env;
 	while (temp != NULL && ft_strcmp(temp->name, name) != 0)
 		temp = temp->next;
-	if (temp == NULL)
-		return ;
-	if (getcwd(pwd, PATH_MAX) == 0)
+	pwd = getcwd(NULL, 0);
+	if (pwd == NULL)
 		return (error2(errno));
-	free(temp->ctn);
-	temp->ctn = NULL;
-	temp->ctn = ft_strdup(pwd);
+	if (temp != NULL)
+	{
+		free(temp->ctn);
+		temp->ctn = NULL;
+		temp->ctn = ft_strdup(pwd);
+	}
+	else
+	{
+		if (ft_list_push_back_env_2(&env, name, pwd) == 1)
+		{
+			free(pwd);
+			return ;
+		}
+	}
+	free(pwd);
 }
 
 void	built_in_cd(t_minishell *m, t_second_parse *begin)
