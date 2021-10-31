@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 19:29:07 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/10/30 23:28:03 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/10/31 03:09:47 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -232,6 +232,8 @@ t_second_parse	*redirections(t_second_parse *begin, t_minishell *m,
 
 void			init_redirection(t_minishell *m, char *line,
 					t_second_parse *begin);
+
+void			write_in_herdoc(char *str, int fd2, t_minishell *m);
 
 void			reboot(t_minishell *m, char *line);
 

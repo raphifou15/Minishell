@@ -6,7 +6,7 @@
 #    By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/10 18:33:31 by rkhelif           #+#    #+#              #
-#    Updated: 2021/10/30 23:28:07 by rkhelif          ###   ########.fr        #
+#    Updated: 2021/10/31 03:09:51 by rkhelif          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,6 +45,7 @@ SRCS = 	main.c \
 		list_env_argv_to_tab.c \
 		redirections_1.c \
 		redirections_2.c \
+		redirections_heredoc.c \
 		built_in.c \
 		built_in_2.c \
 		built_in_3.c \
