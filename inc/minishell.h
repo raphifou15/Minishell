@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 19:29:07 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/10/31 03:09:47 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/10/31 17:42:57 by alebross         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,6 +121,8 @@ char			*put_inside_ctn(char *src);
 char			*put_inside_name(char *src);
 
 t_env			*init_env(char *name, char *ctn);
+t_env			*init_env2(t_env *env, char *name, char *ctn);
+t_env			*init_env3(t_env *env, char *name, char *ctn);
 t_env			*create_elem_env(char *name, char *ctn);
 int				ft_list_push_back_env_2(t_env **begin, char *name, char *ctn);
 
