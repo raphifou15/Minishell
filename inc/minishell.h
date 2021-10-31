@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 19:29:07 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/10/31 03:09:47 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/10/31 18:36:01 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ typedef struct s_minishell
 # define _R_OUTPUT_2	12
 # define _DELIMITEUR	13
 # define _QUOTE_EMPTY	14
+# define _DELIMITEUR_2	15
 
 int				main(int argc, char **argv, char **env);
 int				minishell(char **env, char *prompt);
@@ -141,6 +142,8 @@ void			transform_value_for_dollar_inside_double_quote(
 void			transform_value_for_dollar_exeption(t_first_parse **begin);
 void			transform_value_for_dollar_exeption2(t_first_parse **begin);
 void			transform_value_quote(t_first_parse **begin);
+
+void			transform_value_for_here_doc(t_first_parse **begin);
 
 int				parsing_2(t_minishell *m);
 int				parsing_2_part_0(t_minishell *m);
@@ -233,7 +236,7 @@ t_second_parse	*redirections(t_second_parse *begin, t_minishell *m,
 void			init_redirection(t_minishell *m, char *line,
 					t_second_parse *begin);
 
-void			write_in_herdoc(char *str, int fd2, t_minishell *m);
+void			write_in_herdoc(char *str, int fd2, t_minishell *m, int v);
 
 void			reboot(t_minishell *m, char *line);
 

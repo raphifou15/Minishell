@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/28 04:46:15 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/10/31 03:10:11 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/10/31 18:32:45 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,8 @@ int	find_nbr_in(t_second_parse *begin)
 	i = 0;
 	while (temp != NULL)
 	{
-		if (temp->value == _R_INPUT || temp->value == _R_INPUT_2)
+		if (temp->value == _R_INPUT || temp->value == _R_INPUT_2
+			|| temp->value == _DELIMITEUR_2)
 			i++;
 		temp = temp->next;
 	}
