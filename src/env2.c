@@ -6,7 +6,7 @@
 /*   By: alebross <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 19:31:31 by alebross          #+#    #+#             */
-/*   Updated: 2021/10/31 17:45:35 by alebross         ###   ########.fr       */
+/*   Updated: 2021/11/02 18:52:32 by alebross         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ t_env	*create_elem_env(char *name, char *ctn)
 	if (elem->name == NULL)
 		return (NULL);
 	elem->ctn = ft_strdup(ctn);
-	if (elem->ctn == NULL)
+	if (elem->ctn == NULL && ctn != NULL)
 		return (NULL);
 	elem->next = NULL;
 	return (elem);
@@ -72,6 +72,11 @@ t_env	*init_env3(t_env *env, char *name, char *ctn)
 	}
 	free(name);
 	free(ctn);
+	if (ft_list_push_back_env_2(&env, "OLDPWD", NULL) == 1)
+	{
+		ft_free_all_elem_env(env);
+		return (NULL);
+	}
 	return (env);
 }
 

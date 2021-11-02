@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 21:02:01 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/10/29 03:46:45 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/11/02 18:49:20 by alebross         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,11 @@ void	ft_putstr(char *str)
 {
 	int	i;
 
+	if (str == NULL)
+	{
+		write(1, "(null)", 6);
+		return ;
+	}
 	i = 0;
 	while (str[i] != '\0')
 		i++;

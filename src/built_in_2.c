@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 04:55:58 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/10/29 22:46:12 by alebross         ###   ########.fr       */
+/*   Updated: 2021/11/02 18:46:08 by alebross         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,21 @@ void	delete_elem_env(t_env *begin, int be)
 	ft_free2(temp);
 }
 
+void	built_in_unset_2(t_env *tmp_env, t_env *env, t_minishell *m, int i)
+{
+	if (tmp_env != NULL)
+	{
+		if (i == 0)
+			tmp_env = tmp_env->next;
+		delete_elem_env(env, i - 1);
+		if (i == 0)
+		{
+			env = tmp_env;
+			m->e = env;
+		}
+	}
+}
+
 void	built_in_unset(t_env *env, t_minishell *m, t_second_parse *begin, int i)
 {
 	t_env			*tmp_env;
@@ -61,21 +76,18 @@ void	built_in_unset(t_env *env, t_minishell *m, t_second_parse *begin, int i)
 	{
 		tmp_env = env;
 		i = 0;
+		if (ft_strcmp(tmp_arg->str, "_") == 0)
+		{
+			tmp_arg = tmp_arg->next;
+			if (tmp_arg == NULL)
+				return ;
+		}
 		while (tmp_env != NULL && strcmp(tmp_arg->str, tmp_env->name) != 0)
 		{
 			tmp_env = tmp_env->next;
 			i++;
 		}
-		if (tmp_env != NULL)
-		{
-			if (i == 0)
-				tmp_env = tmp_env->next;
-			delete_elem_env(env, i - 1);
-			if (i == 0)
-				env = tmp_env;
-			if (i == 0)
-				m->e = env;
-		}
+		built_in_unset_2(tmp_env, env, m, i);
 		tmp_arg = tmp_arg->next;
 	}
 }
