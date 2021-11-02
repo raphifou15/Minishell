@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 04:55:58 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/10/30 23:27:40 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/11/02 18:52:03 by alebross         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,10 +64,13 @@ void	built_in_env(t_env *env)
 	temp = env;
 	while (temp != NULL)
 	{
-		ft_putstr(temp->name);
-		ft_putstr("=");
-		ft_putstr(temp->ctn);
-		ft_putstr("\n");
+		if (temp->ctn != NULL)
+		{
+			ft_putstr(temp->name);
+			ft_putstr("=");
+			ft_putstr(temp->ctn);
+			ft_putstr("\n");
+		}
 		temp = temp->next;
 	}
 }
