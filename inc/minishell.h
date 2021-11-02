@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 19:29:07 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/11/02 18:48:39 by alebross         ###   ########.fr       */
+/*   Updated: 2021/11/02 22:19:11 by alebross         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,7 @@ char			*ft_strcat(char *dest, char *src);
 char			*ft_strjoin(char *s1, char *s2);
 void			*ft_calloc(size_t nmemb, size_t size);
 char			*ft_join3(char *str1, char *str2, char *str3);
+int				ft_is_char(char c);
 
 int				ft_free(char *str);
 char			*ft_free_null(char *str);
@@ -191,6 +192,7 @@ void			error2(int err);
 void			display_elem(t_first_parse *begin);
 void			display_elem_2(t_second_parse *begin);
 void			ft_display_env_list(t_env *begin);
+void			ft_display_export_list(t_env *begin);
 
 void			executing(t_second_parse *begin, t_minishell *m, char *line);
 int				find_nbr_pipe(t_second_parse *begin);
@@ -232,7 +234,11 @@ void			built_in_unset_2(t_env *tmp_env, t_env *env,
 					t_minishell *m, int i);
 int				check_first_elem_echo(char *str);
 void			built_in_cd(t_minishell *m, t_second_parse *begin);
-void			actualise_pwd(t_env *env, char *name);
+void			actualise_pwd(t_env *env);
+void			actualise_oldpwd(t_env *env);
+void			built_in_export(t_minishell *m, t_second_parse *begin);
+void			built_in_export_2(t_env *env, char *str, char *name, char *ctn);
+void			built_in_export_3(t_env *env, char *str);
 
 t_second_parse	*redirections(t_second_parse *begin, t_minishell *m,
 					char *line);
@@ -247,6 +253,7 @@ void			reboot(t_minishell *m, char *line);
 int				get_next_line_modif(int fd, char **line);
 
 char			*ft_strchr(const char *s, int c);
+int				ft_strchr2(const char *s, char c);
 void			ft_putstr_fd(char *str, int fd);
 
 #endif

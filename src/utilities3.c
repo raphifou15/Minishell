@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/28 23:55:23 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/10/31 03:10:07 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/11/02 22:37:04 by alebross         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,20 @@ char	*ft_strchr(const char *s, int c)
 	return (NULL);
 }
 
+int	ft_strchr2(const char *s, char c)
+{
+	int	i;
+
+	i = 0;
+	while (s[i] != '\0')
+	{
+		if (s[i] == c)
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
 void	ft_putstr_fd(char *str, int fd)
 {
 	int	i;
@@ -36,4 +50,11 @@ void	ft_putstr_fd(char *str, int fd)
 	while (str != NULL && str[i] != '\0')
 		i++;
 	write(fd, str, i);
+}
+
+int	ft_is_char(char c)
+{
+	if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z'))
+		return (1);
+	return (0);
 }

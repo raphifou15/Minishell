@@ -6,7 +6,7 @@
 #    By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/10 18:33:31 by rkhelif           #+#    #+#              #
-#    Updated: 2021/10/31 18:35:58 by rkhelif          ###   ########.fr        #
+#    Updated: 2021/11/02 22:41:09 by alebross         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,7 +49,8 @@ SRCS = 	main.c \
 		redirections_heredoc.c \
 		built_in.c \
 		built_in_2.c \
-		built_in_3.c \
+		built_in_cd.c \
+		built_in_export.c \
 		close_and_reboot.c \
 		get_next_line_modif.c
 

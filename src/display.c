@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 05:36:19 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/10/31 18:32:27 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/11/02 19:10:16 by alebross         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,25 @@ void	ft_display_env_list(t_env *begin)
 	{
 		printf("%s=", temp->name);
 		printf("%s\n", temp->ctn);
+		temp = temp->next;
+	}
+}
+
+void	ft_display_export_list(t_env *begin)
+{
+	t_env	*temp;
+
+	temp = begin;
+	while (temp != NULL)
+	{
+		ft_putstr(temp->name);
+		if (temp->ctn != NULL)
+		{
+			ft_putstr("=\"");
+			ft_putstr(temp->ctn);
+			ft_putstr("\"");
+		}
+		ft_putstr("\n");
 		temp = temp->next;
 	}
 }
