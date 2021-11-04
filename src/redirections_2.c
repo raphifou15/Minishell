@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/28 04:46:15 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/10/31 18:32:45 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/11/03 04:26:26 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	find_nbr_out(t_second_parse *begin)
 
 	temp = begin;
 	i = 0;
-	while (temp != NULL)
+	while (temp != NULL && temp->value != _PIPE)
 	{
 		if (temp->value == _R_OUTPUT || temp->value == _R_OUTPUT_2)
 			i++;
@@ -35,7 +35,7 @@ int	find_nbr_in(t_second_parse *begin)
 
 	temp = begin;
 	i = 0;
-	while (temp != NULL)
+	while (temp != NULL && temp->value != _PIPE)
 	{
 		if (temp->value == _R_INPUT || temp->value == _R_INPUT_2
 			|| temp->value == _DELIMITEUR_2)

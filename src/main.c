@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 19:40:05 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/10/31 05:20:48 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/11/04 06:46:42 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	init_minishell(t_minishell *m, char **env)
 
 void	destroy_all(t_minishell *m, char *line, int use)
 {
-	if (use == 0)
+	if (use == 0 || use == 2)
 	{
 		ft_free_all_the_list_2(m->p3);
 		ft_free(line);
@@ -73,7 +73,7 @@ int	minishell(char **env, char *prompt)
 		parsing(&m, line);
 		if (m.use == 0)
 			executing(m.p3, &m, line);
-		if (m.use == 0 && ft_strcmp(line, "") == 1)
+		if ((m.use == 0 || m.use == 2) && ft_strcmp(line, "") == 1)
 			add_history(line);
 		if (m.use == 0 && ft_strcmp(line, "bonjour") == 0)
 			temp = 1;

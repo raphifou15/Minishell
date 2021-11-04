@@ -6,7 +6,7 @@
 #    By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/10 18:33:31 by rkhelif           #+#    #+#              #
-#    Updated: 2021/11/02 22:41:09 by alebross         ###   ########.fr        #
+#    Updated: 2021/11/04 21:30:23 by rkhelif          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,7 @@ SRCS = 	main.c \
 		ft_free.c \
 		ft_free2.c \
 		free_inside_process_wihout_pipe.c \
+		free_inside_pipe_multi.c \
 		env.c \
 		env2.c \
 		parsing_1.c \
@@ -38,7 +39,9 @@ SRCS = 	main.c \
 		checking_after_parsing_2_2.c \
 		checking_after_parsing_3.c \
 		checking_after_parsing_3_2.c \
-		exec_1.c\
+		exec_1.c \
+		exec_with_pipe.c \
+		exec_with_pipe2.c \
 		error1.c \
 		display.c \
 		env_list_to_tab.c \
@@ -47,11 +50,13 @@ SRCS = 	main.c \
 		redirections_1.c \
 		redirections_2.c \
 		redirections_heredoc.c \
+		redirections_heredoc_multi_pipes.c \
 		built_in.c \
 		built_in_2.c \
 		built_in_cd.c \
 		built_in_export.c \
 		close_and_reboot.c \
+		redirection_multipipes.c \
 		get_next_line_modif.c
 
 OBJS = ${addprefix ${DIR_OBJ}/,${SRCS:.c=.o}}
@@ -75,17 +80,5 @@ fclean : clean
 	${RM} ${NAME}
 re: fclean all
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 .PHONY: all clean fclean re
+

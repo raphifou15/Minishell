@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 19:29:07 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/11/02 22:19:11 by alebross         ###   ########.fr       */
+/*   Updated: 2021/11/04 21:30:19 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,17 @@ typedef struct s_redirection
 	int						nbr_in;
 }				t_redirection;
 
+typedef struct s_multipipes
+{
+	int						pipefd[2];
+	int						fd_in;
+	pid_t					pid;
+	int						*fds;
+	int						i;
+	int						nbr_h;
+	int						nbr_p;
+}				t_multipipes;
+
 typedef struct s_minishell
 {
 	t_first_parse			*p1;
@@ -67,6 +78,7 @@ typedef struct s_minishell
 	t_second_parse			*p3;
 	t_env					*e;
 	t_redirection			r;
+	t_multipipes			mp;
 	int						use;
 }				t_minishell;
 
@@ -242,18 +254,37 @@ void			built_in_export_3(t_env *env, char *str);
 
 t_second_parse	*redirections(t_second_parse *begin, t_minishell *m,
 					char *line);
+void			redirection_input2(t_minishell *m, t_second_parse *temp);
 
 void			init_redirection(t_minishell *m, char *line,
 					t_second_parse *begin);
+int				find_nbr_out(t_second_parse *begin);
+int				find_nbr_in(t_second_parse *begin);
 
 void			write_in_herdoc(char *str, int fd2, t_minishell *m, int v);
 
 void			reboot(t_minishell *m, char *line);
+void			reboot_executing_with_pipe(t_minishell *m);
 
 int				get_next_line_modif(int fd, char **line);
 
 char			*ft_strchr(const char *s, int c);
 int				ft_strchr2(const char *s, char c);
 void			ft_putstr_fd(char *str, int fd);
+
+void			executing_with_pipe(t_second_parse *begin, t_minishell *m,
+					char *line, int nbr_pipe);
+
+void			init_heredoc_and_write_in_file(t_second_parse *begin,
+					t_minishell *m, int nbr_pipe);
+
+void			redirections_multipipes(t_second_parse *temp, t_minishell *m);
+
+void			free_child_proc_mult_doc_fail(t_minishell *m, char *line);
+void			free_child_proc_mult_end(t_minishell *m, char *line, char **env,
+					char **argv);
+t_second_parse	*inside_parent_multi_pipe(t_second_parse *temp, t_minishell *m);
+
+void			reboot_executing_with_pipe(t_minishell *m);
 
 #endif
