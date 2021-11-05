@@ -6,19 +6,25 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/05 04:19:22 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/11/05 04:29:25 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/11/05 06:02:47 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	handler_default(int num)
+void	handler_default(int nb)
 {
-	if (num == SIGINT)
+	if (nb == SIGINT)
 	{
 		rl_on_new_line();
 		ft_putstr(" \n");
 		rl_replace_line("", 0);
 		rl_redisplay();
 	}
+}
+
+void	handler_inside_child(int nb)
+{
+	if (nb == SIGINT)
+		ft_putstr("\n");
 }

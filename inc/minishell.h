@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 19:29:07 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/11/05 04:29:29 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/11/05 06:02:57 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -290,5 +290,6 @@ t_second_parse	*inside_parent_multi_pipe(t_second_parse *temp, t_minishell *m);
 
 void			reboot_executing_with_pipe(t_minishell *m);
 
-void			handler_default(int num);
+void			handler_default(int nb);
+void			handler_inside_child(int nb);
 #endif
