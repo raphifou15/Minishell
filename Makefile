@@ -6,7 +6,7 @@
 #    By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/10 18:33:31 by rkhelif           #+#    #+#              #
-#    Updated: 2021/11/04 21:30:23 by rkhelif          ###   ########.fr        #
+#    Updated: 2021/11/05 04:29:21 by rkhelif          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,7 +57,8 @@ SRCS = 	main.c \
 		built_in_export.c \
 		close_and_reboot.c \
 		redirection_multipipes.c \
-		get_next_line_modif.c
+		get_next_line_modif.c \
+		handler.c
 
 OBJS = ${addprefix ${DIR_OBJ}/,${SRCS:.c=.o}}
 

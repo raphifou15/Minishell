@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 19:40:05 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/11/04 06:46:42 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/11/05 04:29:17 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,7 @@ int	main(int argc, char **argv, char **env)
 {
 	(void)argc;
 	(void)argv;
+	signal(SIGINT, handler_default);
 	if (minishell(env, "\e[11;34mMinishell$>\e[0m") != 0)
 	{
 		close(0);

@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 19:29:07 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/11/04 21:30:19 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/11/05 04:29:29 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,9 @@
 # include <sys/stat.h>
 # include <fcntl.h>
 # include <limits.h>
+# include <signal.h>
+
+int				g_signal;
 
 typedef struct s_second_parse
 {
@@ -287,4 +290,5 @@ t_second_parse	*inside_parent_multi_pipe(t_second_parse *temp, t_minishell *m);
 
 void			reboot_executing_with_pipe(t_minishell *m);
 
+void			handler_default(int num);
 #endif
