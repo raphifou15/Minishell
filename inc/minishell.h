@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 19:29:07 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/11/05 06:02:57 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/11/06 04:57:02 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,9 +70,18 @@ typedef struct s_multipipes
 	pid_t					pid;
 	int						*fds;
 	int						i;
+	int						j;
 	int						nbr_h;
 	int						nbr_p;
 }				t_multipipes;
+
+typedef struct s_single
+{
+	int						nbr_h;
+	int						*fds;
+	int						i;
+	int						j;
+}				t_single;
 
 typedef struct s_minishell
 {
@@ -82,6 +91,7 @@ typedef struct s_minishell
 	t_env					*e;
 	t_redirection			r;
 	t_multipipes			mp;
+	t_single				s;
 	int						use;
 }				t_minishell;
 
@@ -263,6 +273,7 @@ void			init_redirection(t_minishell *m, char *line,
 					t_second_parse *begin);
 int				find_nbr_out(t_second_parse *begin);
 int				find_nbr_in(t_second_parse *begin);
+void			close_fds_and_error(t_minishell *m);
 
 void			write_in_herdoc(char *str, int fd2, t_minishell *m, int v);
 
@@ -280,6 +291,7 @@ void			executing_with_pipe(t_second_parse *begin, t_minishell *m,
 
 void			init_heredoc_and_write_in_file(t_second_parse *begin,
 					t_minishell *m, int nbr_pipe);
+int				find_nbr_heredoc(t_second_parse *temp);
 
 void			redirections_multipipes(t_second_parse *temp, t_minishell *m);
 
@@ -292,4 +304,8 @@ void			reboot_executing_with_pipe(t_minishell *m);
 
 void			handler_default(int nb);
 void			handler_inside_child(int nb);
+void			handler_heredoc(int nb);
+
+void			init_and_write_in_heredoc_single(t_second_parse *begin,
+					t_minishell *m);
 #endif

@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/28 05:02:11 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/11/04 21:29:51 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/11/06 04:47:39 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	reboot_executing_with_pipe(t_minishell *m)
 
 	j = -1;
 	close(m->mp.fd_in);
-	while (++j < m->mp.nbr_h)
+	while (++j < m->mp.j)
 		close(m->mp.fds[j]);
 	i = -1;
 	while (++i <= m->mp.nbr_p)

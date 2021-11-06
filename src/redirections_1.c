@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 00:52:00 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/11/04 19:48:21 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/11/06 04:56:57 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,36 +43,20 @@ void	redirection_input(t_minishell *m, t_second_parse *temp)
 
 void	redirection_input2(t_minishell *m, t_second_parse *temp)
 {
-	char	*str;
-	int		fd2;
-
-	str = NULL;
-	--m->r.nbr_in;
-	fd2 = open("/tmp/lala", O_CREAT | O_RDWR | O_TRUNC, 0777);
-	m->r.fd_in = open("/tmp/lala", O_RDWR);
-	while (ft_strcmp(str, temp->str) == 1)
-	{
-		write(2, "Heredoc> ", 9);
-		str = ft_free_null(str);
-		get_next_line_modif(STDIN_FILENO, &str);
-		if (m->r.nbr_in == 0 && ft_strcmp(str, temp->str) == 1)
-			write_in_herdoc(str, fd2, m, temp->value);
-	}
-	str = ft_free_null(str);
-	close(fd2);
-	unlink("/tmp/lala");
-	if (m->r.nbr_in == 0)
-		dup2(m->r.fd_in, STDIN_FILENO);
-	close(m->r.fd_in);
+	(void)temp;
+	m->s.i++;
+	if (--m->r.nbr_in == 0)
+		dup2(m->s.fds[m->s.i], STDIN_FILENO);
 }
 
 t_second_parse	*redirections(t_second_parse *begin, t_minishell *m, char *line)
 {
 	t_second_parse	*temp;
 
+	init_and_write_in_heredoc_single(begin, m);
 	init_redirection(m, line, begin);
 	temp = begin;
-	while (temp != NULL && temp->value != EXP)
+	while (temp != NULL && temp->value != EXP && g_signal == 0)
 	{
 		if (m->r.i == 0 && temp->value == _R_OUTPUT)
 			redirection_output(m, temp);
@@ -84,11 +68,7 @@ t_second_parse	*redirections(t_second_parse *begin, t_minishell *m, char *line)
 			redirection_input2(m, temp);
 		temp = temp->next;
 	}
-	if (m->r.i != 0)
-	{
-		ft_putstr_err("m->r.fd_in error a changer apres \n");
-		m->r.error = 1;
-	}
+	close_fds_and_error(m);
 	return (temp);
 }
 

@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 19:40:05 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/11/05 06:02:52 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/11/06 04:48:01 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ int	minishell(char **env, char *prompt)
 			temp = 1;
 		reboot(&m, line);
 		signal(SIGINT, handler_default);
+		g_signal = 0;
 	}
 	ft_free_all_elem_env(m.e);
 	return (0);

@@ -1,25 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   redirections_heredoc_multi_pipes.c                 :+:      :+:    :+:   */
+/*   redirections_heredoc_single_pipe.c                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/04 00:02:54 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/11/06 04:47:19 by rkhelif          ###   ########.fr       */
+/*   Created: 2021/11/06 01:26:59 by rkhelif           #+#    #+#             */
+/*   Updated: 2021/11/06 04:47:27 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	redirection_input_heredoc(int i, t_minishell *m, t_second_parse *temp)
+void	redirection_input_heredoc_single(int i, t_minishell *m,
+			t_second_parse *temp)
 {
 	char	*str;
 	int		fd2;
 
 	str = NULL;
 	fd2 = open("/tmp/lala", O_CREAT | O_RDWR | O_TRUNC, 0777);
-	m->mp.fds[i] = open("/tmp/lala", O_RDWR);
+	m->s.fds[i] = open("/tmp/lala", O_RDWR);
 	while (ft_strcmp(str, temp->str) == 1 && g_signal == 0)
 	{
 		write(2, "Heredoc> ", 9);
@@ -33,10 +34,10 @@ void	redirection_input_heredoc(int i, t_minishell *m, t_second_parse *temp)
 	unlink("/tmp/lala");
 }
 
-void	write_heredoc2(t_second_parse *temp, t_minishell *m)
+void	write_heredoc_single(t_second_parse *temp, t_minishell *m)
 {
-	int	i;
 	int	fd;
+	int	i;
 
 	fd = dup(STDIN_FILENO);
 	i = 0;
@@ -44,9 +45,9 @@ void	write_heredoc2(t_second_parse *temp, t_minishell *m)
 	{
 		if (temp->value == _R_INPUT_2 || temp->value == _DELIMITEUR_2)
 		{
-			redirection_input_heredoc(i, m, temp);
+			redirection_input_heredoc_single(i, m, temp);
 			i++;
-			m->mp.j = i;
+			m->s.j = i;
 		}
 		temp = temp->next;
 	}
@@ -55,30 +56,14 @@ void	write_heredoc2(t_second_parse *temp, t_minishell *m)
 	close(fd);
 }
 
-int	find_nbr_heredoc(t_second_parse *temp)
+void	init_and_write_in_heredoc_single(t_second_parse *begin, t_minishell *m)
 {
-	int	i;
-
-	i = 0;
-	while (temp != NULL)
-	{
-		if (temp->value == _R_INPUT_2 || temp->value == _DELIMITEUR_2)
-			i++;
-		temp = temp->next;
-	}
-	return (i);
-}
-
-void	init_heredoc_and_write_in_file(t_second_parse *begin, t_minishell *m,
-			int nbr_pipe)
-{
-	m->mp.nbr_p = nbr_pipe;
-	m->mp.i = -1;
-	m->mp.j = -1;
-	m->mp.fds = NULL;
-	m->mp.nbr_h = find_nbr_heredoc(begin);
-	if (m->mp.nbr_h != 0)
-		m->mp.fds = malloc(sizeof(int) * m->mp.nbr_h);
-	if (m->mp.nbr_h != 0)
-		write_heredoc2(begin, m);
+	m->s.i = -1;
+	m->s.j = -1;
+	m->s.fds = NULL;
+	m->s.nbr_h = find_nbr_heredoc(begin);
+	if (m->s.nbr_h != 0)
+		m->s.fds = malloc(sizeof(int) * m->s.nbr_h);
+	if (m->s.nbr_h != 0)
+		write_heredoc_single(begin, m);
 }

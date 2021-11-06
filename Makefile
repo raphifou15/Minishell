@@ -6,7 +6,7 @@
 #    By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/10 18:33:31 by rkhelif           #+#    #+#              #
-#    Updated: 2021/11/05 04:29:21 by rkhelif          ###   ########.fr        #
+#    Updated: 2021/11/06 04:57:09 by rkhelif          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,6 +51,7 @@ SRCS = 	main.c \
 		redirections_2.c \
 		redirections_heredoc.c \
 		redirections_heredoc_multi_pipes.c \
+		redirections_heredoc_single_pipe.c \
 		built_in.c \
 		built_in_2.c \
 		built_in_cd.c \

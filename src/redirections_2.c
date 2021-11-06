@@ -6,11 +6,25 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/28 04:46:15 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/11/03 04:26:26 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/11/06 04:57:19 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+void	close_fds_and_error(t_minishell *m)
+{
+	int	i;
+
+	i = -1;
+	while (m->s.j > ++i)
+		close(m->s.fds[i]);
+	if (m->r.i != 0)
+	{
+		ft_putstr_err("m->r.fd_in error a changer apres \n");
+		m->r.error = 1;
+	}
+}
 
 int	find_nbr_out(t_second_parse *begin)
 {
