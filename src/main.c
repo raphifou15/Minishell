@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 19:40:05 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/11/06 04:48:01 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/11/06 05:31:11 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ int	minishell(char **env, char *prompt)
 			temp = 1;
 		reboot(&m, line);
 		signal(SIGINT, handler_default);
+		signal(SIGQUIT, SIG_IGN);
 		g_signal = 0;
 	}
 	ft_free_all_elem_env(m.e);
@@ -90,6 +91,7 @@ int	main(int argc, char **argv, char **env)
 	(void)argc;
 	(void)argv;
 	signal(SIGINT, handler_default);
+	signal(SIGQUIT, SIG_IGN);
 	if (minishell(env, "\e[11;34mMinishell$>\e[0m") != 0)
 	{
 		close(0);
