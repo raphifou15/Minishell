@@ -6,13 +6,13 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/25 22:53:16 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/10/26 01:50:02 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/11/07 22:31:34 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	ft_strlen2(const char *str, char c)
+static int	ft_strlen2(const char *str, char c)
 {
 	int	i;
 
@@ -22,7 +22,7 @@ int	ft_strlen2(const char *str, char c)
 	return (i);
 }
 
-int	go_to_new_line(const char *str, char c)
+static int	go_to_new_line(const char *str, char c)
 {
 	int	i;
 
@@ -37,7 +37,7 @@ int	go_to_new_line(const char *str, char c)
 	return (i);
 }
 
-char	*malloc_line(const char *str, char c)
+static char	*malloc_line(const char *str, char c)
 {
 	int		size;
 	char	*str2;
@@ -54,7 +54,7 @@ char	*malloc_line(const char *str, char c)
 	return (str2);
 }
 
-int	ft_lines(const char *str, char c)
+static int	ft_lines(const char *str, char c)
 {
 	int	i;
 	int	nbr;

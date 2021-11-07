@@ -6,13 +6,13 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 19:40:05 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/11/07 05:33:56 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/11/08 00:32:58 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	init_minishell(t_minishell *m, char **env)
+static int	init_minishell(t_minishell *m, char **env)
 {
 	m->r.fd_out_save = -5;
 	m->r.fd_out = -5;
@@ -45,7 +45,7 @@ void	destroy_all(t_minishell *m, char *line, int use)
 	m->p3 = NULL;
 }
 
-void	parsing(t_minishell *m, char *line)
+static void	parsing(t_minishell *m, char *line)
 {
 	if (parsing_1(m) != 0)
 		m->use = (ft_free(line) + 1);
@@ -58,7 +58,7 @@ void	parsing(t_minishell *m, char *line)
 		m->use = ft_free_all_the_list(m->p1) + ft_free_all_the_list_2(m->p2);
 }
 
-int	minishell(char **env, char *prompt)
+static int	minishell(char **env, char *prompt)
 {
 	t_minishell	m;
 	char		*line;
@@ -71,7 +71,7 @@ int	minishell(char **env, char *prompt)
 	while (temp == 0)
 	{
 		line = readline(prompt);
-		signal_begin(&m);
+		signal_begin(&m, line);
 		parsing(&m, line);
 		if (m.use == 0)
 			executing(m.p3, &m, line);

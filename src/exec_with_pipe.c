@@ -6,13 +6,13 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 23:27:32 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/11/06 22:28:43 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/11/07 23:46:23 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	init_redirection2(t_minishell *m, t_second_parse *begin)
+static void	init_redirection2(t_minishell *m, t_second_parse *begin)
 {
 	m->r.i = 0;
 	m->r.error = 0;
@@ -20,7 +20,7 @@ void	init_redirection2(t_minishell *m, t_second_parse *begin)
 	m->r.nbr_in = find_nbr_in(begin);
 }
 
-t_second_parse	*redirection_multiple_pipe(t_second_parse *begin,
+static t_second_parse	*redirection_multiple_pipe(t_second_parse *begin,
 					t_minishell *m, char *line)
 {
 	t_second_parse	*temp;
@@ -36,7 +36,7 @@ t_second_parse	*redirection_multiple_pipe(t_second_parse *begin,
 	return (temp);
 }
 
-void	executing_inside_child_multi_pipe_next(t_minishell *m, char *line,
+static void	executing_inside_child_multi_pipe_next(t_minishell *m, char *line,
 			char **env, char **argv)
 {
 	int	j;
@@ -52,8 +52,8 @@ void	executing_inside_child_multi_pipe_next(t_minishell *m, char *line,
 	free_child_proc_mult_end(m, line, env, argv);
 }
 
-void	executing_inside_child_multi_pipe(t_second_parse *temp, t_minishell *m,
-			int i, char *line)
+static void	executing_inside_child_multi_pipe(t_second_parse *temp,
+			t_minishell *m, int i, char *line)
 {
 	char	**argv;
 	char	**env;

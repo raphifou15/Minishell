@@ -6,7 +6,7 @@
 /*   By: alebross <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 19:31:31 by alebross          #+#    #+#             */
-/*   Updated: 2021/11/02 18:52:32 by alebross         ###   ########.fr       */
+/*   Updated: 2021/11/07 19:34:33 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ t_env	*create_elem_env(char *name, char *ctn)
 	return (elem);
 }
 
-t_env	*init_env3(t_env *env, char *name, char *ctn)
+static t_env	*init_env3(t_env *env, char *name, char *ctn)
 {
 	if (ctn == NULL)
 	{
@@ -80,7 +80,7 @@ t_env	*init_env3(t_env *env, char *name, char *ctn)
 	return (env);
 }
 
-t_env	*init_env2(t_env *env, char *name, char *ctn)
+static t_env	*init_env2(t_env *env, char *name, char *ctn)
 {
 	free(ctn);
 	ctn = NULL;

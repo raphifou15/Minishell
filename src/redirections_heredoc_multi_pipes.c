@@ -6,13 +6,14 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 00:02:54 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/11/07 00:56:31 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/11/07 23:57:00 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	redirection_input_heredoc(int i, t_minishell *m, t_second_parse *temp)
+static void	redirection_input_heredoc(int i, t_minishell *m,
+				t_second_parse *temp)
 {
 	char	*str;
 	int		fd2;
@@ -32,7 +33,7 @@ void	redirection_input_heredoc(int i, t_minishell *m, t_second_parse *temp)
 	unlink("/tmp/lala");
 }
 
-void	write_heredoc2(t_second_parse *temp, t_minishell *m)
+static void	write_heredoc2(t_second_parse *temp, t_minishell *m)
 {
 	int	i;
 	int	fd;

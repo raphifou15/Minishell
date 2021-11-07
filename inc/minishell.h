@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 19:29:07 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/11/07 05:34:02 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/11/08 00:35:50 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,210 +113,240 @@ typedef struct s_minishell
 # define _QUOTE_EMPTY	14
 # define _DELIMITEUR_2	15
 
+//	main.c
 int				main(int argc, char **argv, char **env);
-int				minishell(char **env, char *prompt);
 void			destroy_all(t_minishell *m, char *line, int use);
-int				init_minishell(t_minishell *m, char **env);
-void			parsing(t_minishell *m, char *line);
-
+//
+//	utilities1.c
 int				ft_strcmp(char *s1, char *s2);
 void			ft_putstr_err(char *str);
 void			ft_putstr(char *str);
 int				ft_strlen(char *str);
 char			*ft_strdup(char *str);
-
-//char			*ft_strncpy(char *dest, char *src, unsigned int n);
-char			*ft_strcpy(char *dest, char *src);
+//
+//	utilities2.c
 char			*ft_strcat(char *dest, char *src);
-char			*ft_strjoin(char *s1, char *s2);
+char			*ft_strcpy(char *dest, char *src);
 void			*ft_calloc(size_t nmemb, size_t size);
+char			*ft_strjoin(char *s1, char *s2);
 char			*ft_join3(char *str1, char *str2, char *str3);
+//
+//	utilities3.c
+char			*ft_strchr(const char *s, int c);
+int				ft_strchr2(const char *s, char c);
+void			ft_putstr_fd(char *str, int fd);
 int				ft_is_char(char c);
-
+void			ft_atoi_modif(int num, char *str);
+//
+//	ft_free.c
 int				ft_free(char *str);
 char			*ft_free_null(char *str);
 void			ft_free2(void *data);
 int				ft_free_all_the_list(t_first_parse *begin);
 int				ft_free_all_the_list_2(t_second_parse *begin);
-
+//
+//	ft_free2.c
 int				ft_free_all_elem_env(t_env *begin);
 char			**ft_free_double_tab(char **tab);
-
-int				add_env_variable_to_list(t_minishell *m, char **env);
-int				ft_list_push_back_env(t_env **begin, char *str);
-t_env			*ft_create_elem_env(char *str);
-char			*put_inside_ctn(char *src);
+//
+//	env.c
 char			*put_inside_name(char *src);
-
-t_env			*init_env(char *name, char *ctn);
-t_env			*init_env2(t_env *env, char *name, char *ctn);
-t_env			*init_env3(t_env *env, char *name, char *ctn);
-t_env			*create_elem_env(char *name, char *ctn);
+char			*put_inside_ctn(char *src);
+int				add_env_variable_to_list(t_minishell *m, char **env);
+//
+//	env2.c
 int				ft_list_push_back_env_2(t_env **begin, char *name, char *ctn);
-
-int				parsing_1(t_minishell *m);
-int				parsing_1_part_0(t_minishell *m, int i);
-t_first_parse	*ft_create_elem(char c, int b);
+t_env			*create_elem_env(char *name, char *ctn);
+t_env			*init_env(char *name, char *ctn);
+//
+//	parsing_1.c
 int				find_the_good_value(char c);
-int				ft_list_push_back(t_first_parse **begin, char c, int b);
-
-int				check_multi_special_char(t_first_parse **begin,
-					t_first_parse *temp);
-void			transform_value_inside_quote(t_first_parse **begin);
-int				check_quote_number(t_first_parse **begin);
-void			transform_value_for_dollar(t_first_parse **begin);
+t_first_parse	*ft_create_elem(char c, int b);
+int				parsing_1(t_minishell *m);
+//
+//	checking_after_parsing_1.c
 void			transform_value_for_dollar_inside_double_quote(
 					t_first_parse **begin, int pivot);
-
+void			transform_value_for_dollar(t_first_parse **begin);
+void			transform_value_inside_quote(t_first_parse **begin);
+int				check_quote_number(t_first_parse **begin);
+int				check_multi_special_char(t_first_parse **begin,
+					t_first_parse *temp);
+//
+//	checking_after_parsing_1_2.c
 void			transform_value_for_dollar_exeption(t_first_parse **begin);
 void			transform_value_for_dollar_exeption2(t_first_parse **begin);
 void			transform_value_quote(t_first_parse **begin);
-
+//
+//	checking_after_parsing_1_3.c
 void			transform_value_for_here_doc(t_first_parse **begin);
-
-int				parsing_2(t_minishell *m);
-int				parsing_2_part_0(t_minishell *m);
-t_second_parse	*ft_create_elem_2(t_first_parse *p1, int len);
+//
+//	parsing_2.c
 int				ft_list_push_back_2(t_second_parse **begin, t_first_parse *p1,
 					int len);
+t_second_parse	*ft_create_elem_2(t_first_parse *p1, int len);
 int				next_parse_len(t_first_parse *begin);
-
-int				change_elem_dollar(t_second_parse *begin, t_minishell *m);
-int				change_elem_dollar_part2(t_second_parse *temp, t_minishell *m);
-void			corrige_value(t_second_parse *begin);
-void			corrige_value2(t_second_parse *begin);
+int				parsing_2_part_0(t_minishell *m);
+int				parsing_2(t_minishell *m);
+//
+//	checking_after_parsing_2.c
+char			*find_name_value_to_transform(char *str, int len);
 int				len_elem_until_dollar_or_end(char *str);
+int				change_elem_dollar(t_second_parse *begin, t_minishell *m);
 int				find_new_value_to_temp(t_second_parse *temp, char *str,
 					t_minishell *m);
-char			*find_name_value_to_transform(char *str, int len);
-
+int				change_elem_dollar_part2(t_second_parse *temp, t_minishell *m);
+//
+//	checking_after_parsing_2_2.c
 char			*find_value_from_env_or_interogation(char *str2, t_minishell *m,
 					char *str3);
-
-int				parsing_3(t_minishell *m);
-int				parsing_3_part_0(t_minishell *m);
-t_second_parse	*ft_create_elem_3(t_second_parse *temp);
+void			corrige_value(t_second_parse *begin);
+void			corrige_value2(t_second_parse *begin);
+//
+//	parsing_3.c
 int				ft_list_push_back_3(t_second_parse **begin,
 					t_second_parse *temp);
-
-int				check_error_syntax(t_second_parse *begin);
-void			corrige_redirection(t_second_parse *begin, t_minishell *m);
-int				redirection(int value);
-void			delete_elem_inside_list(t_second_parse *begin, int be);
+t_second_parse	*ft_create_elem_3(t_second_parse *temp);
+int				parsing_3_part_0(t_minishell *m);
+int				parsing_3(t_minishell *m);
+//
+//	checking_after_parsing_3.c
 void			change_next_value(t_second_parse *begin, int v);
-
-void			order_list(t_second_parse *begin, t_minishell *m);
+void			delete_elem_inside_list(t_second_parse *begin, int be);
+int				redirection(int value);
+void			corrige_redirection(t_second_parse *begin, t_minishell *m);
+int				check_error_syntax(t_second_parse *begin);
+//
+//	checking_after_parsing_3_2.c
 int				check_if_list_is_ordered(t_second_parse *begin);
 t_second_parse	*change_place_elem(t_second_parse *begin, t_minishell *m,
 					int elem, int i);
+void			order_list(t_second_parse *begin, t_minishell *m);
 int				check_syntax_error_pipe(t_second_parse *begin);
 void			corrige_empty_quote(t_second_parse *temp);
-
+//	error1.c
 int				error1(int err);
 void			error2(int err);
-
+//
+//	display.c
 void			display_elem(t_first_parse *begin);
 void			display_elem_2(t_second_parse *begin);
 void			ft_display_env_list(t_env *begin);
 void			ft_display_export_list(t_env *begin);
-
-void			executing(t_second_parse *begin, t_minishell *m, char *line);
+//
+//	exec_1.c
 int				find_nbr_pipe(t_second_parse *begin);
-void			executing_without_pipe(t_second_parse *begin, t_minishell *m,
-					char *line);
 void			child_process_whithout_pipe(t_second_parse *begin,
 					t_minishell *m, char *line);
-
-char			**env_list_to_tab(t_env *e);
+void			executing_without_pipe(t_second_parse *begin, t_minishell *m,
+					char *line);
+void			executing(t_second_parse *begin, t_minishell *m, char *line);
+//
+//	env_list_to_tab.c
 int				nbr_line_inside_env(t_env *e);
-
-char			**argv_list_to_tab(t_second_parse *begin);
+char			**env_list_to_tab(t_env *e);
+//
+//	argv_list_to_tab.c
 int				find_nbr_argv(t_second_parse *begin);
+char			**argv_list_to_tab(t_second_parse *begin);
 int				absolute_way(t_second_parse *begin);
-
+//
+//	free_inside_process_wihout_pipe.c
 void			free_inside_process_without_pipe_1(char **env, t_minishell *m,
 					char *line);
 void			free_inside_process_without_pipe_2(char **argv, char **env,
 					t_minishell *m, char *line);
 void			free_inside_process_without_pipe_3(char **argv, char **env,
 					t_minishell *m, char *line);
-
-char			**list_env_argv_to_tab(t_second_parse *begin, t_env *env);
-char			*way_of_path(t_env *env);
+//
+//	list_env_argv_to_tab.c
 char			*find_elem_access(t_second_parse *begin, char **tab);
-
+char			*way_of_path(t_env *env);
+char			**list_env_argv_to_tab(t_second_parse *begin, t_env *env);
+//
+//	ft_split.c
 char			**ft_split(const char *str, char c);
-
+//
+//	built_in.c
+int				check_first_elem_echo(char *str);
+void			built_in_echo(t_minishell *m, t_second_parse *begin);
+void			built_in_env(t_env *env);
 int				is_it_a_built_in(char *str);
 void			make_a_built_in(t_second_parse *begin, t_minishell *m,
 					char *line);
-void			built_in_echo(t_minishell *m, t_second_parse *begin);
-void			built_in_env(t_env *env);
+//
+//	built_in_2.c
 void			built_in_pwd(void);
 void			delete_elem_env(t_env *begin, int be);
-void			built_in_unset(t_env *env, t_minishell *m,
-					t_second_parse *begin, int i);
 void			built_in_unset_2(t_env *tmp_env, t_env *env,
 					t_minishell *m, int i);
+void			built_in_unset(t_env *env, t_minishell *m,
+					t_second_parse *begin, int i);
 void			built_in_exit(t_minishell *m, t_second_parse *begin,
 					char *line);
-
-int				check_first_elem_echo(char *str);
+//
+//	built_in_cd.c
 void			built_in_cd(t_minishell *m, t_second_parse *begin);
-void			actualise_pwd(t_env *env);
-void			actualise_oldpwd(t_env *env);
+//
+//	built_in_export.c
 void			built_in_export(t_minishell *m, t_second_parse *begin);
-void			built_in_export_2(t_env *env, char *str, char *name, char *ctn);
-void			built_in_export_3(t_env *env, char *str);
-
+//
+//	redirections_1.c
 t_second_parse	*redirections(t_second_parse *begin, t_minishell *m,
 					char *line);
-void			redirection_input2(t_minishell *m, t_second_parse *temp);
-
-void			init_redirection(t_minishell *m, char *line,
-					t_second_parse *begin);
+//
+//	redirections_2.c
+void			close_fds_and_error(t_minishell *m);
 int				find_nbr_out(t_second_parse *begin);
 int				find_nbr_in(t_second_parse *begin);
-void			close_fds_and_error(t_minishell *m);
-
+void			init_redirection(t_minishell *m, char *line,
+					t_second_parse *begin);
+//
+//	redirections_heredoc.c
 void			write_in_herdoc(char *str, int fd2, t_minishell *m, int v);
-
+//
+//	close_and_reboot.c
 void			reboot(t_minishell *m, char *line);
 void			reboot_executing_with_pipe(t_minishell *m);
-
+//
+//	get_next_line_modif.c
 int				get_next_line_modif(int fd, char **line);
-
-char			*ft_strchr(const char *s, int c);
-int				ft_strchr2(const char *s, char c);
-void			ft_putstr_fd(char *str, int fd);
-void			ft_atoi_modif(int num, char *str);
-
+//
+//	exec_with_pipe.c
 void			executing_with_pipe(t_second_parse *begin, t_minishell *m,
 					char *line, int nbr_pipe);
-
+//
+//	redirections_heredoc_multi_pipes.c
+int				find_nbr_heredoc(t_second_parse *temp);
 void			init_heredoc_and_write_in_file(t_second_parse *begin,
 					t_minishell *m, int nbr_pipe);
-int				find_nbr_heredoc(t_second_parse *temp);
-
+//
+//	redirection_multipipes.c
 void			redirections_multipipes(t_second_parse *temp, t_minishell *m);
-
+//
+//	free_inside_pipe_multi.c
 void			free_child_proc_mult_doc_fail(t_minishell *m, char *line);
 void			free_child_proc_mult_end(t_minishell *m, char *line, char **env,
 					char **argv);
+//
+//	exec_with_pipe2.c
 t_second_parse	*inside_parent_multi_pipe(t_second_parse *temp, t_minishell *m);
-
-void			reboot_executing_with_pipe(t_minishell *m);
-
+//
+//	handler.c
 void			handler_default(int nb);
 void			handler_inside_child(int nb);
 void			handler_heredoc(int nb);
-
+//
+//	redirections_heredoc_single_pipe.c
 void			init_and_write_in_heredoc_single(t_second_parse *begin,
 					t_minishell *m);
-
+//
+//	 wait.c
 void			wait_without_pipe(t_minishell *m, pid_t pid);
-
-void			signal_begin(t_minishell *m);
+//
+//	signal.c
+void			signal_begin(t_minishell *m, char *line);
 void			signal_end(t_minishell *m);
 void			signal_default(void);
+//
 #endif

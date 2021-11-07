@@ -6,18 +6,27 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/07 04:06:53 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/11/07 04:32:21 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/11/08 00:35:40 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	signal_begin(t_minishell *m)
+void	signal_begin(t_minishell *m, char *line)
 {
 	if (g_signal != 0)
 	{
 		m->retour = g_signal;
 		g_signal = 0;
+	}
+	if (line == NULL)
+	{
+		ft_putstr(" exit\n");
+		ft_free_all_elem_env(m->e);
+		close(2);
+		close(1);
+		close(0);
+		exit(0);
 	}
 }
 

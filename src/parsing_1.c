@@ -6,13 +6,13 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 21:30:18 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/11/07 00:56:54 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/11/07 19:44:12 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	ft_list_push_back(t_first_parse **begin, char c, int b)
+static int	ft_list_push_back(t_first_parse **begin, char c, int b)
 {
 	t_first_parse	*new;
 	t_first_parse	*temp;
@@ -68,7 +68,7 @@ t_first_parse	*ft_create_elem(char c, int b)
 	return (elem);
 }
 
-int	parsing_1_part_0(t_minishell *m, int i)
+static int	parsing_1_part_0(t_minishell *m, int i)
 {
 	int	value;
 

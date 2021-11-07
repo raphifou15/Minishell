@@ -6,13 +6,13 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/31 02:57:34 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/11/07 00:56:20 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/11/07 23:39:09 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	special_strcmp(char *s1, char *s2)
+static int	special_strcmp(char *s1, char *s2)
 {
 	int	i;
 
@@ -30,8 +30,8 @@ int	special_strcmp(char *s1, char *s2)
 	return (1);
 }
 
-void	ft_check_and_write_what_inside_dollar(char *str, t_env *env, int fd2,
-			t_minishell *m)
+static void	ft_check_and_write_what_inside_dollar(char *str, t_env *env,
+			int fd2, t_minishell *m)
 {
 	t_env	*temp;
 	char	str2[1000];
@@ -58,7 +58,7 @@ void	ft_check_and_write_what_inside_dollar(char *str, t_env *env, int fd2,
 	}
 }
 
-int	next_dollar_value(char *str)
+static int	next_dollar_value(char *str)
 {
 	int	i;
 

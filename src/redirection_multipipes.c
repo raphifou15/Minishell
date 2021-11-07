@@ -6,13 +6,13 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 17:32:26 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/11/06 23:22:27 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/11/07 23:53:42 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	redirection_output_multipipe_1(t_second_parse *temp, t_minishell *m)
+static void	redirection_output_multipipe_1(t_second_parse *temp, t_minishell *m)
 {
 	m->r.fd_out = open(temp->str, O_CREAT | O_WRONLY | O_TRUNC, 0777);
 	if (--m->r.nbr_out == 0)
@@ -20,7 +20,7 @@ void	redirection_output_multipipe_1(t_second_parse *temp, t_minishell *m)
 	close(m->r.fd_out);
 }
 
-void	redirection_output_multipipe_2(t_second_parse *temp, t_minishell *m)
+static void	redirection_output_multipipe_2(t_second_parse *temp, t_minishell *m)
 {
 	m->r.fd_out = open(temp->str, O_CREAT | O_WRONLY | O_APPEND, 0777);
 	if (--m->r.nbr_out == 0)
@@ -28,7 +28,7 @@ void	redirection_output_multipipe_2(t_second_parse *temp, t_minishell *m)
 	close(m->r.fd_out);
 }
 
-void	redirection_input_multipipe_1(t_second_parse *temp, t_minishell *m)
+static void	redirection_input_multipipe_1(t_second_parse *temp, t_minishell *m)
 {
 	m->r.fd_in = open(temp->str, O_RDONLY);
 	if (m->r.fd_in < 0)
@@ -44,7 +44,7 @@ void	redirection_input_multipipe_1(t_second_parse *temp, t_minishell *m)
 	}
 }
 
-void	redirection_input_multipipe_2(t_second_parse *temp, t_minishell *m)
+static void	redirection_input_multipipe_2(t_second_parse *temp, t_minishell *m)
 {
 	(void)temp;
 	m->mp.i++;

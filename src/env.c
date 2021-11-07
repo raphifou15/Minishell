@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/14 00:29:21 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/10/29 05:26:25 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/11/07 19:28:03 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ char	*put_inside_ctn(char *src)
 	return (str);
 }
 
-t_env	*ft_create_elem_env(char *str)
+static t_env	*ft_create_elem_env(char *str)
 {
 	t_env	*elem;
 
@@ -80,7 +80,7 @@ t_env	*ft_create_elem_env(char *str)
 	return (elem);
 }
 
-int	ft_list_push_back_env(t_env **begin, char *str)
+static int	ft_list_push_back_env(t_env **begin, char *str)
 {
 	t_env	*new;
 	t_env	*temp;

@@ -6,13 +6,13 @@
 /*   By: alebross <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 22:40:30 by alebross          #+#    #+#             */
-/*   Updated: 2021/11/06 23:23:23 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/11/07 23:26:36 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	built_in_export_2(t_env *env, char *str, char *name, char *ctn)
+static void	built_in_export_2(t_env *env, char *str, char *name, char *ctn)
 {
 	t_env	*temp;
 
@@ -41,7 +41,7 @@ void	built_in_export_2(t_env *env, char *str, char *name, char *ctn)
 	return ;
 }
 
-void	built_in_export_3(t_env *env, char *str)
+static void	built_in_export_3(t_env *env, char *str)
 {
 	t_env	*temp;
 

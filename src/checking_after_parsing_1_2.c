@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 03:34:59 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/10/31 05:10:49 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/11/07 20:07:50 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	transform_value_for_dollar_exeption2(t_first_parse **begin)
 	}
 }
 
-int	ft_check_if_null(t_first_parse *temp, int q, int qq)
+static int	ft_check_if_null(t_first_parse *temp, int q, int qq)
 {
 	while (temp != NULL && (temp->value == q || temp->value == qq))
 		temp = temp->next;
@@ -73,7 +73,7 @@ int	ft_check_if_null(t_first_parse *temp, int q, int qq)
 	return (1);
 }
 
-void	transform_to_empty_quote_value(t_first_parse *temp, int q, int qq)
+static void	transform_to_empty_quote_value(t_first_parse *temp, int q, int qq)
 {
 	while (temp != NULL && (temp->value == q || temp->value == qq))
 	{

@@ -6,13 +6,13 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/15 19:19:37 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/11/06 23:46:23 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/11/07 21:29:31 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-char	*ft_find_value_inside_env(char *str2, t_env *begin, char *str3)
+static char	*ft_find_value_inside_env(char *str2, t_env *begin, char *str3)
 {
 	t_env	*temp;
 

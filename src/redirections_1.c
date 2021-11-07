@@ -6,13 +6,13 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 00:52:00 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/11/06 21:06:58 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/11/07 23:30:25 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	redirection_output(t_minishell *m, t_second_parse *temp)
+static void	redirection_output(t_minishell *m, t_second_parse *temp)
 {
 	m->r.fd_out = open(temp->str, O_CREAT | O_WRONLY | O_TRUNC, 0777);
 	if (--m->r.nbr_out == 0)
@@ -20,7 +20,7 @@ void	redirection_output(t_minishell *m, t_second_parse *temp)
 	close(m->r.fd_out);
 }
 
-void	redirection_output2(t_minishell *m, t_second_parse *temp)
+static void	redirection_output2(t_minishell *m, t_second_parse *temp)
 {
 	m->r.fd_out = open(temp->str, O_CREAT | O_WRONLY | O_APPEND, 0777);
 	if (--m->r.nbr_out == 0)
@@ -28,7 +28,7 @@ void	redirection_output2(t_minishell *m, t_second_parse *temp)
 	close(m->r.fd_out);
 }
 
-void	redirection_input(t_minishell *m, t_second_parse *temp)
+static void	redirection_input(t_minishell *m, t_second_parse *temp)
 {
 	m->r.fd_in = open(temp->str, O_RDONLY | O_APPEND, 0777);
 	if (m->r.fd_in < 0)
@@ -41,7 +41,7 @@ void	redirection_input(t_minishell *m, t_second_parse *temp)
 	}
 }
 
-void	redirection_input2(t_minishell *m, t_second_parse *temp)
+static void	redirection_input2(t_minishell *m, t_second_parse *temp)
 {
 	(void)temp;
 	m->s.i++;

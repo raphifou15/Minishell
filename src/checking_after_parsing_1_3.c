@@ -6,13 +6,13 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/31 05:11:59 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/10/31 18:33:58 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/11/07 20:12:23 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	transform_value_to_delimiteur_2(t_first_parse *temp)
+static void	transform_value_to_delimiteur_2(t_first_parse *temp)
 {
 	while (temp != NULL && temp->value == _R_INPUT)
 	{
@@ -21,7 +21,7 @@ void	transform_value_to_delimiteur_2(t_first_parse *temp)
 	}
 }
 
-int	ft_check_if_transform_r_input(t_first_parse *temp)
+static int	ft_check_if_transform_r_input(t_first_parse *temp)
 {
 	int	i;
 

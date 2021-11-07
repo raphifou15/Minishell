@@ -6,13 +6,13 @@
 /*   By: alebross <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 22:40:06 by alebross          #+#    #+#             */
-/*   Updated: 2021/11/02 22:40:09 by alebross         ###   ########.fr       */
+/*   Updated: 2021/11/07 23:14:33 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	actualise_oldpwd(t_env *env)
+static void	actualise_oldpwd(t_env *env)
 {
 	t_env	*temp;
 	char	*oldpwd;
@@ -36,7 +36,7 @@ void	actualise_oldpwd(t_env *env)
 		free(oldpwd);
 }
 
-void	actualise_pwd(t_env *env)
+static void	actualise_pwd(t_env *env)
 {
 	t_env	*temp;
 	char	*pwd;
