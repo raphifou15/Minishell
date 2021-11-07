@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 19:29:07 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/11/07 00:56:16 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/11/07 04:32:14 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -250,7 +250,7 @@ char			**ft_split(const char *str, char c);
 int				is_it_a_built_in(char *str);
 void			make_a_built_in(t_second_parse *begin, t_minishell *m,
 					char *line);
-void			built_in_echo(t_second_parse *begin);
+void			built_in_echo(t_minishell *m, t_second_parse *begin);
 void			built_in_env(t_env *env);
 void			built_in_pwd(void);
 void			delete_elem_env(t_env *begin, int be);
@@ -310,4 +310,10 @@ void			handler_heredoc(int nb);
 
 void			init_and_write_in_heredoc_single(t_second_parse *begin,
 					t_minishell *m);
+
+void			wait_without_pipe(t_minishell *m, pid_t pid);
+
+void			signal_begin(t_minishell *m);
+void			signal_end(t_minishell *m);
+void			signal_default(void);
 #endif

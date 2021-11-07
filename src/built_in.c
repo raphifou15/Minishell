@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 04:55:58 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/11/02 19:11:19 by alebross         ###   ########.fr       */
+/*   Updated: 2021/11/07 04:32:07 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,13 @@ int	check_first_elem_echo(char *str)
 	return (1);
 }
 
-void	built_in_echo(t_second_parse *begin)
+void	built_in_echo(t_minishell *m, t_second_parse *begin)
 {
 	t_second_parse	*temp;
 	int				i;
 	int				j;
 
+	m->retour = 0;
 	i = -1;
 	temp = begin->next;
 	if (temp == NULL)
@@ -95,7 +96,7 @@ int	is_it_a_built_in(char *str)
 void	make_a_built_in(t_second_parse *begin, t_minishell *m, char *line)
 {
 	if (ft_strcmp(begin->str, "echo") == 0)
-		return (built_in_echo(begin));
+		return (built_in_echo(m, begin));
 	if (ft_strcmp(begin->str, "env") == 0)
 		return (built_in_env(m->e));
 	if (ft_strcmp(begin->str, "pwd") == 0)

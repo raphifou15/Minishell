@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/18 05:55:52 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/11/06 22:28:25 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/11/07 04:31:51 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ void	executing_without_pipe(t_second_parse *begin, t_minishell *m,
 	if (pid == 0)
 		child_process_whithout_pipe(temp, m, line);
 	if (pid != 0)
-		waitpid(pid, NULL, 0);
+		wait_without_pipe(m, pid);
 	free(m->s.fds);
 	m->s.fds = NULL;
 }

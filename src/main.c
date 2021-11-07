@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 19:40:05 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/11/07 00:56:51 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/11/07 04:31:40 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ int	minishell(char **env, char *prompt)
 	while (temp == 0)
 	{
 		line = readline(prompt);
+		signal_begin(&m);
 		parsing(&m, line);
 		if (m.use == 0)
 			executing(m.p3, &m, line);
@@ -79,9 +80,8 @@ int	minishell(char **env, char *prompt)
 		if (m.use == 0 && ft_strcmp(line, "bonjour") == 0)
 			temp = 1;
 		reboot(&m, line);
-		signal(SIGINT, handler_default);
-		signal(SIGQUIT, SIG_IGN);
-		g_signal = 0;
+		signal_default();
+		signal_end(&m);
 	}
 	ft_free_all_elem_env(m.e);
 	return (0);
@@ -91,8 +91,7 @@ int	main(int argc, char **argv, char **env)
 {
 	(void)argc;
 	(void)argv;
-	signal(SIGINT, handler_default);
-	signal(SIGQUIT, SIG_IGN);
+	signal_default();
 	if (minishell(env, "\e[11;34mMinishell$>\e[0m") != 0)
 	{
 		close(0);
