@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 04:55:58 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/11/02 18:46:08 by alebross         ###   ########.fr       */
+/*   Updated: 2021/11/07 05:33:52 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,4 +90,15 @@ void	built_in_unset(t_env *env, t_minishell *m, t_second_parse *begin, int i)
 		built_in_unset_2(tmp_env, env, m, i);
 		tmp_arg = tmp_arg->next;
 	}
+}
+
+void	built_in_exit(t_minishell *m, t_second_parse *begin, char *line)
+{
+	(void)begin;
+	reboot(m, line);
+	ft_free_all_elem_env(m->e);
+	close(0);
+	close(1);
+	close(2);
+	exit(0);
 }

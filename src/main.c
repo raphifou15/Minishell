@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 19:40:05 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/11/07 04:31:40 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/11/07 05:33:56 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,6 @@ int	minishell(char **env, char *prompt)
 			executing(m.p3, &m, line);
 		if ((m.use == 0 || m.use == 2) && ft_strcmp(line, "") == 1)
 			add_history(line);
-		if (m.use == 0 && ft_strcmp(line, "bonjour") == 0)
-			temp = 1;
 		reboot(&m, line);
 		signal_default();
 		signal_end(&m);
