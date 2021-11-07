@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/31 02:57:34 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/11/06 04:57:14 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/11/07 00:56:20 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,23 @@ int	special_strcmp(char *s1, char *s2)
 	return (1);
 }
 
-void	ft_check_and_write_what_inside_dollar(char *str, t_env *env, int fd2)
+void	ft_check_and_write_what_inside_dollar(char *str, t_env *env, int fd2,
+			t_minishell *m)
 {
 	t_env	*temp;
+	char	str2[1000];
+	int		i;
 
+	i = -1;
+	while (++i < 1000)
+		str2[i] = '\0';
 	temp = env;
+	if (str != NULL && str[0] != '\0' && str[0] == '?')
+	{
+		ft_atoi_modif(m->retour, str2);
+		ft_putstr_fd(str2, fd2);
+		return ;
+	}
 	while (temp != NULL)
 	{
 		if (special_strcmp(str, temp->name) == 0)
@@ -51,6 +63,8 @@ int	next_dollar_value(char *str)
 	int	i;
 
 	i = 0;
+	if (str[i] == '$' && str[i + 1] == '?')
+		return (i + 2);
 	i++;
 	while (str[i] != '\0')
 	{
@@ -75,7 +89,7 @@ void	write_in_herdoc(char *str, int fd2, t_minishell *m, int v)
 		if (str[i] == '$' && str[i + 1] != '\0' && str[i + 1] != '$'
 			&& str[i + 1] != 32 && (str[i + 1] < 9 || str[i + 1] > 13))
 		{
-			ft_check_and_write_what_inside_dollar(str + i + 1, m->e, fd2);
+			ft_check_and_write_what_inside_dollar(str + i + 1, m->e, fd2, m);
 			i += next_dollar_value(str + i);
 		}
 		else

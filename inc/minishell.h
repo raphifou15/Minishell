@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 19:29:07 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/11/06 04:57:02 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/11/07 00:56:16 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,7 @@ typedef struct s_minishell
 	t_multipipes			mp;
 	t_single				s;
 	int						use;
+	int						retour;
 }				t_minishell;
 
 # define EXP			0
@@ -285,6 +286,7 @@ int				get_next_line_modif(int fd, char **line);
 char			*ft_strchr(const char *s, int c);
 int				ft_strchr2(const char *s, char c);
 void			ft_putstr_fd(char *str, int fd);
+void			ft_atoi_modif(int num, char *str);
 
 void			executing_with_pipe(t_second_parse *begin, t_minishell *m,
 					char *line, int nbr_pipe);

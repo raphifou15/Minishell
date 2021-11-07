@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/05 04:19:22 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/11/06 04:57:05 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/11/06 22:28:31 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ void	handler_inside_child(int nb)
 {
 	if (nb == SIGINT)
 		ft_putstr("\n");
+	if (nb == SIGQUIT)
+		ft_putstr("Quit (core dumped)\n");
 }
 
 void	handler_heredoc(int nb)

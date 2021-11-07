@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/18 05:55:52 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/11/06 04:48:08 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/11/06 22:28:25 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ void	executing_without_pipe(t_second_parse *begin, t_minishell *m,
 
 	temp = begin;
 	signal(SIGINT, handler_heredoc);
+	signal(SIGQUIT, SIG_IGN);
 	temp = redirections(begin, m, line);
 	if (temp == NULL || m->r.error == 1 || g_signal != 0)
 	{
@@ -70,6 +71,7 @@ void	executing_without_pipe(t_second_parse *begin, t_minishell *m,
 	if (pid < 0)
 		return (error2(errno));
 	signal(SIGINT, handler_inside_child);
+	signal(SIGQUIT, handler_inside_child);
 	if (pid == 0)
 		child_process_whithout_pipe(temp, m, line);
 	if (pid != 0)

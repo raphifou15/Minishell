@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/15 19:19:37 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/10/31 18:06:00 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/11/06 23:46:23 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,20 @@ char	*ft_find_value_inside_env(char *str2, t_env *begin, char *str3)
 
 char	*find_value_from_env_or_interogation(char *str2, t_minishell *m,
 			char *str3)
-{	
+{
+	char	str[1000];
+	int		i;
+
+	i = -1;
+	while (++i < 1000)
+		str[i] = '\0';
 	if (str2[0] == '$')
 		return (ft_strjoin(str3, str2));
 	if (str2[0] == '?')
-		return (ft_strjoin(str3, "0"));
+	{
+		ft_atoi_modif(m->retour, str);
+		return (ft_strjoin(str3, str));
+	}
 	return (ft_find_value_inside_env(str2, m->e, str3));
 }
 

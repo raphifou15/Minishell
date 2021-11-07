@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/28 23:55:23 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/11/02 22:37:04 by alebross         ###   ########.fr       */
+/*   Updated: 2021/11/07 00:56:36 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,4 +57,24 @@ int	ft_is_char(char c)
 	if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z'))
 		return (1);
 	return (0);
+}
+
+void	ft_atoi_modif(int num, char *str)
+{
+	int		count;
+	long	num2;
+
+	num2 = (long)num;
+	count = 0;
+	while (num > 9)
+	{
+		count++;
+		num /= 10;
+	}
+	while (count >= 0)
+	{
+		str[count] = ((num2 % 10) + 48);
+		num2 /= 10;
+		count--;
+	}
 }

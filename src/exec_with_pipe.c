@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 23:27:32 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/11/06 04:47:24 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/11/06 22:28:43 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,8 +85,10 @@ void	executing_with_pipe(t_second_parse *begin, t_minishell *m, char *line,
 	temp = begin;
 	m->mp.fd_in = dup(STDIN_FILENO);
 	signal(SIGINT, handler_heredoc);
+	signal(SIGQUIT, SIG_IGN);
 	init_heredoc_and_write_in_file(begin, m, nbr_pipe);
 	signal(SIGINT, handler_inside_child);
+	signal(SIGQUIT, handler_inside_child);
 	while (i <= nbr_pipe && g_signal == 0)
 	{
 		pipe(m->mp.pipefd);

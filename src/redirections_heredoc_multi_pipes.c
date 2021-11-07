@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 00:02:54 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/11/06 04:47:19 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/11/07 00:56:31 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,8 @@ void	redirection_input_heredoc(int i, t_minishell *m, t_second_parse *temp)
 	m->mp.fds[i] = open("/tmp/lala", O_RDWR);
 	while (ft_strcmp(str, temp->str) == 1 && g_signal == 0)
 	{
-		write(2, "Heredoc> ", 9);
 		str = ft_free_null(str);
-		get_next_line_modif(STDIN_FILENO, &str);
+		str = readline("Heredoc> ");
 		if (ft_strcmp(str, temp->str) == 1)
 			write_in_herdoc(str, fd2, m, temp->value);
 	}
@@ -82,3 +81,6 @@ void	init_heredoc_and_write_in_file(t_second_parse *begin, t_minishell *m,
 	if (m->mp.nbr_h != 0)
 		write_heredoc2(begin, m);
 }
+
+// write(2, "Heredoc> ", 9);
+// get_next_line_modif(STDIN_FILENO, &str);
