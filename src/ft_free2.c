@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/14 03:20:40 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/11/07 19:16:43 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/11/08 01:47:43 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,13 @@ char	**ft_free_double_tab(char **tab)
 		free(tab);
 		tab = NULL;
 	}
+	return (NULL);
+}
+
+void	*ft_free3(void *data)
+{
+	free(data);
+	data = NULL;
 	return (NULL);
 }
 

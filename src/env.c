@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/14 00:29:21 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/11/07 19:28:03 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/11/08 01:47:32 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,10 +72,13 @@ static t_env	*ft_create_elem_env(char *str)
 		return (NULL);
 	elem->name = put_inside_name(str);
 	if (elem->name == NULL)
-		return (NULL);
+		return (ft_free3(elem));
 	elem->ctn = put_inside_ctn(str);
 	if (elem->ctn == NULL)
-		return (NULL);
+	{
+		elem->name = ft_free_null(elem->name);
+		return (ft_free3(elem));
+	}
 	elem->next = NULL;
 	return (elem);
 }
@@ -107,7 +110,7 @@ int	add_env_variable_to_list(t_minishell *m, char **env)
 	int	i;
 
 	i = -1;
-	while (env[++i] != NULL)
+	while (env != NULL && env[++i] != NULL)
 	{
 		if (ft_list_push_back_env(&m->e, env[i]) != 0)
 			return (ft_free_all_elem_env(m->e) + 1);

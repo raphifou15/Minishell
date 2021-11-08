@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 19:40:05 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/11/08 00:32:58 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/11/08 01:54:49 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,12 +103,11 @@ int	main(int argc, char **argv, char **env)
 	return (0);
 }
 
-// init_minishell entierement verifier normalement renvoie juste checker les
-// messages d'erreurs;
+//signal_default(void); signal.c;
+//ne prend aucun paramettre, gere ctrl+c, ctrl\d;
 
-// ft_display_env_list(m.e);
-//		if (m.use == 0)
-//			printf("%s\n", line);
-
-//	add_env_variable_to_list dans le fichier env.c
-//	parsing1 verifier
+//add_env_variable_to_list(t_minishell *m, char **env); env.c
+//prend en paramettre la structure minishell et le double pointeur env;
+//cette fonction a pour but de prendre les elements de env et de les mettre
+//dans la liste chainne m.e;
+// tous les mallocs et fonction de la lib on etait checker dans cette fonction
