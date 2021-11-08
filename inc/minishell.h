@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 19:29:07 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/11/08 06:09:05 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/11/08 22:34:07 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 # include <limits.h>
 # include <signal.h>
 
-int				g_signal;
+extern int		g_signal;
 
 typedef struct s_second_parse
 {
@@ -170,7 +170,7 @@ void			transform_value_for_dollar_inside_double_quote(
 					t_first_parse **begin, int pivot);
 void			transform_value_for_dollar(t_first_parse **begin);
 void			transform_value_inside_quote(t_first_parse **begin);
-int				check_quote_number(t_first_parse **begin);
+int				check_quote_number(t_first_parse **begin, t_minishell *m);
 int				check_multi_special_char(t_first_parse **begin,
 					t_first_parse *temp, int a, char lastchar);
 //

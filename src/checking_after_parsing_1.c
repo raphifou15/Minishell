@@ -6,7 +6,7 @@
 /*   By: alebross <alebross@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 18:56:01 by alebross          #+#    #+#             */
-/*   Updated: 2021/11/08 06:08:46 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/11/08 21:06:47 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ void	transform_value_inside_quote(t_first_parse **begin)
 	}
 }
 
-int	check_quote_number(t_first_parse **begin)
+int	check_quote_number(t_first_parse **begin, t_minishell *m)
 {
 	t_first_parse	*temp;
 	int				doublequote;
@@ -106,7 +106,10 @@ int	check_quote_number(t_first_parse **begin)
 		temp = temp->next;
 	}
 	if ((doublequote % 2) == 1 || (quote % 2) == 1)
+	{
+		m->retour = 2;
 		return (error1(1) + 1);
+	}
 	return (0);
 }
 

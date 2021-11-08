@@ -6,11 +6,13 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 19:40:05 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/11/08 06:08:59 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/11/08 22:33:58 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+int	g_signal;
 
 static int	init_minishell(t_minishell *m, char **env)
 {
@@ -90,6 +92,7 @@ int	main(int argc, char **argv, char **env)
 	(void)argc;
 	(void)argv;
 	signal_default();
+	g_signal = 0;
 	if (minishell(env, "\e[11;34mMinishell$>\e[0m") != 0)
 	{
 		close(0);

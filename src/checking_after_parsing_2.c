@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 05:57:03 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/11/08 00:32:49 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/11/08 22:33:54 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,10 @@ int	change_elem_dollar(t_second_parse *begin, t_minishell *m)
 		if (temp->value == _DOLLAR)
 		{
 			if (change_elem_dollar_part2(temp, m) != 0)
+			{
+				m->retour = 1;
 				return (1);
+			}
 			temp->value = EXP;
 		}
 		temp = temp->next;

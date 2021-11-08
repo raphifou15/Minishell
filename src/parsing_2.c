@@ -6,7 +6,7 @@
 /*   By: alebross <alebross@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 23:42:09 by alebross          #+#    #+#             */
-/*   Updated: 2021/11/07 20:41:43 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/11/08 22:33:50 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ t_second_parse	*ft_create_elem_2(t_first_parse *p1, int len)
 		return (NULL);
 	elem->str = malloc(sizeof(char) * (len + 1));
 	if (elem->str == NULL)
-		return (NULL);
+		return (ft_free3(elem));
 	elem->value = temp->value;
 	while (len > 0)
 	{
@@ -92,7 +92,10 @@ int	parsing_2_part_0(t_minishell *m)
 		{
 			len = next_parse_len(temp);
 			if (ft_list_push_back_2(&m->p2, temp, len) != 0)
+			{
+				m->retour = 1;
 				return (ft_free_all_the_list_2(m->p2) + 1);
+			}
 			while (len > 0)
 			{
 				temp = temp->next;
@@ -115,3 +118,7 @@ int	parsing_2(t_minishell *m)
 		return (ft_free_all_the_list_2(m->p2) + 1);
 	return (0);
 }
+
+//parsing_2_part_0 verifier;
+
+//a verifier la fonction find_value_from_env_or_interogation.
