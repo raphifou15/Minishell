@@ -6,7 +6,7 @@
 /*   By: alebross <alebross@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 18:56:01 by alebross          #+#    #+#             */
-/*   Updated: 2021/11/07 19:51:25 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/11/08 06:08:46 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,14 +110,11 @@ int	check_quote_number(t_first_parse **begin)
 	return (0);
 }
 
-int	check_multi_special_char(t_first_parse **begin, t_first_parse *temp)
+int	check_multi_special_char(t_first_parse **begin, t_first_parse *temp, int a,
+		char lastchar)
 {
-	char			lastchar;
-	int				a;
-
 	if (*begin != NULL)
 	{
-		a = 0;
 		temp = *begin;
 		lastchar = temp->c;
 		temp = temp->next;
@@ -131,7 +128,12 @@ int	check_multi_special_char(t_first_parse **begin, t_first_parse *temp)
 		if (a == 1 && temp->value == _PIPE)
 			return (error1(2) + 1);
 		if (a == 2 && (temp->value == _R_INPUT || temp->value == _R_OUTPUT))
-			return (error1(3) + 1);
+		{
+			if (temp->value == _R_INPUT)
+				return (error1(3) + 1);
+			if (temp->value == _R_OUTPUT)
+				return (error1(6) + 1);
+		}
 		lastchar = temp->c;
 		temp = temp->next;
 	}

@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 02:58:39 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/11/08 04:03:39 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/11/08 06:08:50 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,15 @@ int	error1(int err)
 		ft_putstr_err("quote or simple quote are not close)\e[0m\n");
 	}
 	if (err == 2)
-		ft_putstr_err("\e[15;31mError syntax error (multi pipe)\e[0m\n");
+		ft_putstr_err("\e[15;31msyntax error near unexpected token `||'\e[0m\n");
 	if (err == 3)
-		ft_putstr_err("\e[15;31mError syntax error (multi redirection)\e[0m\n");
+		ft_putstr_err("\e[15;31msyntax error near unexpected token `<<<'\e[0m\n");
 	if (err == 4)
 		ft_putstr_err("\e[15;31mError syntax error (invalid redirection)\e[0m\n");
 	if (err == 5)
 		ft_putstr_err("\e[15;31mCommand not found\e[0m\n");
+	if (err == 6)
+		ft_putstr_err("\e[15;31msyntax error near unexpected token `>>>'\e[0m\n");
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 19:40:05 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/11/08 04:19:43 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/11/08 06:08:59 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,8 @@ static int	minishell(char **env, char *prompt)
 		parsing(&m, line);
 		if (m.use == 0)
 			executing(m.p3, &m, line);
-		if ((m.use == 0 || m.use == 2) && ft_strcmp(line, "") == 1)
-			add_history(line);
+		if (ft_strcmp(rl_line_buffer, "") == 1)
+			add_history(rl_line_buffer);
 		reboot(&m, line);
 		signal_default();
 		signal_end(&m);
@@ -116,3 +116,7 @@ int	main(int argc, char **argv, char **env)
 //cette fonction prend en paramettre deux chaines NULL;
 //Le but de la fonction est le meme que add_env_variable_to_list, si env vide;
 //tous les mallocs et fonction de la lib on etait checker dans cette fonction;
+
+//signal_begin(t_minishell *m, line) ; signal.c
+//cette fonction a pour but de gerer le signal ctrl+d du debut et,
+//transformer la valeur de $? en fonction du signal.

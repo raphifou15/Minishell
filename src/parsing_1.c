@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 21:30:18 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/11/07 19:44:12 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/11/08 06:08:55 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,10 @@ static int	parsing_1_part_0(t_minishell *m, int i)
 	{
 		value = find_the_good_value(rl_line_buffer[i]);
 		if (ft_list_push_back(&m->p1, rl_line_buffer[i], value) == 1)
+		{
+			m->retour = 1;
 			return (ft_free_all_the_list(m->p1) + 1);
+		}
 	}
 	return (0);
 }
@@ -86,8 +89,11 @@ int	parsing_1(t_minishell *m)
 	if (parsing_1_part_0(m, -1) != 0)
 		return (1);
 	transform_value_inside_quote(&m->p1);
-	if (check_multi_special_char(&m->p1, NULL) != 0)
+	if (check_multi_special_char(&m->p1, NULL, 0, 0) != 0)
+	{
+		m->retour = 2;
 		return (ft_free_all_the_list(m->p1) + 1);
+	}
 	if (check_quote_number(&m->p1) != 0)
 		return (ft_free_all_the_list(m->p1) + 1);
 	transform_value_for_dollar(&m->p1);
@@ -96,9 +102,5 @@ int	parsing_1(t_minishell *m)
 	return (0);
 }
 
-//	if (c == 92)
-//		return (_BACKSLASH);
-//	if (c == 59)
-//		return (_SEMICOLON);
-//if (c == 63)
-//		return (_QUESTION);
+//parsing_1_part_0 verifier;
+//check_multi_special_char verifier;

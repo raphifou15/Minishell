@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 19:29:07 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/11/08 04:19:33 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/11/08 06:09:05 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -172,7 +172,7 @@ void			transform_value_for_dollar(t_first_parse **begin);
 void			transform_value_inside_quote(t_first_parse **begin);
 int				check_quote_number(t_first_parse **begin);
 int				check_multi_special_char(t_first_parse **begin,
-					t_first_parse *temp);
+					t_first_parse *temp, int a, char lastchar);
 //
 //	checking_after_parsing_1_2.c
 void			transform_value_for_dollar_exeption(t_first_parse **begin);
