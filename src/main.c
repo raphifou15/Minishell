@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 19:40:05 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/11/08 01:54:49 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/11/08 04:19:43 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,3 +111,8 @@ int	main(int argc, char **argv, char **env)
 //cette fonction a pour but de prendre les elements de env et de les mettre
 //dans la liste chainne m.e;
 // tous les mallocs et fonction de la lib on etait checker dans cette fonction
+
+//init_env(char *, char *); env2.c;
+//cette fonction prend en paramettre deux chaines NULL;
+//Le but de la fonction est le meme que add_env_variable_to_list, si env vide;
+//tous les mallocs et fonction de la lib on etait checker dans cette fonction;
