@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/31 05:11:59 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/11/08 21:37:45 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/11/10 16:25:34 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ static int	ft_check_if_transform_r_input(t_first_parse *temp)
 	}
 	if (i != 2)
 		return (0);
+	while (temp != NULL && temp->value == _SPACE)
+		temp = temp->next;
 	while (temp != NULL && temp->value == EXP)
 		temp = temp->next;
 	if (temp != NULL && (temp->value == _QUOTE || temp->value == _DOUBLE_QUOTE))
