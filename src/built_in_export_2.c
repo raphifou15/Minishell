@@ -6,7 +6,7 @@
 /*   By: alebross <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 19:57:41 by alebross          #+#    #+#             */
-/*   Updated: 2021/11/10 20:15:34 by alebross         ###   ########.fr       */
+/*   Updated: 2021/11/10 20:40:42 by alebross         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	check_env_name(char *s)
 	int	i;
 
 	i = 1;
-	if (ft_is_char(s[0]) == 0)
+	if (ft_is_char(s[0]) == 0 && s[0] != '_')
 		return (0);
 	while (s[i] != '\0')
 	{
