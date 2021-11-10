@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 23:04:01 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/11/07 21:42:36 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/11/10 19:57:21 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,9 +87,9 @@ int	check_syntax_error_pipe(t_second_parse *begin)
 	while (temp != NULL)
 	{
 		if (i == 0 && temp->value == _PIPE)
-			return (error1(2) + 1);
+			return (error1(7) + 1);
 		if (temp->value == _PIPE && temp->next == NULL)
-			return (error1(2) + 1);
+			return (error1(7) + 1);
 		i++;
 		temp = temp->next;
 	}
