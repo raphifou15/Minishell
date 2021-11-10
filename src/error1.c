@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 02:58:39 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/11/08 06:08:50 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/11/10 19:57:25 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ int	error1(int err)
 		ft_putstr_err("\e[15;31mCommand not found\e[0m\n");
 	if (err == 6)
 		ft_putstr_err("\e[15;31msyntax error near unexpected token `>>>'\e[0m\n");
+	if (err == 7)
+		ft_putstr_err("\e[15;31msyntax error near unexpected token `|'\e[0m\n");
 	return (0);
 }
 
