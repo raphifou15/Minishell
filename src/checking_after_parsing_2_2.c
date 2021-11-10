@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/15 19:19:37 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/11/10 16:25:40 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/11/10 17:45:37 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,7 @@ static char	*ft_find_value_inside_env(char *str2, t_env *begin, char *str3)
 		temp = temp->next;
 	}
 	if (str3 == NULL)
-	{
 		str3 = ft_calloc(sizeof(char), 1);
-		if (str3 == NULL)
-			str3 = '\0';
-	}
 	return (str3);
 }
 
@@ -89,3 +85,5 @@ void	corrige_value2(t_second_parse *begin)
 			temp = temp->next;
 	}
 }
+
+// \0 == NULL == 0;

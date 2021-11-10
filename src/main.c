@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 19:40:05 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/11/10 16:25:47 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/11/10 17:47:46 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,12 +73,12 @@ static int	minishell(char **env, char *prompt)
 	while (temp == 0)
 	{
 		line = readline(prompt);
+		if (line != NULL && ft_strcmp(line, "") == 1)
+			add_history(line);
 		signal_begin(&m, line);
 		parsing(&m, line);
 		if (m.use == 0)
 			executing(m.p3, &m, line);
-		if (line != NULL && ft_strcmp(line, "") == 1)
-			add_history(line);
 		reboot(&m, line);
 		signal_default();
 		signal_end(&m);

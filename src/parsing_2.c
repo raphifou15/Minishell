@@ -6,7 +6,7 @@
 /*   By: alebross <alebross@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 23:42:09 by alebross          #+#    #+#             */
-/*   Updated: 2021/11/10 16:25:43 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/11/10 17:46:45 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,4 +121,4 @@ int	parsing_2(t_minishell *m)
 
 //parsing_2_part_0 verifier;
 
-//a verifier la fonction find_value_from_env_or_interogation.
+//parsing2 verifier;
