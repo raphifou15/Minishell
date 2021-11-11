@@ -6,30 +6,42 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/06 01:26:59 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/11/11 19:17:11 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/11/11 22:06:15 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static void	redirection_input_heredoc_single(int i, t_minishell *m,
-			t_second_parse *temp)
+static void	good_close_if_fd_fail(t_minishell *m, int i, int err)
 {
-	char	*str;
+	while (i > 0)
+		close(m->s.fds[--i]);
+	error2(err);
+	m->use = 3;
+}
+
+static void	redirection_input_heredoc_single(int i, t_minishell *m,
+			t_second_parse *temp, char *str)
+{
 	int		fd2;
 
-	str = NULL;
 	fd2 = open("/tmp/lala", O_CREAT | O_RDWR | O_TRUNC, 0777);
+	if (fd2 < 0)
+		return (good_close_if_fd_fail(m, i, errno));
 	m->s.fds[i] = open("/tmp/lala", O_RDWR);
+	if (m->s.fds[i] < 0)
+	{
+		close(fd2);
+		return (good_close_if_fd_fail(m, i, errno));
+	}
 	while (ft_strcmp(str, temp->str) == 1 && g_signal == 0)
 	{
 		str = ft_free_null(str);
 		str = readline("Heredoc> ");
 		if (str == NULL)
-		{
 			write(0, "\n", 1);
+		if (str == NULL)
 			break ;
-		}
 		if (ft_strcmp(str, temp->str) == 1)
 			write_in_herdoc(str, fd2, m, temp->value);
 	}
@@ -49,7 +61,13 @@ static void	write_heredoc_single(t_second_parse *temp, t_minishell *m)
 	{
 		if (temp->value == _R_INPUT_2 || temp->value == _DELIMITEUR_2)
 		{
-			redirection_input_heredoc_single(i, m, temp);
+			redirection_input_heredoc_single(i, m, temp, NULL);
+			if (m->use == 3)
+			{
+				dup2(fd, STDIN_FILENO);
+				close(fd);
+				return ;
+			}
 			i++;
 			m->s.j = i;
 		}
@@ -75,11 +93,18 @@ void	init_and_write_in_heredoc_single(t_second_parse *begin, t_minishell *m)
 			m->r.error = 1;
 			m->use = 3;
 			m->retour = 1;
-			return ;
 		}
 	}
-	if (m->s.nbr_h != 0)
+	if (m->s.nbr_h != 0 && m->s.fds != NULL)
+	{
 		write_heredoc_single(begin, m);
+		if (m->use == 3)
+		{
+			m->s.fds = ft_free3(m->s.fds);
+			m->r.error = 1;
+			m->retour = 1;
+		}
+	}
 }
 
 // get_next_line_modif(STDIN_FILENO, &str);
