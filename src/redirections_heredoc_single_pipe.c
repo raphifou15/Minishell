@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/06 01:26:59 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/11/08 00:31:52 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/11/11 17:43:13 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,11 @@ static void	redirection_input_heredoc_single(int i, t_minishell *m,
 	{
 		str = ft_free_null(str);
 		str = readline("Heredoc> ");
+		if (str == NULL)
+		{
+			write(0, "\n", 1);
+			break ;
+		}
 		if (ft_strcmp(str, temp->str) == 1)
 			write_in_herdoc(str, fd2, m, temp->value);
 	}

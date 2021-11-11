@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/25 04:37:21 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/11/07 23:54:03 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/11/11 16:54:35 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,9 @@ void	free_inside_process_without_pipe_1(char **env, t_minishell *m,
 	ft_free_all_the_list_2(m->p3);
 	ft_free_all_elem_env(m->e);
 	ft_free(line);
+	close(STDIN_FILENO);
+	close(STDOUT_FILENO);
+	close(STDERR_FILENO);
 	exit(EXIT_FAILURE);
 }
 

@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/18 05:55:52 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/11/07 22:00:09 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/11/11 17:43:03 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,3 +93,6 @@ void	executing(t_second_parse *begin, t_minishell *m, char *line)
 	executing_with_pipe(begin, m, line, nbr_pipe);
 	(void)temp;
 }
+
+// chercher si tout les retours des fonctions ne provoque pas de leaks ou de
+// segfault;
