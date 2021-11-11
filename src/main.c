@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 19:40:05 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/11/11 17:43:20 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/11/11 19:17:21 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static int	init_minishell(t_minishell *m, char **env)
 
 void	destroy_all(t_minishell *m, char *line, int use)
 {
-	if (use == 0 || use == 2)
+	if (use == 0 || use == 2 || use == 3)
 	{
 		ft_free_all_the_list_2(m->p3);
 		ft_free(line);

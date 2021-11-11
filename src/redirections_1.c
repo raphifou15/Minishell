@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 00:52:00 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/11/11 17:43:10 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/11/11 19:17:14 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ t_second_parse	*redirections(t_second_parse *begin, t_minishell *m, char *line)
 	t_second_parse	*temp;
 
 	init_and_write_in_heredoc_single(begin, m);
+	if (m->s.nbr_h != 0 && m->s.fds == NULL)
+		return (begin);
 	init_redirection(m, line, begin);
 	temp = begin;
 	while (temp != NULL && temp->value != EXP && g_signal == 0)
