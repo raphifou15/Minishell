@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 19:29:07 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/11/10 19:57:58 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/11/10 20:14:07 by alebross         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -290,7 +290,14 @@ void			built_in_exit(t_minishell *m, t_second_parse *begin,
 void			built_in_cd(t_minishell *m, t_second_parse *begin);
 //
 //	built_in_export.c
-void			built_in_export(t_minishell *m, t_second_parse *begin);
+void			built_in_export(t_minishell *m, t_second_parse *begin, int n);
+//
+//	built_in_export_2.c
+int				char_for_env_name(char c);
+int				check_env_name(char *s);
+char			*put_inside_name_2(char *src);
+void			built_in_export_4(t_env *env, char *str, char *name, char *ctn);
+
 //
 //	redirections_1.c
 t_second_parse	*redirections(t_second_parse *begin, t_minishell *m,
