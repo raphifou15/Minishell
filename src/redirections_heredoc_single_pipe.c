@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/06 01:26:59 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/11/11 17:43:13 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/11/11 19:17:11 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,17 @@ void	init_and_write_in_heredoc_single(t_second_parse *begin, t_minishell *m)
 	m->s.fds = NULL;
 	m->s.nbr_h = find_nbr_heredoc(begin);
 	if (m->s.nbr_h != 0)
+	{
 		m->s.fds = malloc(sizeof(int) * m->s.nbr_h);
+		if (m->s.fds == NULL)
+		{
+			error1(0);
+			m->r.error = 1;
+			m->use = 3;
+			m->retour = 1;
+			return ;
+		}
+	}
 	if (m->s.nbr_h != 0)
 		write_heredoc_single(begin, m);
 }
