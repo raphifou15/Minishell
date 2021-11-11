@@ -1,18 +1,0 @@
-${DIR_OBJ}/%.o	Makefile	/^${DIR_OBJ}\/%.o: ${DIR_SRC}\/%.c$/
-${NAME}	Makefile	/^${NAME}: ${OBJS}$/
-.PHONY	Makefile	/^.PHONY: all clean fclean re$/
-.c.o	Makefile	/^.c.o:$/
-CC	Makefile	/^CC = gcc$/
-DIR_INC	Makefile	/^DIR_INC = inc$/
-DIR_OBJ	Makefile	/^DIR_OBJ = other$/
-DIR_SRC	Makefile	/^DIR_SRC = src$/
-FLAGS	Makefile	/^FLAGS = -Wall -Wextra -Werror$/
-NAME	Makefile	/^NAME = minishell$/
-OBJS	Makefile	/^OBJS = ${addprefix ${DIR_OBJ}\/,${SRCS:.c=.o}}$/
-RM	Makefile	/^RM = rm -rf$/
-SRCS	Makefile	/^SRCS = 	main.c \\$/
-all	Makefile	/^all:${NAME}$/
-clean	Makefile	/^clean:$/
-fclean	Makefile	/^fclean : clean$/
-re	Makefile	/^re: fclean all$/
-t	minishell	45
