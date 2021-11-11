@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 19:29:07 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/11/11 19:17:24 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/11/11 19:46:10 by alebross         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,6 +137,9 @@ int				ft_strchr2(const char *s, char c);
 void			ft_putstr_fd(char *str, int fd);
 int				ft_is_char(char c);
 void			ft_atoi_modif(int num, char *str);
+//
+//	utilities3.c
+long			ft_atol(char *s);
 //
 //	ft_free.c
 int				ft_free(char *str);
@@ -283,8 +286,6 @@ void			built_in_unset_2(t_env *tmp_env, t_env *env,
 					t_minishell *m, int i);
 void			built_in_unset(t_env *env, t_minishell *m,
 					t_second_parse *begin, int i);
-void			built_in_exit(t_minishell *m, t_second_parse *begin,
-					char *line);
 //
 //	built_in_cd.c
 void			built_in_cd(t_minishell *m, t_second_parse *begin);
@@ -297,7 +298,10 @@ int				char_for_env_name(char c);
 int				check_env_name(char *s);
 char			*put_inside_name_2(char *src);
 void			built_in_export_4(t_env *env, char *str, char *name, char *ctn);
-
+//
+//	built_in_exit.c
+void			built_in_exit(t_minishell *m, t_second_parse *begin,
+					char *line);
 //
 //	redirections_1.c
 t_second_parse	*redirections(t_second_parse *begin, t_minishell *m,

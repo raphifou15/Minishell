@@ -6,7 +6,7 @@
 #    By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/10 18:33:31 by rkhelif           #+#    #+#              #
-#    Updated: 2021/11/11 17:46:52 by rkhelif          ###   ########.fr        #
+#    Updated: 2021/11/11 19:17:12 by alebross         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,7 @@ SRCS = 	main.c \
 		utilities1.c \
 		utilities2.c \
 		utilities3.c \
+		utilities4.c \
 		ft_free.c \
 		ft_free2.c \
 		free_inside_process_wihout_pipe.c \
@@ -57,6 +58,7 @@ SRCS = 	main.c \
 		built_in_cd.c \
 		built_in_export.c \
 		built_in_export_2.c \
+		built_in_exit.c \
 		close_and_reboot.c \
 		redirection_multipipes.c \
 		get_next_line_modif.c \
