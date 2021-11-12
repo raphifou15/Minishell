@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/18 05:55:52 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/11/12 17:58:50 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/11/12 19:17:42 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,16 +82,13 @@ void	executing_without_pipe(t_second_parse *begin, t_minishell *m,
 
 void	executing(t_second_parse *begin, t_minishell *m, char *line)
 {
-	t_second_parse	*temp;
 	int				nbr_pipe;
 
-	temp = begin;
 	nbr_pipe = find_nbr_pipe(begin);
 	if (nbr_pipe == 0)
 		return (executing_without_pipe(begin, m, line));
 	m->use = 2;
 	executing_with_pipe(begin, m, line, nbr_pipe);
-	(void)temp;
 }
 
 // chercher si tout les retours des fonctions ne provoque pas de leaks ou de

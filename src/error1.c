@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 02:58:39 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/11/12 04:22:32 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/11/12 19:12:46 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,15 @@ void	error2(int err)
 {
 	ft_putstr_err("\e[15;31m");
 	ft_putstr_err(strerror(err));
+	ft_putstr_err("\n");
+	ft_putstr_err("\e[0m");
+}
+
+void	error3(char *str)
+{
+	ft_putstr_err("\e[15;31m");
+	ft_putstr_err(str);
+	ft_putstr_err(": command not found");
 	ft_putstr_err("\n");
 	ft_putstr_err("\e[0m");
 }

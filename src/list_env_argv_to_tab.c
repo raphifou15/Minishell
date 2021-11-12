@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/25 18:27:39 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/11/12 17:57:05 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/11/12 19:12:57 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,10 @@ char	*find_elem_access(t_second_parse *begin, char **tab)
 	}
 	str = ft_calloc(sizeof(char), 1);
 	if (str == NULL)
+	{
+		ft_free_double_tab(tab);
 		return (NULL);
+	}
 	return (str);
 }
 
@@ -83,3 +86,5 @@ char	**list_env_argv_to_tab(t_second_parse *begin, t_env *env)
 	str = ft_free_null(str);
 	return (argv_list_to_tab(begin, 0));
 }
+
+// la fonction str est semi protect dans find_elem_access;

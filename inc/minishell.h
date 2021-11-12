@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 19:29:07 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/11/12 17:58:58 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/11/12 19:17:45 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -231,6 +231,7 @@ void			corrige_empty_quote(t_second_parse *temp);
 //	error1.c
 int				error1(int err);
 void			error2(int err);
+void			error3(char *str);
 //
 //	display.c
 void			display_elem(t_first_parse *begin);
