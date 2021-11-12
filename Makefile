@@ -6,7 +6,7 @@
 #    By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/10 18:33:31 by rkhelif           #+#    #+#              #
-#    Updated: 2021/11/12 20:03:30 by rkhelif          ###   ########.fr        #
+#    Updated: 2021/11/12 21:19:44 by rkhelif          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -62,6 +62,7 @@ SRCS = 	main.c \
 		close_and_reboot.c \
 		redirection_multipipes.c \
 		get_next_line_modif.c \
+		good_return_multipipe.c \
 		wait.c \
 		signal.c \
 		handler.c

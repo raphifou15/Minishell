@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 19:29:07 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/11/12 20:03:27 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/11/12 21:19:48 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -363,5 +363,8 @@ void			signal_end(t_minishell *m);
 void			signal_default(void);
 void			signal_heredoc(void);
 void			signal_child(void);
+//
+//	good_return_multipipe.c
+void			good_return_multipipe_1(t_minishell *m, int err, int x);
 //
 #endif
