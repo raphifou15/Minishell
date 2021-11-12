@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 19:29:07 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/11/12 04:22:35 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/11/12 06:09:23 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -360,5 +360,7 @@ void			wait_without_pipe(t_minishell *m, pid_t pid);
 void			signal_begin(t_minishell *m, char *line);
 void			signal_end(t_minishell *m);
 void			signal_default(void);
+void			signal_heredoc(void);
+void			signal_child(void);
 //
 #endif

@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/18 05:55:52 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/11/12 04:22:14 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/11/12 06:09:15 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,7 @@ void	executing_without_pipe(t_second_parse *begin, t_minishell *m,
 	pid_t			pid;
 
 	temp = begin;
-	signal(SIGINT, handler_heredoc);
-	signal(SIGQUIT, SIG_IGN);
+	signal_heredoc();
 	temp = redirections(begin, m, line);
 	if (temp == NULL || m->r.error == 1 || g_signal != 0)
 	{
@@ -69,15 +68,16 @@ void	executing_without_pipe(t_second_parse *begin, t_minishell *m,
 		return (make_a_built_in(temp, m, line));
 	pid = fork();
 	if (pid < 0)
+	{
+		m->retour = 1;
 		return (error2(errno));
-	signal(SIGINT, handler_inside_child);
-	signal(SIGQUIT, handler_inside_child);
+	}
+	signal_child();
 	if (pid == 0)
 		child_process_whithout_pipe(temp, m, line);
 	if (pid != 0)
 		wait_without_pipe(m, pid);
-	free(m->s.fds);
-	m->s.fds = NULL;
+	m->s.fds = ft_free3(m->s.fds);
 }
 
 void	executing(t_second_parse *begin, t_minishell *m, char *line)

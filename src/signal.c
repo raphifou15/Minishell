@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/07 04:06:53 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/11/11 17:43:07 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/11/12 06:09:06 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,4 +41,16 @@ void	signal_default(void)
 {
 	signal(SIGINT, handler_default);
 	signal(SIGQUIT, SIG_IGN);
+}
+
+void	signal_heredoc(void)
+{
+	signal(SIGINT, handler_heredoc);
+	signal(SIGQUIT, SIG_IGN);
+}
+
+void	signal_child(void)
+{
+	signal(SIGINT, handler_inside_child);
+	signal(SIGQUIT, handler_inside_child);
 }
