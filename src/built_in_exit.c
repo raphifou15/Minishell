@@ -6,55 +6,57 @@
 /*   By: alebross <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 19:15:02 by alebross          #+#    #+#             */
-/*   Updated: 2021/11/11 20:23:16 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/11/12 17:41:48 by alebross         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
 
-void	built_in_exit_2(t_minishell *m, char *arg, char *line)
+static long	exit_arg(char *arg, long *n)
 {
-	long	n;
+	int	i;
 
-	n = 0;
+	i = 0;
 	if (arg[0] == '-')
-		n++;
-	while (arg[n] != '\0')
+		i++;
+	while (arg[i] != '\0')
 	{
-		if (arg[n] < '0' || arg[n] > '9')
+		if (arg[i] < '0' || arg[i] > '9')
 		{
 			ft_putstr_err("minishell: exit: ");
 			ft_putstr_err(arg);
 			ft_putstr_err(": numeric argument required\n");
-			return ;
+			*n = 2;
+			return (0);
 		}
-		n++;
+		i++;
 	}
-	n = ft_atol(arg);
-	reboot(m, line);
-	ft_free_all_elem_env(m->e);
-	close(0);
-	close(1);
-	close(2);
-	exit(n);
+	*n = ft_atol(arg);
+	return (1);
 }
 
 void	built_in_exit(t_minishell *m, t_second_parse *begin, char *line)
 {
 	t_second_parse	*temp;
 	long			n;
+	int				o;
 
-	temp = begin;
+	temp = begin->next;
 	n = 0;
-	while (temp != NULL)
+	if (temp != NULL)
+		o = exit_arg(begin->next->str, &n);
+	if (temp != NULL && temp->next != NULL)
 	{
-		temp = temp->next;
-		n++;
+		if (o == 1)
+		{
+			ft_putstr_err("minishell: exit: too many arguments\n");
+			return ;
+		}
 	}
-	if (n > 2)
-	{
-		ft_putstr_err("bash: exit: too many arguments\n");
-		return ;
-	}
-	built_in_exit_2(m, begin->next->str, line);
+	reboot(m, line);
+	ft_free_all_elem_env(m->e);
+	close(0);
+	close(1);
+	close(2);
+	exit((char)n);
 }
