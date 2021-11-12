@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/25 02:03:28 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/11/12 06:03:46 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/11/12 17:58:09 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,12 @@ int	find_nbr_argv(t_second_parse *begin)
 	return (i);
 }
 
-char	**argv_list_to_tab(t_second_parse *begin)
+char	**argv_list_to_tab(t_second_parse *begin, int i)
 {
 	t_second_parse	*temp;
 	int				nbr_argv;
 	char			**argv;
-	int				i;
 
-	i = 0;
 	temp = begin;
 	nbr_argv = find_nbr_argv(begin);
 	argv = malloc(sizeof(char *) * (nbr_argv + 1));
@@ -44,7 +42,12 @@ char	**argv_list_to_tab(t_second_parse *begin)
 	{
 		argv[i] = ft_strdup(temp->str);
 		if (argv[i] == NULL)
+		{
+			while (--i > -1)
+				free(argv[i]);
+			free(argv);
 			return (NULL);
+		}
 		i++;
 		temp = temp->next;
 	}

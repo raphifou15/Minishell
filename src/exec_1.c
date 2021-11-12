@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/18 05:55:52 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/11/12 06:09:15 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/11/12 17:58:50 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	child_process_whithout_pipe(t_second_parse *begin, t_minishell *m,
 	if (env == NULL)
 		free_inside_process_without_pipe_1(env, m, line);
 	if (absolute_way(begin) == 1)
-		argv = argv_list_to_tab(begin);
+		argv = argv_list_to_tab(begin, 0);
 	else
 		argv = list_env_argv_to_tab(begin, m->e);
 	if (argv == NULL)

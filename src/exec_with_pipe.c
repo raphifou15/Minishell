@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 23:27:32 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/11/07 23:46:23 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/11/12 17:57:10 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ static void	executing_inside_child_multi_pipe(t_second_parse *temp,
 		free_child_proc_mult_doc_fail(m, line);
 	env = env_list_to_tab(m->e);
 	if (absolute_way(temp) == 1)
-		argv = argv_list_to_tab(temp);
+		argv = argv_list_to_tab(temp, 0);
 	else
 		argv = list_env_argv_to_tab(temp, m->e);
 	executing_inside_child_multi_pipe_next(m, line, env, argv);
