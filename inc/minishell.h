@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 19:29:07 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/11/11 22:06:49 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/11/12 04:22:35 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -311,7 +311,7 @@ t_second_parse	*redirections(t_second_parse *begin, t_minishell *m,
 void			close_fds_and_error(t_minishell *m);
 int				find_nbr_out(t_second_parse *begin);
 int				find_nbr_in(t_second_parse *begin);
-void			init_redirection(t_minishell *m, char *line,
+int				init_redirection(t_minishell *m, char *line,
 					t_second_parse *begin);
 //
 //	redirections_heredoc.c

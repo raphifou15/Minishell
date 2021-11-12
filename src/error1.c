@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 02:58:39 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/11/11 22:06:32 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/11/12 04:22:32 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	error1(int err)
 void	error2(int err)
 {
 	ft_putstr_err("\e[15;31m");
-	ft_putstr(strerror(err));
-	ft_putstr("\n");
+	ft_putstr_err(strerror(err));
+	ft_putstr_err("\n");
 	ft_putstr_err("\e[0m");
 }

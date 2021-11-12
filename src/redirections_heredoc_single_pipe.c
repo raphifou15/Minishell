@@ -6,11 +6,18 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/06 01:26:59 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/11/11 22:06:15 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/11/12 04:22:25 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+static void	good_close_dup_fail(t_minishell *m, int err)
+{
+	m->use = 3;
+	error2(err);
+	return ;
+}
 
 static void	good_close_if_fd_fail(t_minishell *m, int i, int err)
 {
@@ -50,13 +57,12 @@ static void	redirection_input_heredoc_single(int i, t_minishell *m,
 	unlink("/tmp/lala");
 }
 
-static void	write_heredoc_single(t_second_parse *temp, t_minishell *m)
+static void	write_heredoc_single(t_second_parse *temp, t_minishell *m, int fd,
+				int i)
 {
-	int	fd;
-	int	i;
-
 	fd = dup(STDIN_FILENO);
-	i = 0;
+	if (fd == -1)
+		return (good_close_dup_fail(m, errno));
 	while (temp != NULL && g_signal == 0)
 	{
 		if (temp->value == _R_INPUT_2 || temp->value == _DELIMITEUR_2)
@@ -64,7 +70,8 @@ static void	write_heredoc_single(t_second_parse *temp, t_minishell *m)
 			redirection_input_heredoc_single(i, m, temp, NULL);
 			if (m->use == 3)
 			{
-				dup2(fd, STDIN_FILENO);
+				if (dup2(fd, STDIN_FILENO) == -1)
+					error2(errno);
 				close(fd);
 				return ;
 			}
@@ -73,8 +80,8 @@ static void	write_heredoc_single(t_second_parse *temp, t_minishell *m)
 		}
 		temp = temp->next;
 	}
-	if (g_signal != 0)
-		 dup2(fd, STDIN_FILENO);
+	if (g_signal != 0 && dup2(fd, STDIN_FILENO) == -1)
+		error2(errno);
 	close(fd);
 }
 
@@ -97,7 +104,7 @@ void	init_and_write_in_heredoc_single(t_second_parse *begin, t_minishell *m)
 	}
 	if (m->s.nbr_h != 0 && m->s.fds != NULL)
 	{
-		write_heredoc_single(begin, m);
+		write_heredoc_single(begin, m, 0, 0);
 		if (m->use == 3)
 		{
 			m->s.fds = ft_free3(m->s.fds);
