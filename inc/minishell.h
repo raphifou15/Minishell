@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 19:29:07 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/11/12 06:09:23 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/11/12 17:58:58 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -252,7 +252,7 @@ char			**env_list_to_tab(t_env *e);
 //
 //	argv_list_to_tab.c
 int				find_nbr_argv(t_second_parse *begin);
-char			**argv_list_to_tab(t_second_parse *begin);
+char			**argv_list_to_tab(t_second_parse *begin, int i);
 int				absolute_way(t_second_parse *begin);
 //
 //	free_inside_process_wihout_pipe.c

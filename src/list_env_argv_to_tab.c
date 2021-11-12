@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/25 18:27:39 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/11/07 22:29:01 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/11/12 17:57:05 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ char	**list_env_argv_to_tab(t_second_parse *begin, t_env *env)
 	if (str == NULL)
 		return (NULL);
 	if (str[0] == '\0' && ft_free(str) == 0)
-		return (argv_list_to_tab(begin));
+		return (argv_list_to_tab(begin, 0));
 	tab = ft_split(str, ':');
 	str = ft_free_null(str);
 	if (tab == NULL)
@@ -74,12 +74,12 @@ char	**list_env_argv_to_tab(t_second_parse *begin, t_env *env)
 		return (NULL);
 	ft_free_double_tab(tab);
 	if (str[0] == '\0' && ft_free(str) == 0)
-		return (argv_list_to_tab(begin));
+		return (argv_list_to_tab(begin, 0));
 	free(begin->str);
 	begin->str = NULL;
 	begin->str = ft_strdup(str);
 	if (begin->str == NULL && ft_free(str) == 0)
 		return (NULL);
 	str = ft_free_null(str);
-	return (argv_list_to_tab(begin));
+	return (argv_list_to_tab(begin, 0));
 }
