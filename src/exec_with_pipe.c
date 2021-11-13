@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 23:27:32 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/11/13 16:39:29 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/11/13 20:05:23 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,11 @@ static void	executing_inside_child_multi_pipe_next(t_minishell *m, char *line,
 {
 	int	j;
 
+	if (argv == NULL)
+	{
+		ft_free_double_tab(env);
+		free_child_1(m, line, errno);
+	}
 	j = -1;
 	close(m->mp.pipefd[0]);
 	close(m->mp.pipefd[1]);
@@ -52,7 +57,7 @@ static void	executing_inside_child_multi_pipe_next(t_minishell *m, char *line,
 	free_child_proc_mult_end(m, line, env, argv);
 }
 
-static void	executing_inside_child_multi_pipe(t_second_parse *temp,
+void	executing_inside_child_multi_pipe(t_second_parse *temp,
 			t_minishell *m, int i, char *line)
 {
 	char	**argv;
@@ -74,10 +79,9 @@ static void	executing_inside_child_multi_pipe(t_second_parse *temp,
 	if (temp == NULL || m->r.i == 1)
 		free_child_proc_mult_doc_fail(m, line);
 	env = env_list_to_tab(m->e);
-	if (absolute_way(temp) == 1)
-		argv = argv_list_to_tab(temp, 0);
-	else
-		argv = list_env_argv_to_tab(temp, m->e);
+	if (env == NULL)
+		free_child_1(m, line, errno);
+	argv = argv_inside_multi_pipe_norme(temp, m, argv);
 	executing_inside_child_multi_pipe_next(m, line, env, argv);
 }
 
@@ -85,28 +89,18 @@ void	executing_with_pipe(t_second_parse *begin, t_minishell *m, char *line,
 			int nbr_pipe)
 {
 	t_second_parse	*temp;
-	int				i;
 
-	i = -1;
 	temp = begin;
 	m->mp.fd_in = dup(STDIN_FILENO);
 	if (m->mp.fd_in < 0)
 		return (good_return_multipipe_1(m, errno, 0));
 	signal_heredoc();
+	m->mp.pid = malloc(sizeof(pid_t) * (nbr_pipe + 1));
+	if (m->mp.pid == NULL)
+		return (good_return_multipipe_1(m, errno, 2));
 	init_heredoc_and_write_in_file(begin, m, nbr_pipe);
 	if (m->retour != 0 || g_signal != 0)
 		return (good_return_multipipe_1(m, errno, 1));
 	signal_child();
-	while (++i <= nbr_pipe && g_signal == 0)
-	{
-		if (pipe(m->mp.pipefd) < 0)
-			return (good_return_multipipe_2(m, errno));
-		m->mp.pid = fork();
-		if (m->mp.pid < 0)
-			return (good_return_multipipe_3(m, errno));
-		if (m->mp.pid == 0)
-			executing_inside_child_multi_pipe(temp, m, i, line);
-		temp = inside_parent_multi_pipe(temp, m);
-	}
-	reboot_executing_with_pipe(m);
+	return (boucle_pipe_fork(nbr_pipe, m, temp, line));
 }

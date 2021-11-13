@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 20:45:11 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/11/13 05:00:22 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/11/13 19:23:47 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,15 @@ void	good_return_multipipe_1(t_minishell *m, int err, int x)
 			close(m->mp.fds[j]);
 		if (g_signal != 0)
 			free(m->mp.fds);
+		free(m->mp.pid);
 		close(m->mp.fd_in);
 		return ;
+	}
+	if (x == 2)
+	{
+		error1(0);
+		close (m->mp.fd_in);
+		m->retour = 1;
 	}
 }
 
@@ -42,6 +49,7 @@ void	good_return_multipipe_2(t_minishell *m, int err)
 	while (++j < m->mp.j)
 		close(m->mp.fds[j]);
 	free(m->mp.fds);
+	free(m->mp.pid);
 	close(m->mp.fd_in);
 	error2(err);
 	m->retour = 1;
@@ -57,6 +65,7 @@ void	good_return_multipipe_3(t_minishell *m, int err)
 	close(m->mp.pipefd[0]);
 	close(m->mp.pipefd[1]);
 	free(m->mp.fds);
+	free(m->mp.pid);
 	close(m->mp.fd_in);
 	error2(err);
 	m->retour = 1;

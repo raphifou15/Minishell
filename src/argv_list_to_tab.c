@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/25 02:03:28 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/11/12 17:58:09 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/11/13 20:05:40 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,4 +62,14 @@ int	absolute_way(t_second_parse *begin)
 	if (begin->str[0] == '.')
 		return (1);
 	return (0);
+}
+
+char	**argv_inside_multi_pipe_norme(t_second_parse *temp, t_minishell *m,
+		char **argv)
+{
+	if (absolute_way(temp) == 1)
+		argv = argv_list_to_tab(temp, 0);
+	else
+		argv = list_env_argv_to_tab(temp, m->e);
+	return (argv);
 }

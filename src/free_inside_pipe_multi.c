@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 18:29:26 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/11/13 07:37:40 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/11/13 19:21:24 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	free_child_proc_mult_doc_fail(t_minishell *m, char *line)
 		close(m->mp.fds[j]);
 	destroy_all(m, line, m->use);
 	ft_free_all_elem_env(m->e);
+	free(m->mp.pid);
 	free(m->mp.fds);
 	m->mp.fds = NULL;
 	close(2);
@@ -35,16 +36,19 @@ void	free_child_proc_mult_doc_fail(t_minishell *m, char *line)
 void	free_child_proc_mult_end(t_minishell *m, char *line, char **env,
 			char **argv)
 {
+	if (argv[0] != NULL)
+		error3(argv[0]);
 	ft_free_double_tab(argv);
 	ft_free_double_tab(env);
 	destroy_all(m, line, m->use);
 	ft_free_all_elem_env(m->e);
 	free(m->mp.fds);
 	m->mp.fds = NULL;
+	free(m->mp.pid);
 	close(2);
 	close(1);
 	close(0);
-	exit(0);
+	exit(127);
 }
 
 void	free_child_1(t_minishell *m, char *line, int err)
@@ -60,6 +64,7 @@ void	free_child_1(t_minishell *m, char *line, int err)
 		close(m->mp.fds[j]);
 	free(m->mp.fds);
 	m->mp.fds = NULL;
+	free(m->mp.pid);
 	destroy_all(m, line, m->use);
 	ft_free_all_elem_env(m->e);
 	close(2);

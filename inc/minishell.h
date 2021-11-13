@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 19:29:07 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/11/13 07:38:00 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/11/13 20:06:04 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ typedef struct s_multipipes
 {
 	int						pipefd[2];
 	int						fd_in;
-	pid_t					pid;
+	pid_t					*pid;
 	int						*fds;
 	int						i;
 	int						j;
@@ -255,6 +255,8 @@ char			**env_list_to_tab(t_env *e);
 int				find_nbr_argv(t_second_parse *begin);
 char			**argv_list_to_tab(t_second_parse *begin, int i);
 int				absolute_way(t_second_parse *begin);
+char			**argv_inside_multi_pipe_norme(t_second_parse *temp,
+					t_minishell *m, char **argv);
 //
 //	free_inside_process_wihout_pipe.c
 void			free_inside_process_without_pipe_1(char **env, t_minishell *m,
@@ -326,6 +328,8 @@ void			reboot_executing_with_pipe(t_minishell *m);
 int				get_next_line_modif(int fd, char **line);
 //
 //	exec_with_pipe.c
+void			executing_inside_child_multi_pipe(t_second_parse *temp,
+					t_minishell *m, int i, char *line);
 void			executing_with_pipe(t_second_parse *begin, t_minishell *m,
 					char *line, int nbr_pipe);
 //
@@ -346,6 +350,8 @@ void			free_child_1(t_minishell *m, char *line, int err);
 //
 //	exec_with_pipe2.c
 t_second_parse	*inside_parent_multi_pipe(t_second_parse *temp, t_minishell *m);
+void			boucle_pipe_fork(int nbr_pipe, t_minishell *m,
+					t_second_parse *temp, char *line);
 //
 //	handler.c
 void			handler_default(int nb);
