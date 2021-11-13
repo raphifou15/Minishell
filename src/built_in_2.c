@@ -6,11 +6,18 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 04:55:58 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/11/11 19:15:21 by alebross         ###   ########.fr       */
+/*   Updated: 2021/11/13 21:25:28 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+void	make_a_built_in_pipe(t_minishell *m, t_second_parse *temp, char *line)
+{
+	make_a_built_in(temp, m, line);
+	free_child_2(m, line);
+	exit(m->retour);
+}
 
 void	built_in_pwd(void)
 {

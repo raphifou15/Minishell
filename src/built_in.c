@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 04:55:58 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/11/10 20:15:11 by alebross         ###   ########.fr       */
+/*   Updated: 2021/11/13 21:19:27 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,5 +110,10 @@ void	make_a_built_in(t_second_parse *begin, t_minishell *m, char *line)
 	if (ft_strcmp(begin->str, "export") == 0)
 		return (built_in_export(m, begin, 0));
 	if (ft_strcmp(begin->str, "exit") == 0)
-		return (built_in_exit(m, begin, line));
+	{
+		if (m->mp.nbr_p <= 0)
+			return (built_in_exit(m, begin, line));
+		else
+			(built_in_exit2(m, begin, line));
+	}
 }

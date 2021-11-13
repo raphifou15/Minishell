@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 19:29:07 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/11/13 20:06:04 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/11/13 21:25:37 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -283,6 +283,8 @@ void			make_a_built_in(t_second_parse *begin, t_minishell *m,
 					char *line);
 //
 //	built_in_2.c
+void			make_a_built_in_pipe(t_minishell *m, t_second_parse *temp,
+					char *line);
 void			built_in_pwd(void);
 void			delete_elem_env(t_env *begin, int be);
 void			built_in_unset_2(t_env *tmp_env, t_env *env,
@@ -304,6 +306,8 @@ void			built_in_export_4(t_env *env, char *str, char *name, char *ctn);
 //
 //	built_in_exit.c
 void			built_in_exit(t_minishell *m, t_second_parse *begin,
+					char *line);
+void			built_in_exit2(t_minishell *m, t_second_parse *begin,
 					char *line);
 //
 //	redirections_1.c
@@ -347,6 +351,7 @@ void			free_child_proc_mult_doc_fail(t_minishell *m, char *line);
 void			free_child_proc_mult_end(t_minishell *m, char *line, char **env,
 					char **argv);
 void			free_child_1(t_minishell *m, char *line, int err);
+void			free_child_2(t_minishell *m, char *line);
 //
 //	exec_with_pipe2.c
 t_second_parse	*inside_parent_multi_pipe(t_second_parse *temp, t_minishell *m);

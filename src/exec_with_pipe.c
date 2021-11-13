@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 23:27:32 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/11/13 20:05:23 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/11/13 21:25:32 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,8 @@ void	executing_inside_child_multi_pipe(t_second_parse *temp,
 	temp = redirection_multiple_pipe(temp, m, line);
 	if (temp == NULL || m->r.i == 1)
 		free_child_proc_mult_doc_fail(m, line);
+	if (is_it_a_built_in(temp->str) == 1)
+		make_a_built_in_pipe(m, temp, line);
 	env = env_list_to_tab(m->e);
 	if (env == NULL)
 		free_child_1(m, line, errno);
