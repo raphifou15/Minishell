@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 23:27:32 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/11/12 21:08:17 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/11/13 05:00:38 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,24 +81,26 @@ void	executing_with_pipe(t_second_parse *begin, t_minishell *m, char *line,
 	t_second_parse	*temp;
 	int				i;
 
-	i = 0;
+	i = -1;
 	temp = begin;
 	m->mp.fd_in = dup(STDIN_FILENO);
 	if (m->mp.fd_in < 0)
 		return (good_return_multipipe_1(m, errno, 0));
 	signal_heredoc();
 	init_heredoc_and_write_in_file(begin, m, nbr_pipe);
-	if (m->retour != 0)
+	if (m->retour != 0 || g_signal != 0)
 		return (good_return_multipipe_1(m, errno, 1));
 	signal_child();
-	while (i <= nbr_pipe && g_signal == 0)
+	while (++i <= nbr_pipe && g_signal == 0)
 	{
-		pipe(m->mp.pipefd);
+		if (pipe(m->mp.pipefd) < 0)
+			return (good_return_multipipe_2(m, errno));
 		m->mp.pid = fork();
+		if (m->mp.pid < 0)
+			return (good_return_multipipe_3(m, errno));
 		if (m->mp.pid == 0)
 			executing_inside_child_multi_pipe(temp, m, i, line);
 		temp = inside_parent_multi_pipe(temp, m);
-		i++;
 	}
 	reboot_executing_with_pipe(m);
 }
