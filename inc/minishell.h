@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 19:29:07 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/11/13 05:00:56 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/11/13 07:38:00 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -335,12 +335,14 @@ void			init_heredoc_and_write_in_file(t_second_parse *begin,
 					t_minishell *m, int nbr_pipe);
 //
 //	redirection_multipipes.c
-void			redirections_multipipes(t_second_parse *temp, t_minishell *m);
+void			redirections_multipipes(t_second_parse *temp, t_minishell *m,
+					char *line);
 //
 //	free_inside_pipe_multi.c
 void			free_child_proc_mult_doc_fail(t_minishell *m, char *line);
 void			free_child_proc_mult_end(t_minishell *m, char *line, char **env,
 					char **argv);
+void			free_child_1(t_minishell *m, char *line, int err);
 //
 //	exec_with_pipe2.c
 t_second_parse	*inside_parent_multi_pipe(t_second_parse *temp, t_minishell *m);

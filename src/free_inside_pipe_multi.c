@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 18:29:26 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/11/13 05:00:15 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/11/13 07:37:40 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,4 +45,25 @@ void	free_child_proc_mult_end(t_minishell *m, char *line, char **env,
 	close(1);
 	close(0);
 	exit(0);
+}
+
+void	free_child_1(t_minishell *m, char *line, int err)
+{
+	int	j;
+
+	j = -1;
+	error2(err);
+	close(m->mp.pipefd[0]);
+	close(m->mp.pipefd[1]);
+	close(m->mp.fd_in);
+	while (++j < m->mp.nbr_h)
+		close(m->mp.fds[j]);
+	free(m->mp.fds);
+	m->mp.fds = NULL;
+	destroy_all(m, line, m->use);
+	ft_free_all_elem_env(m->e);
+	close(2);
+	close(1);
+	close(0);
+	exit(1);
 }

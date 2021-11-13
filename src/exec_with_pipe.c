@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 23:27:32 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/11/13 05:00:38 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/11/13 16:39:29 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static t_second_parse	*redirection_multiple_pipe(t_second_parse *begin,
 	init_redirection2(m, temp);
 	while (temp != NULL && temp->value != EXP)
 	{
-		redirections_multipipes(temp, m);
+		redirections_multipipes(temp, m, line);
 		temp = temp->next;
 	}
 	(void)line;
@@ -61,9 +61,15 @@ static void	executing_inside_child_multi_pipe(t_second_parse *temp,
 	argv = NULL;
 	env = NULL;
 	if (i != 0)
-		dup2(m->mp.fd_in, STDIN_FILENO);
+	{
+		if (dup2(m->mp.fd_in, STDIN_FILENO) < 0)
+			free_child_1(m, line, errno);
+	}
 	if (i != m->mp.nbr_p)
-		dup2(m->mp.pipefd[1], STDOUT_FILENO);
+	{
+		if (dup2(m->mp.pipefd[1], STDOUT_FILENO) < 0)
+			free_child_1(m, line, errno);
+	}
 	temp = redirection_multiple_pipe(temp, m, line);
 	if (temp == NULL || m->r.i == 1)
 		free_child_proc_mult_doc_fail(m, line);
