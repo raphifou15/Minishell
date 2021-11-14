@@ -6,7 +6,7 @@
 /*   By: alebross <alebross@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 23:42:09 by alebross          #+#    #+#             */
-/*   Updated: 2021/11/14 17:25:52 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/11/14 21:24:12 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,8 @@ int	next_parse_len(t_first_parse *begin)
 	{
 		i++;
 		temp = temp->next;
+		if (temp != NULL && temp->c == '\0')
+			return (i);
 	}
 	return (i);
 }

@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/15 19:19:37 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/11/14 17:25:44 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/11/14 21:24:03 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,12 @@ t_first_parse	*parsing_2_part_0_norme(t_first_parse *temp, int len, int x)
 	}
 	if (x == 1)
 	{
+		if (temp->value == 3 && temp->next != NULL && temp->next->c == 39)
+			return (temp);
+		if (temp->value == 3 && temp->next != NULL && temp->next->value == 0)
+			return (temp);
+		if (temp->value == 2 && temp->next != NULL && temp->next->value == 0)
+			return (temp);
 		temp->c = '\0';
 		temp->value = 0;
 	}
