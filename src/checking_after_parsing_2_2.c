@@ -6,11 +6,29 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/15 19:19:37 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/11/10 17:45:37 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/11/14 17:25:44 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+t_first_parse	*parsing_2_part_0_norme(t_first_parse *temp, int len, int x)
+{
+	if (x == 0)
+	{
+		while (len > 0)
+		{
+			temp = temp->next;
+			len--;
+		}
+	}
+	if (x == 1)
+	{
+		temp->c = '\0';
+		temp->value = 0;
+	}
+	return (temp);
+}
 
 static char	*ft_find_value_inside_env(char *str2, t_env *begin, char *str3)
 {
@@ -78,7 +96,7 @@ void	corrige_value2(t_second_parse *begin)
 			temp = temp->next;
 			while (temp != NULL && temp->value == _SPACE)
 				temp = temp->next;
-			if (temp->value == _DOLLAR)
+			if (temp != NULL && temp->value == _DOLLAR)
 				temp->value = _DELIMITEUR;
 		}
 		if (temp != NULL)

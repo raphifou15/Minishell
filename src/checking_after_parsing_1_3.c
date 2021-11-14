@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/31 05:11:59 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/11/10 16:25:34 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/11/14 17:09:12 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	transform_value_for_here_doc(t_first_parse **begin)
 				transform_value_to_delimiteur_2(temp);
 			else
 			{
-				while (temp->value == _R_INPUT)
+				while (temp != NULL && temp->value == _R_INPUT)
 					temp = temp->next;
 			}
 		}

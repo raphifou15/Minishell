@@ -6,7 +6,7 @@
 /*   By: alebross <alebross@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 23:42:09 by alebross          #+#    #+#             */
-/*   Updated: 2021/11/10 17:46:45 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/11/14 17:25:52 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,10 @@ int	parsing_2_part_0(t_minishell *m)
 	temp = m->p1;
 	while (temp != NULL)
 	{
+		if ((temp->value == _QUOTE || temp->value == _DOUBLE_QUOTE)
+			&& temp->next != NULL
+			&& (temp->value == _QUOTE || temp->value == _DOUBLE_QUOTE))
+			temp = parsing_2_part_0_norme(temp, 0, 1);
 		if (temp->value != _QUOTE && temp->value != _DOUBLE_QUOTE)
 		{
 			len = next_parse_len(temp);
@@ -96,11 +100,7 @@ int	parsing_2_part_0(t_minishell *m)
 				m->retour = 1;
 				return (ft_free_all_the_list_2(m->p2) + 1);
 			}
-			while (len > 0)
-			{
-				temp = temp->next;
-				len--;
-			}
+			temp = parsing_2_part_0_norme(temp, len, 0);
 		}
 		else
 			temp = temp->next;

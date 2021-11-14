@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 19:29:07 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/11/13 21:25:37 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/11/14 17:26:01 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -202,6 +202,7 @@ int				find_new_value_to_temp(t_second_parse *temp, char *str,
 int				change_elem_dollar_part2(t_second_parse *temp, t_minishell *m);
 //
 //	checking_after_parsing_2_2.c
+t_first_parse	*parsing_2_part_0_norme(t_first_parse *temp, int len, int x);
 char			*find_value_from_env_or_interogation(char *str2, t_minishell *m,
 					char *str3);
 void			corrige_value(t_second_parse *begin);
