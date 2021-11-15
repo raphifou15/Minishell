@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/31 05:11:59 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/11/14 17:09:12 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/11/15 22:22:01 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,26 @@ void	transform_value_for_here_doc(t_first_parse **begin)
 			{
 				while (temp != NULL && temp->value == _R_INPUT)
 					temp = temp->next;
+			}
+		}
+		if (temp != NULL)
+			temp = temp->next;
+	}
+}
+
+void	transform_special_dollar_value(t_first_parse *temp)
+{
+	while (temp != NULL)
+	{
+		if (temp->value == _DOLLAR && temp->c == '/')
+		{
+			temp->value = EXP;
+			if (temp->next != NULL)
+				temp = temp->next;
+			while (temp != NULL && temp->value == _DOLLAR && temp->c != '$')
+			{
+				temp->value = EXP;
+				temp = temp->next;
 			}
 		}
 		if (temp != NULL)

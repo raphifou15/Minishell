@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 21:30:18 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/11/14 21:22:58 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/11/15 22:23:34 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,7 @@ int	parsing_1(t_minishell *m)
 	if (check_quote_number(&m->p1, m) != 0)
 		return (ft_free_all_the_list(m->p1) + 1);
 	transform_value_for_dollar(&m->p1);
+	transform_special_dollar_value(m->p1);
 	transform_value_quote(&m->p1);
 	transform_value_for_here_doc(&m->p1);
 	return (0);

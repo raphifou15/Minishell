@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 19:29:07 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/11/15 05:25:30 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/11/15 22:23:45 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -184,6 +184,7 @@ void			transform_value_quote(t_first_parse **begin);
 //
 //	checking_after_parsing_1_3.c
 void			transform_value_for_here_doc(t_first_parse **begin);
+void			transform_special_dollar_value(t_first_parse *temp);
 //
 //	parsing_2.c
 int				ft_list_push_back_2(t_second_parse **begin, t_first_parse *p1,
