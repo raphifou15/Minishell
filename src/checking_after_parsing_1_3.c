@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/31 05:11:59 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/11/15 22:22:01 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/11/16 00:32:40 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static int	ft_check_if_transform_r_input(t_first_parse *temp)
 		return (0);
 	while (temp != NULL && temp->value == _SPACE)
 		temp = temp->next;
-	while (temp != NULL && temp->value == EXP)
+	while (temp != NULL && (temp->value == EXP || temp->value == _DOLLAR))
 		temp = temp->next;
 	if (temp != NULL && (temp->value == _QUOTE || temp->value == _DOUBLE_QUOTE))
 		return (1);
@@ -68,7 +68,8 @@ void	transform_special_dollar_value(t_first_parse *temp)
 {
 	while (temp != NULL)
 	{
-		if (temp->value == _DOLLAR && temp->c == '/')
+		if (temp->value == _DOLLAR && (temp->c == '/' || temp->c == '!'
+				|| temp->c == '?'))
 		{
 			temp->value = EXP;
 			if (temp->next != NULL)
@@ -79,6 +80,9 @@ void	transform_special_dollar_value(t_first_parse *temp)
 				temp = temp->next;
 			}
 		}
+		if (temp != NULL && temp->next != NULL && temp->c == '$'
+			&& temp->next->c == '?')
+			temp = temp->next;
 		if (temp != NULL)
 			temp = temp->next;
 	}
