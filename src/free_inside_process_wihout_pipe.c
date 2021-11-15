@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/25 04:37:21 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/11/13 18:10:00 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/11/15 05:25:25 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,12 @@ void	free_inside_process_without_pipe_3(char **argv, char **env,
 			t_minishell *m, char *line)
 {
 	if (argv[0] != NULL)
-		error3(argv[0]);
+	{
+		if (argv[0][0] == '\0')
+			ft_putstr_err("\e[15;31mCommand '' not found\e[0m\n");
+		else
+			error3(argv[0]);
+	}
 	close(m->r.fd_out_save);
 	close(m->r.fd_in_save);
 	free(m->s.fds);
@@ -63,4 +68,34 @@ void	free_inside_process_without_pipe_3(char **argv, char **env,
 	ft_free_all_elem_env(m->e);
 	ft_free(line);
 	exit(127);
+}
+
+void	free_inside_process_without_pipe_4(char **argv, char **env,
+			t_minishell *m, int err)
+{
+	int	a;
+
+	ft_putstr("\e[15;31m");
+	ft_putstr(argv[0]);
+	ft_putstr(":  \e[0m");
+	if (ft_strcmp(argv[0], ".") == 0 && argv[1] == NULL)
+		ft_putstr("\e[15;31mfilename argument required\n\e[0m");
+	else
+		error2(err);
+	if (ft_strcmp(argv[0], ".") == 0 && argv[1] == NULL)
+		a = 2;
+	else
+		a = 126;
+	close(m->r.fd_out_save);
+	close(m->r.fd_in_save);
+	free(m->s.fds);
+	m->s.fds = NULL;
+	close(STDIN_FILENO);
+	close(STDOUT_FILENO);
+	close(STDERR_FILENO);
+	ft_free_double_tab(argv);
+	ft_free_double_tab(env);
+	ft_free_all_the_list_2(m->p3);
+	ft_free_all_elem_env(m->e);
+	exit(a);
 }

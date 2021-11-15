@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 23:27:32 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/11/13 21:25:32 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/11/15 05:25:18 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,10 @@ static void	executing_inside_child_multi_pipe_next(t_minishell *m, char *line,
 		close(m->mp.fds[j]);
 	if (argv[0] != NULL)
 		execve(argv[0], argv, env);
-	free_child_proc_mult_end(m, line, env, argv);
+	if (errno != 13)
+		return (free_child_proc_mult_end(m, line, env, argv));
+	ft_free_double_tab(env);
+	free_child_proc_mult_end2(m, line, errno, argv);
 }
 
 void	executing_inside_child_multi_pipe(t_second_parse *temp,

@@ -6,11 +6,18 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/25 18:27:39 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/11/12 19:48:46 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/11/15 04:07:22 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+static void	norm_1(t_second_parse *begin, char *str)
+{
+	free(begin->str);
+	begin->str = NULL;
+	begin->str = ft_strdup(str);
+}
 
 char	*find_elem_access(t_second_parse *begin, char **tab)
 {
@@ -78,9 +85,8 @@ char	**list_env_argv_to_tab(t_second_parse *begin, t_env *env)
 	ft_free_double_tab(tab);
 	if (str[0] == '\0' && ft_free(str) == 0)
 		return (argv_list_to_tab(begin, 0));
-	free(begin->str);
-	begin->str = NULL;
-	begin->str = ft_strdup(str);
+	if (begin != NULL && begin->str != NULL && begin->str[0] != '\0')
+		norm_1(begin, str);
 	if (begin->str == NULL && ft_free(str) == 0)
 		return (NULL);
 	str = ft_free_null(str);

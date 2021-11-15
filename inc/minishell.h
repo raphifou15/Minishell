@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 19:29:07 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/11/14 21:23:02 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/11/15 05:25:30 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -266,6 +266,8 @@ void			free_inside_process_without_pipe_2(char **argv, char **env,
 					t_minishell *m, char *line);
 void			free_inside_process_without_pipe_3(char **argv, char **env,
 					t_minishell *m, char *line);
+void			free_inside_process_without_pipe_4(char **argv, char **env,
+					t_minishell *m, int err);
 //
 //	list_env_argv_to_tab.c
 char			*find_elem_access(t_second_parse *begin, char **tab);
@@ -353,6 +355,8 @@ void			free_child_proc_mult_end(t_minishell *m, char *line, char **env,
 					char **argv);
 void			free_child_1(t_minishell *m, char *line, int err);
 void			free_child_2(t_minishell *m, char *line);
+void			free_child_proc_mult_end2(t_minishell *m, char *line, int err,
+					char **argv);
 //
 //	exec_with_pipe2.c
 t_second_parse	*inside_parent_multi_pipe(t_second_parse *temp, t_minishell *m);
