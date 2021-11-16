@@ -1,34 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   built_in_2.c                                       :+:      :+:    :+:   */
+/*   built_in_unset.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alebross <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/26 04:55:58 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/11/16 04:03:57 by rkhelif          ###   ########.fr       */
+/*   Created: 2021/11/16 18:25:13 by alebross          #+#    #+#             */
+/*   Updated: 2021/11/16 19:04:15 by alebross         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-void	make_a_built_in_pipe(t_minishell *m, t_second_parse *temp, char *line)
-{
-	make_a_built_in(temp, m, line);
-	free_child_2(m, line);
-	exit(m->retour);
-}
-
-void	built_in_pwd(void)
-{
-	char	pwd[PATH_MAX];
-
-	if (getcwd(pwd, PATH_MAX) != 0)
-		ft_putstr(pwd);
-	else
-		ft_putstr("Error");
-	ft_putstr("\n");
-}
 
 void	delete_elem_env(t_env *begin, int be)
 {
@@ -73,29 +55,62 @@ void	built_in_unset_2(t_env *tmp_env, t_env *env, t_minishell *m, int i)
 	}
 }
 
-void	built_in_unset(t_env *env, t_minishell *m, t_second_parse *begin, int i)
+static int	check_unset_name(char *s)
+{
+	int	i;
+
+	i = 1;
+	if (ft_is_char(s[0]) == 0)
+		return (0);
+	while (s[i])
+	{
+		if (ft_is_char(s[i]) == 0 && s[i] != '_'
+			&& !(s[i] >= '0' && s[i] <= '9'))
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
+static int	xcheckname(t_minishell *m, char *name)
+{
+	if (check_unset_name(name) == 0)
+	{
+		ft_putstr_err("\e[15;31mbash: unset: \'");
+		ft_putstr_err(name);
+		ft_putstr_err("\': not a valid identifier\e[0m\n");
+		m->retour = 1;
+		return (0);
+	}
+	return (1);
+}
+
+void	built_in_unset(t_env *env, t_minishell *m
+			, t_second_parse *tmp_arg, int i)
 {
 	t_env			*tmp_env;
-	t_second_parse	*tmp_arg;
 
-	tmp_arg = begin->next;
 	while (tmp_arg != NULL && tmp_arg->value != _PIPE)
 	{
 		env = m->e;
 		tmp_env = env;
 		i = 0;
-		if (ft_strcmp(tmp_arg->str, "_") == 0)
+		if (xcheckname(m, tmp_arg->str) != 0)
 		{
-			tmp_arg = tmp_arg->next;
-			if (tmp_arg == NULL)
-				return ;
+			if (ft_strcmp(tmp_arg->str, "_") == 0)
+			{
+				tmp_arg = tmp_arg->next;
+				if (tmp_arg == NULL)
+					return ;
+			}
+			while (tmp_env != NULL && ft_strcmp2(tmp_arg->str
+					, tmp_env->name) != 0)
+			{
+				tmp_env = tmp_env->next;
+				i++;
+			}
+			built_in_unset_2(tmp_env, env, m, i);
 		}
-		while (tmp_env != NULL && ft_strcmp2(tmp_arg->str, tmp_env->name) != 0)
-		{
-			tmp_env = tmp_env->next;
-			i++;
-		}
-		built_in_unset_2(tmp_env, env, m, i);
 		tmp_arg = tmp_arg->next;
 	}
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alebross <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/10 19:29:07 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/11/16 04:04:05 by rkhelif          ###   ########.fr       */
+/*   Created: 2021/11/16 19:07:10 by alebross          #+#    #+#             */
+/*   Updated: 2021/11/16 19:08:10 by alebross         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -235,12 +235,22 @@ void			corrige_empty_quote(t_second_parse *temp);
 int				error1(int err);
 void			error2(int err);
 void			error3(char *str);
+void			error4(char *str);
 //
 //	display.c
 void			display_elem(t_first_parse *begin);
 void			display_elem_2(t_second_parse *begin);
 void			ft_display_env_list(t_env *begin);
-void			ft_display_export_list(t_env *begin);
+//
+//	display_export.c
+void			ft_display_export_list(t_env *begin, int s,
+					t_minishell *m, int i);
+//
+//	display_export_2.c
+int				ft_strcmp_2(char *s1, char *s2);
+int				env_size(t_env *begin);
+char			**tab_init(char **tab, int size);
+void			free_inside_tab(char **tab);
 //
 //	exec_1.c
 int				find_nbr_pipe(t_second_parse *begin);
@@ -280,17 +290,20 @@ char			**list_env_argv_to_tab(t_second_parse *begin, t_env *env);
 char			**ft_split(const char *str, char c);
 //
 //	built_in.c
-int				check_first_elem_echo(char *str);
-void			built_in_echo(t_minishell *m, t_second_parse *begin);
-void			built_in_env(t_env *env);
 int				is_it_a_built_in(char *str);
+void			make_a_built_in_pipe(t_minishell *m, t_second_parse *temp,
+					char *line);
 void			make_a_built_in(t_second_parse *begin, t_minishell *m,
 					char *line);
 //
-//	built_in_2.c
-void			make_a_built_in_pipe(t_minishell *m, t_second_parse *temp,
-					char *line);
-void			built_in_pwd(void);
+//	built_in_echo.c
+int				check_first_elem_echo(char *str);
+void			built_in_echo(t_minishell *m, t_second_parse *begin);
+//
+//	built_in_env.c
+void			built_in_env(t_env *env);
+//
+//	built_in_unset.c
 void			delete_elem_env(t_env *begin, int be);
 void			built_in_unset_2(t_env *tmp_env, t_env *env,
 					t_minishell *m, int i);
@@ -299,6 +312,9 @@ void			built_in_unset(t_env *env, t_minishell *m,
 //
 //	built_in_cd.c
 void			built_in_cd(t_minishell *m, t_second_parse *begin);
+//
+//	built_in_pwd.c
+void			built_in_pwd(t_minishell *m);
 //
 //	built_in_export.c
 void			built_in_export(t_minishell *m, t_second_parse *begin, int n);

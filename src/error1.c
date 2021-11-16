@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error1.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alebross <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/11 02:58:39 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/11/15 05:25:21 by rkhelif          ###   ########.fr       */
+/*   Created: 2021/11/16 19:06:16 by alebross          #+#    #+#             */
+/*   Updated: 2021/11/16 19:06:17 by alebross         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,22 +16,22 @@ int	error1(int err)
 {
 	if (err == 0)
 		ft_putstr_err("\e[15;31mError malloc failed\e[0m\n");
-	if (err == 1)
+	else if (err == 1)
 	{
 		ft_putstr_err("\e[15;31mError syntax error (double ");
 		ft_putstr_err("quote or simple quote are not close)\e[0m\n");
 	}
-	if (err == 2)
+	else if (err == 2)
 		ft_putstr_err("\e[15;31msyntax error near unexpected token `||'\e[0m\n");
-	if (err == 3)
+	else if (err == 3)
 		ft_putstr_err("\e[15;31msyntax error near unexpected token `<<<'\e[0m\n");
-	if (err == 4)
+	else if (err == 4)
 		ft_putstr_err("\e[15;31mError syntax error (invalid redirection)\e[0m\n");
-	if (err == 5)
+	else if (err == 5)
 		ft_putstr_err("\e[15;31mCommand not found\e[0m\n");
-	if (err == 6)
+	else if (err == 6)
 		ft_putstr_err("\e[15;31msyntax error near unexpected token `>>>'\e[0m\n");
-	if (err == 7)
+	else if (err == 7)
 		ft_putstr_err("\e[15;31msyntax error near unexpected token `|'\e[0m\n");
 	return (0);
 }
@@ -51,4 +51,21 @@ void	error3(char *str)
 	ft_putstr_err(": command not found");
 	ft_putstr_err("\n");
 	ft_putstr_err("\e[0m");
+}
+
+void	error4(char *str)
+{
+	ft_putstr_err("\e[15;31m");
+	ft_putstr_err(str);
+	ft_putstr_err("\n");
+	ft_putstr_err("\e[0m");
+}
+
+char	*error5(char *str)
+{
+	ft_putstr_err("\e[15;31m");
+	ft_putstr_err(str);
+	ft_putstr_err("\n");
+	ft_putstr_err("\e[0m");
+	return (NULL);
 }

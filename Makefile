@@ -6,7 +6,7 @@
 #    By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/10 18:33:31 by rkhelif           #+#    #+#              #
-#    Updated: 2021/11/12 21:19:44 by rkhelif          ###   ########.fr        #
+#    Updated: 2021/11/16 18:44:07 by alebross         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,17 +54,22 @@ SRCS = 	main.c \
 		redirections_heredoc_multi_pipes.c \
 		redirections_heredoc_single_pipe.c \
 		built_in.c \
-		built_in_2.c \
 		built_in_cd.c \
+		built_in_pwd.c \
+		built_in_echo.c \
 		built_in_export.c \
 		built_in_export_2.c \
 		built_in_exit.c \
+		built_in_unset.c \
+		built_in_env.c \
 		close_and_reboot.c \
 		redirection_multipipes.c \
 		get_next_line_modif.c \
 		good_return_multipipe.c \
 		wait.c \
 		signal.c \
+		display_export.c \
+		display_export_2.c \
 		handler.c
 
 OBJS = ${addprefix ${DIR_OBJ}/,${SRCS:.c=.o}}
