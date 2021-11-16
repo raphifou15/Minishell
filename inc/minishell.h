@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 19:29:07 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/11/16 00:32:46 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/11/16 04:04:05 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,8 +138,9 @@ void			ft_putstr_fd(char *str, int fd);
 int				ft_is_char(char c);
 void			ft_atoi_modif(int num, char *str);
 //
-//	utilities3.c
+//	utilities4.c
 long			ft_atol(char *s);
+int				ft_strcmp2(char *s1, char *s2);
 //
 //	ft_free.c
 int				ft_free(char *str);

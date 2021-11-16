@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 04:55:58 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/11/13 21:25:28 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/11/16 04:03:57 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ void	built_in_unset(t_env *env, t_minishell *m, t_second_parse *begin, int i)
 	tmp_arg = begin->next;
 	while (tmp_arg != NULL && tmp_arg->value != _PIPE)
 	{
+		env = m->e;
 		tmp_env = env;
 		i = 0;
 		if (ft_strcmp(tmp_arg->str, "_") == 0)
@@ -89,7 +90,7 @@ void	built_in_unset(t_env *env, t_minishell *m, t_second_parse *begin, int i)
 			if (tmp_arg == NULL)
 				return ;
 		}
-		while (tmp_env != NULL && strcmp(tmp_arg->str, tmp_env->name) != 0)
+		while (tmp_env != NULL && ft_strcmp2(tmp_arg->str, tmp_env->name) != 0)
 		{
 			tmp_env = tmp_env->next;
 			i++;
