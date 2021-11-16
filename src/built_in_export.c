@@ -6,7 +6,7 @@
 /*   By: alebross <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 22:40:30 by alebross          #+#    #+#             */
-/*   Updated: 2021/11/16 19:01:28 by alebross         ###   ########.fr       */
+/*   Updated: 2021/11/16 19:51:55 by alebross         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	built_in_export(t_minishell *m, t_second_parse *begin, int n)
 	temp = begin->next;
 	if (temp == NULL)
 		return (ft_display_export_list(m->e, env_size(m->e), m, 0));
-	while (temp != NULL)
+	while (temp != NULL && temp->value != _PIPE)
 	{
 		n = check_env_name(temp->str);
 		if (n == 0)
