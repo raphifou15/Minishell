@@ -6,7 +6,7 @@
 /*   By: alebross <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 22:40:30 by alebross          #+#    #+#             */
-/*   Updated: 2021/11/10 20:14:27 by alebross         ###   ########.fr       */
+/*   Updated: 2021/11/16 19:01:28 by alebross         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,18 +59,16 @@ void	built_in_export(t_minishell *m, t_second_parse *begin, int n)
 
 	temp = begin->next;
 	if (temp == NULL)
-	{
-		ft_display_export_list(m->e);
-		return ;
-	}
+		return (ft_display_export_list(m->e, env_size(m->e), m, 0));
 	while (temp != NULL)
 	{
 		n = check_env_name(temp->str);
 		if (n == 0)
 		{
-			ft_putstr_err("bash: export: \'");
+			ft_putstr_err("\e[15;31mbash: export: \'");
 			ft_putstr_err(temp->str);
-			ft_putstr_err("\': not a valid identifier\n");
+			ft_putstr_err("\': not a valid identifier\e[0m\n");
+			m->retour = 1;
 		}
 		else if (n == 3)
 			built_in_export_4(m->e, temp->str, NULL, NULL);
