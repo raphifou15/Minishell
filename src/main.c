@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 19:40:05 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/11/15 05:25:33 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/11/16 20:37:29 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ int	main(int argc, char **argv, char **env)
 	(void)argv;
 	signal_default();
 	g_signal = 0;
-	if (minishell(env, "\e[11;34mMinishell$>\e[0m") != 0)
+	if (minishell(env, "Minishell$>") != 0)
 	{
 		close(0);
 		close(1);

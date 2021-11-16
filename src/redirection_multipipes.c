@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 17:32:26 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/11/13 16:39:25 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/11/16 20:34:19 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static void	redirection_output_multipipe_1(t_second_parse *temp, t_minishell *m,
 			char *line)
 {
-	m->r.fd_out = open(temp->str, O_CREAT | O_WRONLY | O_TRUNC, 0777);
+	m->r.fd_out = open(temp->str, O_CREAT | O_WRONLY | O_TRUNC, 0644);
 	if (m->r.fd_out < 0)
 		free_child_1(m, line, errno);
 	if (--m->r.nbr_out == 0)
@@ -32,7 +32,7 @@ static void	redirection_output_multipipe_1(t_second_parse *temp, t_minishell *m,
 static void	redirection_output_multipipe_2(t_second_parse *temp, t_minishell *m,
 			char *line)
 {
-	m->r.fd_out = open(temp->str, O_CREAT | O_WRONLY | O_APPEND, 0777);
+	m->r.fd_out = open(temp->str, O_CREAT | O_WRONLY | O_APPEND, 0644);
 	if (m->r.fd_out < 0)
 		free_child_1(m, line, errno);
 	if (--m->r.nbr_out == 0)

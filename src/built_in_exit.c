@@ -6,7 +6,7 @@
 /*   By: alebross <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 19:15:02 by alebross          #+#    #+#             */
-/*   Updated: 2021/11/13 21:20:12 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/11/16 20:18:01 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ void	built_in_exit(t_minishell *m, t_second_parse *begin, char *line)
 	}
 	reboot(m, line);
 	ft_free_all_elem_env(m->e);
+	ft_putstr("exit\n");
 	close(0);
 	close(1);
 	close(2);
@@ -105,5 +106,6 @@ void	built_in_exit2(t_minishell *m, t_second_parse *begin, char *line)
 		}
 	}
 	m->retour = n;
+	ft_putstr("exit\n");
 	return ;
 }

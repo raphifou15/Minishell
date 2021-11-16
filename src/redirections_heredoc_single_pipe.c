@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/06 01:26:59 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/11/13 02:09:02 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/11/16 20:36:18 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static void	redirection_input_heredoc_single(int i, t_minishell *m,
 {
 	int		fd2;
 
-	fd2 = open("/tmp/lala", O_CREAT | O_RDWR | O_TRUNC, 0777);
+	fd2 = open("/tmp/lala", O_CREAT | O_RDWR | O_TRUNC, 0644);
 	if (fd2 < 0)
 		return (good_close_if_fd_fail(m, i, errno));
 	m->s.fds[i] = open("/tmp/lala", O_RDWR);

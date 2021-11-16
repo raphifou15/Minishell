@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 00:52:00 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/11/13 01:28:02 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/11/16 20:35:08 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	output(t_minishell *m, t_second_parse *temp)
 {
-	m->r.fd_out = open(temp->str, O_CREAT | O_WRONLY | O_TRUNC, 0777);
+	m->r.fd_out = open(temp->str, O_CREAT | O_WRONLY | O_TRUNC, 0644);
 	if (m->r.fd_out < 0)
 	{
 		error2(errno);
@@ -41,7 +41,7 @@ static int	output(t_minishell *m, t_second_parse *temp)
 
 static int	output2(t_minishell *m, t_second_parse *temp)
 {
-	m->r.fd_out = open(temp->str, O_CREAT | O_WRONLY | O_APPEND, 0777);
+	m->r.fd_out = open(temp->str, O_CREAT | O_WRONLY | O_APPEND, 0644);
 	if (m->r.fd_out < 0)
 	{
 		error2(errno);
@@ -68,7 +68,7 @@ static int	output2(t_minishell *m, t_second_parse *temp)
 
 static int	input(t_minishell *m, t_second_parse *temp)
 {
-	m->r.fd_in = open(temp->str, O_RDONLY | O_APPEND, 0777);
+	m->r.fd_in = open(temp->str, O_RDONLY | O_APPEND, 0644);
 	if (m->r.fd_in < 0)
 	{
 		m->r.i = 1;
