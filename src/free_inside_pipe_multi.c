@@ -6,7 +6,7 @@
 /*   By: rkhelif <rkhelif@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 18:29:26 by rkhelif           #+#    #+#             */
-/*   Updated: 2021/11/15 05:25:13 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/11/16 01:24:32 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	free_child_proc_mult_doc_fail(t_minishell *m, char *line)
 	close(2);
 	close(1);
 	close(0);
-	exit(0);
+	exit(1);
 }
 
 void	free_child_proc_mult_end(t_minishell *m, char *line, char **env,

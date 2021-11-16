@@ -6,7 +6,7 @@
 /*   By: alebross <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 22:40:06 by alebross          #+#    #+#             */
-/*   Updated: 2021/11/07 23:14:33 by rkhelif          ###   ########.fr       */
+/*   Updated: 2021/11/16 01:24:37 by rkhelif          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,12 +61,11 @@ void	built_in_cd(t_minishell *m, t_second_parse *begin)
 	int				i;
 
 	temp = begin;
-	i = 0;
-	while (temp != NULL && temp->value != _PIPE)
-	{
+	i = -1;
+	while (++i != -1 && temp != NULL && temp->value != _PIPE)
 		temp = temp->next;
-		i++;
-	}
+	if (i > 2)
+		m->retour = 1;
 	if (i > 2)
 		return (ft_putstr_err("minishell: cd: too many arguments\n"));
 	if (i < 2)
@@ -75,7 +74,10 @@ void	built_in_cd(t_minishell *m, t_second_parse *begin)
 	if (strcmp(".", temp->str) == 0)
 		return ;
 	if (chdir(temp->str) == -1)
+	{
+		m->retour = 1;
 		error2(errno);
+	}
 	actualise_oldpwd(m->e);
 	actualise_pwd(m->e);
 }
